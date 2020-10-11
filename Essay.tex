@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath}
+\usepackage[argument]{graphicx}
+
+
+\title{Преобразование базиса Грёбнера нульмерного идеала к иному мономиальноальному упорядочению.}
+\author{Федоров Глеб M33351}
+\date{Октябрь 2020}
+
+\begin{document}
+    \begin{titlepage}
+        \maketitle
+    \end{titlepage}
+    
+\section{Оглавление}
+    \subsection{Постановка проблемы}
+    \subsection{Дополнительная теория}
+    \subsection{Алгоритм FGLM}
+    \subsection{Примерная архитектура программы}
+    \newpage
+\section{Постановка проблемы}
+    Дан базис Грёбнера нульмерного идеала, построенный на мономиальном упорядочении $m1$.
+    Привести данный базис к иному мономиальному упорядочению $m2$.
+    \newpage
+\section{Дополнительная теория} 
+    \subsection{Исключающий идеал}
+    Теорема(об исключении): Пусть $I \subset F[x_1, x_2,\ldots, x_s]$ - идеал и G - его базис Грёбнера по отношению
+    к lex-упорядочению с $x_1>x_2>\ldots>x_n$. Тогда $\forall l : 0 \leq l \leq n $ множество
+    $$G_l = G \cap F[x_1, x_2,\ldots,x_s]$$ является базисом Грёбнера $l$-го исключающего идеала $I_l$.
+    
+    Доказательство: 
+
+    \subsection{Нульмерный идеал}
+       Теорема: Пусть поле $F$ алгебраически замкнуто и $I\in F[x_1, x_2,\ldots, x_n]$.
+       Тогда следующие условия эквивалентны:
+        
+        \begin{enumerate}
+            \item Алгебра $A=F[x_1, x_2,\ldots, x_n]$ - I конечномерна над F.
+            \item $V(I) \subset F^n$ конечно.
+            \item Если $G$ - базис Грёбнера идеала $I$, то $$\forall i \exists m_i \geq 0 : x_i^{m_i} = LM(g)$$ для некоторого $g \in G$.
+            \item Для каждой переменной $x_i$ исключающий идеал $I \cap F[x_1, x_2,\ldots, x_n]$ является ненулевым.
+        \end{enumerate}
+
+      Доказательство:
+      Идеал, удовлетворяюзий данной теореме называется нульмерным
+
+\newpage
+\section{Алгоритм FGLM}
+
+\end{document}
