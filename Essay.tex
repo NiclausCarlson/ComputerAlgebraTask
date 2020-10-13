@@ -3,6 +3,14 @@
 \usepackage[english,russian]{babel}
 \usepackage{amsmath}
 \usepackage[argument]{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+
+\definecolor{linkcolor}{HTML}{799B03} % цвет ссылок
+\definecolor{urlcolor}{HTML}{799B03} % цвет гиперссылок
+ 
+\hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
 
 
 \title{Преобразование базиса Грёбнера нульмерного идеала к иному мономиальноальному упорядочению.}
@@ -19,21 +27,57 @@
     \subsection{Дополнительная теория}
     \subsection{Алгоритм FGLM}
     \subsection{Примерная архитектура программы}
+    \subsection{Используемая литература}
     \newpage
 \section{Постановка проблемы}
-    Дан базис Грёбнера нульмерного идеала, построенный на мономиальном упорядочении $m1$.
-    Привести данный базис к иному мономиальному упорядочению $m2$.
+    Дан базис Грёбнера нульмерного идеала, построенный на мономиальном упорядочении $m_1$.
+    Привести данный базис к иному мономиальному упорядочению $m_2$.
     \newpage
 \section{Дополнительная теория} 
     \subsection{Исключающий идеал}
-    Теорема(об исключении): Пусть $I \subset F[x_1, x_2,\ldots, x_s]$ - идеал и G - его базис Грёбнера по отношению
+
+    \textbf{Определение:} Пусть дан $I = <f_1, \ldots, f_n> \in F[x_1,\ldots,x_n]$. Тогда l-м исключающим идеалом $I_l$ называется 
+    идеал в $F[x_{l+1},\ldots, x_n]$, равный $I \cup F[x_{l+1},\ldots, x_n]$.
+
+    \textbf{Теорема(об исключении):} Пусть $I \subset F[x_1, x_2,\ldots, x_s]$ - идеал и G - его базис Грёбнера по отношению
     к lex-упорядочению с $x_1>x_2>\ldots>x_n$. Тогда $\forall l : 0 \leq l \leq n $ множество
     $$G_l = G \cap F[x_1, x_2,\ldots,x_s]$$ является базисом Грёбнера $l$-го исключающего идеала $I_l$.
     
-    Доказательство: 
+    \textbf{Доказательство:} 
+     Зафиксируем $l$ в интервале $(0, n)$. Так как $G_l \in I_l$ по построению, достаточно показать, что 
+     $$<LT(I_l)>=<LT(G_l)>$$ (по определению базиса Грёбнера). 
+     Включение в одну сторону очевидно($<LT(G_l)> \in <LT(I_l)>$ по построению). Докажем, что $<LT(I_l)> \in <LT(G_l)>$.
+     Для этого достаточно показать что $LT(f)$, где $f \in I_l$, делится на некоторый $g \in G_l$. 
+     Заметим, что $f \in I$, то есть $LT(f)$ делится на $LT(g)$ для некоторго $g$(т.к. $G$ является базисом Грёбнера иделала $I$). 
+     Так как $f \in I_l$, то $LT(g)$ содержит только переменные $x_{l+1}, \ldots, x_n$. Так как используется lex-упорядочении с 
+     $x_1>x_2>\ldots>x_n$, то любой моном, содержащий хотя бы одну из переменных $x_1, \ldots, x_l$, больше всех мономов из
+     $F[x_{x+1},\ldots, x_n$. Значит $g\in G_l$, что и требовалось доказать.
+    \newpage
+
+    \subsection{Соответсвие иделала и многообразия}
+
+    \textbf{Определение:} Пусть $I \in F[x_1,\ldots, x_n]$ - некоторый идеал. Положим
+    $$V(I) = {(a_1, \ldots, a_n) \in F^n : f(a_1, \ldots, a_n) = 0 \forall f \in I}$$
+
+    \textbf{Теорема:} $V(I)$ является аффинным многообразием. В частности, если $I = <f_1, \ldots, f_n>$,
+    то $V(I) = V(f_1,\ldots,f_n)$
+
+    \textbf{Доказательство:} По теореме Гильберта о базисе идеал $I$ конечно
+     порождён, $I = <f_1, \ldots, f_n>$. Покажем, что $V(I) = V(f_1,\ldots,f_n)$.
+    Если $f(a_1,\ldots,a_n) = 0$ для всех полиномов $f \in I$, то $f_i(a_1,\ldots,a_n)=0$ (так как $f_i \in I$). Следовательно,
+    $V(I) \in V(f_1,\ldots,f_n)$. С другой стороны, пусть $(a_1,\ldots,a_n) \in V(f_1,\ldots, f_n)$, и пусть $f\in I$.
+    Так как $I = <f_1,\ldots, f_n>$, то $$f = \sum_{i=1}^s h_if_i$$ для некоторых $h_i \in F[x_1, \ldots, x_n]$.
+    Но тогда 
+    $$f(a_1,\ldots,a_n)=\sum_{i=1}^s h_i(a_1,\ldots,a_n)f_i(a_1,\ldots,a_n)=\sum_{i=1}^s h_i(a_1,\ldots,a_n)*0 = 0$$
+    Следовательно, $V(f_1, \ldots, f_n) \in V(I)$, а значит эти два идеала равны. 
+
+    \textbf{Следствие:} Многообразия определены идеалами.
+
+    \newpage
 
     \subsection{Нульмерный идеал}
-       Теорема: Пусть поле $F$ алгебраически замкнуто и $I\in F[x_1, x_2,\ldots, x_n]$.
+
+    \textbf{Теорема:} Пусть поле $F$ алгебраически замкнуто и $I\in F[x_1, x_2,\ldots, x_n]$.
        Тогда следующие условия эквивалентны:
         
         \begin{enumerate}
@@ -43,10 +87,18 @@
             \item Для каждой переменной $x_i$ исключающий идеал $I \cap F[x_1, x_2,\ldots, x_n]$ является ненулевым.
         \end{enumerate}
 
-      Доказательство:
+        \textbf{Доказательство:}
       Идеал, удовлетворяюзий данной теореме называется нульмерным
 
 \newpage
 \section{Алгоритм FGLM}
+\newpage
+\section{Используемая литература}
+\begin{enumerate}
+    \item \href{http://halgebra.math.msu.su/groebner.pdf}{http://halgebra.math.msu.su/groebner.pdf}
+    \item Кокс Д., Литтл Дж., О'Ши Д. Идеалы, многообразия, кольца. Стр. 108. Стр. 153. 
+    \item \href{https://www.math.lsu.edu/system/files/Groeb_presentation_final.pdf}{https://www.math.lsu.edu/system/files/Groeb_presentation_final.pdf}
+\end{enumerate}
+
 
 \end{document}
