@@ -9,7 +9,10 @@
 
 \definecolor{linkcolor}{HTML}{799B03} % цвет ссылок
 \definecolor{urlcolor}{HTML}{799B03} % цвет гиперссылок
- 
+\setlength{\parskip}{0.25cm}
+\usepackage[left=2cm,right=2cm,
+    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+
 \hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
 
 
@@ -36,21 +39,22 @@
 \section{Дополнительная теория} 
     \subsection{Исключающий идеал}
 
-    \textbf{Определение:} Пусть дан $I = <f_1, \ldots, f_n> \in F[x_1,\ldots,x_n]$. Тогда l-м исключающим идеалом $I_l$ называется 
+    \textbf{Определение:} Пусть дан $I = \langle f_1, \ldots, f_n \rangle  \in F[x_1,\ldots,x_n]$. Тогда l-м исключающим идеалом $I_l$ называется 
     идеал в $F[x_{l+1},\ldots, x_n]$, равный $I \cup F[x_{l+1},\ldots, x_n]$.
 
     \textbf{Теорема(об исключении):} Пусть $I \subset F[x_1, x_2,\ldots, x_s]$ - идеал и G - его базис Грёбнера по отношению
-    к lex-упорядочению с $x_1>x_2>\ldots>x_n$. Тогда $\forall l : 0 \leq l \leq n $ множество
+    к lex-упорядочению с $x_1 \rangle x_2 \rangle \ldots \rangle x_n$. Тогда $\forall l : 0 \leq l \leq n $ множество
     $$G_l = G \cap F[x_1, x_2,\ldots,x_s]$$ является базисом Грёбнера $l$-го исключающего идеала $I_l$.
     
     \textbf{Доказательство:} 
      Зафиксируем $l$ в интервале $(0, n)$. Так как $G_l \in I_l$ по построению, достаточно показать, что 
-     $$<LT(I_l)>=<LT(G_l)>$$ (по определению базиса Грёбнера). 
-     Включение в одну сторону очевидно($<LT(G_l)> \in <LT(I_l)>$ по построению). Докажем, что $<LT(I_l)> \in <LT(G_l)>$.
+     $$\langle LT(I_l) \rangle =\langle LT(G_l) \rangle $$ 
+     Включение в одну сторону очевидно
+     ($\langle LT(G_l) \rangle  \in \langle LT(I_l) \rangle $ по построению). Докажем, что $\langle LT(I_l) \rangle  \in \langle LT(G_l) \rangle $.
      Для этого достаточно показать что $LT(f)$, где $f \in I_l$, делится на некоторый $g \in G_l$. 
      Заметим, что $f \in I$, то есть $LT(f)$ делится на $LT(g)$ для некоторго $g$(т.к. $G$ является базисом Грёбнера иделала $I$). 
      Так как $f \in I_l$, то $LT(g)$ содержит только переменные $x_{l+1}, \ldots, x_n$. Так как используется lex-упорядочении с 
-     $x_1>x_2>\ldots>x_n$, то любой моном, содержащий хотя бы одну из переменных $x_1, \ldots, x_l$, больше всех мономов из
+     $x_1 \rangle x_2 \rangle \ldots \rangle x_n$, то любой моном, содержащий хотя бы одну из переменных $x_1, \ldots, x_l$, больше всех мономов из
      $F[x_{x+1},\ldots, x_n$. Значит $g\in G_l$, что и требовалось доказать.
     \newpage
 
@@ -59,14 +63,13 @@
     \textbf{Определение:} Пусть $I \in F[x_1,\ldots, x_n]$ - некоторый идеал. Положим
     $$V(I) = {(a_1, \ldots, a_n) \in F^n : f(a_1, \ldots, a_n) = 0 \forall f \in I}$$
 
-    \textbf{Теорема:} $V(I)$ является аффинным многообразием. В частности, если $I = <f_1, \ldots, f_n>$,
+    \textbf{Теорема:} $V(I)$ является аффинным многообразием. В частности, если $I = \langle f_1, \ldots, f_n \rangle $,
     то $V(I) = V(f_1,\ldots,f_n)$
 
-    \textbf{Доказательство:} По теореме Гильберта о базисе идеал $I$ конечно
-     порождён, $I = <f_1, \ldots, f_n>$. Покажем, что $V(I) = V(f_1,\ldots,f_n)$.
+    \textbf{Доказательство:} По теореме Гильберта о базисе идеал $I$ конечно порождён, $I = \langle f_1, \ldots, f_n \rangle $. Покажем, что $V(I) = V(f_1,\ldots,f_n)$.
     Если $f(a_1,\ldots,a_n) = 0$ для всех полиномов $f \in I$, то $f_i(a_1,\ldots,a_n)=0$ (так как $f_i \in I$). Следовательно,
     $V(I) \in V(f_1,\ldots,f_n)$. С другой стороны, пусть $(a_1,\ldots,a_n) \in V(f_1,\ldots, f_n)$, и пусть $f\in I$.
-    Так как $I = <f_1,\ldots, f_n>$, то $$f = \sum_{i=1}^s h_if_i$$ для некоторых $h_i \in F[x_1, \ldots, x_n]$.
+    Так как $I = \langle f_1,\ldots, f_n \rangle $, то $$f = \sum_{i=1}^s h_if_i$$ для некоторых $h_i \in F[x_1, \ldots, x_n]$.
     Но тогда 
     $$f(a_1,\ldots,a_n)=\sum_{i=1}^s h_i(a_1,\ldots,a_n)f_i(a_1,\ldots,a_n)=\sum_{i=1}^s h_i(a_1,\ldots,a_n)*0 = 0$$
     Следовательно, $V(f_1, \ldots, f_n) \in V(I)$, а значит эти два идеала равны. 
@@ -90,11 +93,45 @@
         \textbf{Доказательство:}
       Идеал, удовлетворяюзий данной теореме называется нульмерным
 
-\newpage
+    \newpage
+    \textbf{!!!Определение:} Пусть нульмерный идеал $I$ над $F[x_1,\ldots,x_n]$ и $G$ - его редуцированный базис Грёбнера.
+    Натуральным базисом, определяемым G K-векторного пространства R / I, назовем базис B(G),
+    элементами которого являются приведенные мономы относительно G.
+
+    \textbf{!!!Определение:} Пусть $B(G)$ - натуральный базис для $R/I$. Тогда положим, что
+    $$M(G) = {x_ib | b \in B(G), 1\leq i \leq n, x_ib \notin B(G)}$$ граница $G$.
+
+    \newpage
+
+    \textbf{Теорема:} Пусть $I$ - нульмерный идеал и $G$ - редуцированный базис Грёбнера данного идеала, и
+    B(G) - натуральный базис Грёбнера для $R/I$, тогда $\forall m \in M(G)$ выполнено одно из данных условий:
+
+    \begin{enumerate}
+        \item !!!$\forall x_i : x_i | m m/x_i \in B(G)$, если $m$ - это старший моном элементов $G$.
+        \item $m = x_jm_j$ для некоторых $j$ и $m_k \in M(G)$
+    \end{enumerate}
+
+    \textbf{Доказательство:}
+    \begin{enumerate}
+        \item Следует из определения редуцированного базиса Грёбнера и определения B(G)
+        \item Пусть $x_j$ делит $m$ и $m/x_j \notin B(G)$, тогда $m_k = m/x_j \in M(G)$. 
+    \end{enumerate}
+
+    \textbf{Следствие:} Пусть $k$ число образующих редуцированного базиса Грёбнера для нульмерного идеала.
+        Тогда $k \leq nD(I)$
+    
+    \newpage    
+
 \section{Алгоритм FGLM}
+
+    \subsection{Вычисление нормальной формы}
+
+    \subsection{Смена упорядочения}
+
 \newpage
 \section{Используемая литература}
 \begin{enumerate}
+    \item Faugère, J.C., Gianni, P., Lazard, D., Mora, T. Efficient computation of zero-dimensional gröbner bases by change of ordering (1993) Journal of Symbolic Computation, 16 (4), pp. 329-344.
     \item \href{http://halgebra.math.msu.su/groebner.pdf}{http://halgebra.math.msu.su/groebner.pdf}
     \item Кокс Д., Литтл Дж., О'Ши Д. Идеалы, многообразия, кольца. Стр. 108. Стр. 153. 
     \item \href{https://www.math.lsu.edu/system/files/Groeb_presentation_final.pdf}{https://www.math.lsu.edu/system/files/Groeb_presentation_final.pdf}

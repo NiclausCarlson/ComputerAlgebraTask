@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.10)  13 OCT 2020 20:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.10)  15 OCT 2020 01:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -464,60 +464,77 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 \Hy@SectionHShift=\skip52
 ) (c:/texlive/2020/texmf-dist/tex/latex/tools/indentfirst.sty
 Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+) (c:/texlive/2020/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ (c:/texlive/2020/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 13.
+\Gm@cnth=\count273
+\Gm@cntv=\count274
+\c@Gm@tempcnt=\count275
+\Gm@bindingoffset=\dimen155
+\Gm@wd@mp=\dimen156
+\Gm@odd@mp=\dimen157
+\Gm@even@mp=\dimen158
+\Gm@layoutwidth=\dimen159
+\Gm@layoutheight=\dimen160
+\Gm@layouthoffset=\dimen161
+\Gm@layoutvoffset=\dimen162
+\Gm@dimlist=\toks23
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 16.
  (c:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
-\l__kernel_color_stack_int=\count273
+\l__kernel_color_stack_int=\count276
 \l__pdf_internal_box=\box49
 ) (c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.aux)
 \openout1 = `Essay.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 20.
-LaTeX Font Info:    Trying to load font information for T2A+cmr on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 23.
+LaTeX Font Info:    Trying to load font information for T2A+cmr on input line 23.
  (c:/texlive/2020/texmf-dist/tex/latex/cyrillic/t2acmr.fd
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Info: Redefining \th on input line 20.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Info: Redefining \th on input line 23.
  (c:/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count274
-\scratchdimen=\dimen155
+\scratchcounter=\count277
+\scratchdimen=\dimen163
 \scratchbox=\box50
-\nofMPsegments=\count275
-\nofMParguments=\count276
-\everyMPshowfont=\toks23
-\MPscratchCnt=\count277
-\MPscratchDim=\dimen156
-\MPnumerator=\count278
-\makeMPintoPDFobject=\count279
-\everyMPtoPDFconversion=\toks24
+\nofMPsegments=\count278
+\nofMParguments=\count279
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count280
+\MPscratchDim=\dimen164
+\MPnumerator=\count281
+\makeMPintoPDFobject=\count282
+\everyMPtoPDFconversion=\toks25
 ) (c:/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (c:/texlive/2020/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring ON on input line 20.
+Package hyperref Info: Link coloring ON on input line 23.
  (c:/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
  (c:/texlive/2020/texmf-dist/tex/latex/refcount/refcount.sty
@@ -525,43 +542,73 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (c:/texlive/2020/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count280
+\c@section@level=\count283
 )
-LaTeX Info: Redefining \ref on input line 20.
-LaTeX Info: Redefining \pageref on input line 20.
-LaTeX Info: Redefining \nameref on input line 20.
+LaTeX Info: Redefining \ref on input line 23.
+LaTeX Info: Redefining \pageref on input line 23.
+LaTeX Info: Redefining \nameref on input line 23.
 \@outlinefile=\write3
 \openout3 = `Essay.out'.
 
- [1
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 500.484pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 681.15898pt, 56.9055pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=500.484pt
+* \textheight=681.15898pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+[1
 
 {c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.31     \newpage
-                  [1] [2]
-Overfull \hbox (11.53061pt too wide) in paragraph at lines 48--55
-\OML/cmm/m/it/10 LT\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 G[]\OT1/cmr/m/n/10 ) \OML/cmm/m/it/10 >\OMS/cmsy/m/n/10 2\OML/cmm/m/it/10 < LT\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 I[]\OT1/cmr/m/n/10 ) \OML/cmm/m/it/10 >$ \T2A/cmr/m/n/10 по по-стро-е-нию). До-ка-жем, что $\OML/cmm/m/it/10 < LT\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 I[]\OT1/cmr/m/n/10 ) \OML/cmm/m/it/10 >\OMS/cmsy/m/n/10 2\OML/cmm/m/it/10 < LT\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 G[]\OT1/cmr/m/n/10 ) \OML/cmm/m/it/10 >$\T2A/cmr/m/n/10 .
+l.34     \newpage
+                  [1] [2] [3]
+Overfull \hbox (15.05075pt too wide) in paragraph at lines 66--68
+[]\T2A/cmr/bx/n/10 Теорема: $\OML/cmm/m/it/10 V\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 I\OT1/cmr/m/n/10 )$ \T2A/cmr/m/n/10 яв-ля-ет-ся аф-фин-ным мно-го-об-ра-зи-ем. В част-но-сти, ес-ли $\OML/cmm/m/it/10 I \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 f[]; [] ; f[]\OMS/cmsy/m/n/10 i$\T2A/cmr/m/n/10 , то $\OML/cmm/m/it/10 V\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 I\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 V\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 f[]; [] ; f[]\OT1/cmr/m/n/10 )$ 
  []
 
-[3]
-Overfull \hbox (31.67453pt too wide) in paragraph at lines 65--69
-\T2A/cmr/m/n/10 рож-дјн, $\OML/cmm/m/it/10 I \OT1/cmr/m/n/10 =\OML/cmm/m/it/10 < f[]; [] ; f[] >$\T2A/cmr/m/n/10 . По-ка-жем, что $\OML/cmm/m/it/10 V\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 I\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 V\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 f[]; [] ; f[]\OT1/cmr/m/n/10 )$\T2A/cmr/m/n/10 . Ес-ли $\OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 a[]; [] ; a[]\OT1/cmr/m/n/10 ) =
- []
-
-[4] [5] [6]
-c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.tex:100: Missing $ inserted.
+[4] [5] [6] [7] [8]
+c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.tex:137: Missing $ inserted.
 <inserted text> 
                 $
-l.100 ...ystem/files/Groeb_presentation_final.pdf}
+l.137 ...ystem/files/Groeb_presentation_final.pdf}
                                                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.tex:100: Missing $ inserted.
+c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.tex:137: Missing $ inserted.
 <inserted text> 
                 $
-l.100 ...ystem/files/Groeb_presentation_final.pdf}
+l.137 ...ystem/files/Groeb_presentation_final.pdf}
                                                   
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -569,7 +616,7 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-[7] (c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.aux)
+[9] (c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.aux)
 
 Package rerunfilecheck Warning: File `Essay.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -577,21 +624,21 @@ Package rerunfilecheck Warning: File `Essay.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `Essay.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  70540020AF2E4083E2A4634A02838238;2731.
+(rerunfilecheck)             After:  4078E650EBE954E46C9FB0329E3E729B;3207.
  ) 
 Here is how much of TeX's memory you used:
- 10732 strings out of 479916
- 149664 string characters out of 5886647
- 455543 words of memory out of 5000000
- 27153 multiletter control sequences out of 15000+600000
+ 11203 strings out of 479916
+ 156501 string characters out of 5886647
+ 467626 words of memory out of 5000000
+ 27609 multiletter control sequences out of 15000+600000
  544616 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,6n,66p,288b,370s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,8n,66p,328b,370s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on "c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.pdf" (8 pages, 174677 bytes).
+Output written on "c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.pdf" (10 pages, 186930 bytes).
 PDF statistics:
- 122 PDF objects out of 1000 (max. 8388607)
- 98 compressed objects within 1 object stream
- 28 named destinations out of 1000 (max. 500000)
+ 142 PDF objects out of 1000 (max. 8388607)
+ 115 compressed objects within 2 object streams
+ 37 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
