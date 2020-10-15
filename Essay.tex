@@ -6,6 +6,8 @@
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{indentfirst}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
 
 \definecolor{linkcolor}{HTML}{799B03} % цвет ссылок
 \definecolor{urlcolor}{HTML}{799B03} % цвет гиперссылок
@@ -21,6 +23,11 @@
 \date{Октябрь 2020}
 
 \begin{document}
+\algblock[ALGORITHMBLOCK]{Input}{EndInput}
+\algblock[ALGORITHMBLOCK]{Output}{EndOutput}
+\algblock[ALGORITHMBLOCK]{Subfunctions}{EndSubfunctions}
+\algblock[ALGORITHMBLOCK]{LocalVariables}{EndLocalVariables}
+
     \begin{titlepage}
         \maketitle
     \end{titlepage}
@@ -40,21 +47,21 @@
     \subsection{Исключающий идеал}
 
     \textbf{Определение:} Пусть дан $I = \langle f_1, \ldots, f_n \rangle  \in F[x_1,\ldots,x_n]$. Тогда l-м исключающим идеалом $I_l$ называется 
-    идеал в $F[x_{l+1},\ldots, x_n]$, равный $I \cup F[x_{l+1},\ldots, x_n]$.
+    идеал в $F[x_{l+1},\ldots, x_n]$, равный $I \cap F[x_{l+1},\ldots, x_n]$.
 
     \textbf{Теорема(об исключении):} Пусть $I \subset F[x_1, x_2,\ldots, x_s]$ - идеал и G - его базис Грёбнера по отношению
-    к lex-упорядочению с $x_1 \rangle x_2 \rangle \ldots \rangle x_n$. Тогда $\forall l : 0 \leq l \leq n $ множество
+    к lex-упорядочению с $x_1 > x_2 > \ldots > x_n$. Тогда $\forall l : 0 \leq l \leq n $ множество
     $$G_l = G \cap F[x_1, x_2,\ldots,x_s]$$ является базисом Грёбнера $l$-го исключающего идеала $I_l$.
     
     \textbf{Доказательство:} 
      Зафиксируем $l$ в интервале $(0, n)$. Так как $G_l \in I_l$ по построению, достаточно показать, что 
      $$\langle LT(I_l) \rangle =\langle LT(G_l) \rangle $$ 
      Включение в одну сторону очевидно
-     ($\langle LT(G_l) \rangle  \in \langle LT(I_l) \rangle $ по построению). Докажем, что $\langle LT(I_l) \rangle  \in \langle LT(G_l) \rangle $.
+     ($\langle LT(G_l) \rangle \subset \langle LT(I_l) \rangle $ по построению). Докажем, что $\langle LT(I_l) \rangle \subset \langle LT(G_l) \rangle $.
      Для этого достаточно показать что $LT(f)$, где $f \in I_l$, делится на некоторый $g \in G_l$. 
      Заметим, что $f \in I$, то есть $LT(f)$ делится на $LT(g)$ для некоторго $g$(т.к. $G$ является базисом Грёбнера иделала $I$). 
      Так как $f \in I_l$, то $LT(g)$ содержит только переменные $x_{l+1}, \ldots, x_n$. Так как используется lex-упорядочении с 
-     $x_1 \rangle x_2 \rangle \ldots \rangle x_n$, то любой моном, содержащий хотя бы одну из переменных $x_1, \ldots, x_l$, больше всех мономов из
+     $x_1 > x_2 > \ldots > x_n$, то любой моном, содержащий хотя бы одну из переменных $x_1, \ldots, x_l$, больше всех мономов из
      $F[x_{x+1},\ldots, x_n$. Значит $g\in G_l$, что и требовалось доказать.
     \newpage
 
@@ -84,7 +91,7 @@
        Тогда следующие условия эквивалентны:
         
         \begin{enumerate}
-            \item Алгебра $A=F[x_1, x_2,\ldots, x_n]$ - I конечномерна над F.
+            \item Алгебра $A=F[x_1, x_2,\ldots, x_n]/I$ конечномерна над F.
             \item $V(I) \subset F^n$ конечно.
             \item Если $G$ - базис Грёбнера идеала $I$, то $$\forall i \exists m_i \geq 0 : x_i^{m_i} = LM(g)$$ для некоторого $g \in G$.
             \item Для каждой переменной $x_i$ исключающий идеал $I \cap F[x_1, x_2,\ldots, x_n]$ является ненулевым.
@@ -96,7 +103,8 @@
     \newpage
     \textbf{!!!Определение:} Пусть нульмерный идеал $I$ над $F[x_1,\ldots,x_n]$ и $G$ - его редуцированный базис Грёбнера.
     Натуральным базисом, определяемым G K-векторного пространства R / I, назовем базис B(G),
-    элементами которого являются приведенные мономы относительно G.
+    элементами которого являются приведенные мономы относительно G. Обозначим за $D(I)$ размерность K-векторного пространства $R/I$
+    (степень идеала I). 
 
     \textbf{!!!Определение:} Пусть $B(G)$ - натуральный базис для $R/I$. Тогда положим, что
     $$M(G) = {x_ib | b \in B(G), 1\leq i \leq n, x_ib \notin B(G)}$$ граница $G$.
@@ -107,7 +115,7 @@
     B(G) - натуральный базис Грёбнера для $R/I$, тогда $\forall m \in M(G)$ выполнено одно из данных условий:
 
     \begin{enumerate}
-        \item !!!$\forall x_i : x_i | m m/x_i \in B(G)$, если $m$ - это старший моном элементов $G$.
+        \item $\forall x_i : x_i | m m/x_i \in B(G)$, если $m$ - это старший моном элементов $G$.
         \item $m = x_jm_j$ для некоторых $j$ и $m_k \in M(G)$
     \end{enumerate}
 
@@ -125,9 +133,93 @@
 \section{Алгоритм FGLM}
 
     \subsection{Вычисление нормальной формы}
-
+    \textbf{Определение:}  Обозначим $T(G) = (t_{ijk})$ тензор $n \times D(I) \times D(I)$, чьи элементы:
+            $t_{ijk}=j$-ая координата относительно $B(G)$ с элементами $x_ib_k (b_k \in B(G))$.
+    
+    \newpage
     \subsection{Смена упорядочения}
+    \textbf{Теорема:} Пусть $I$ - нульмерный идеал и $(G_1, m_1)$ - его редуцированный 
+    базис Грёбнера, построенный для мономиального упорядочения $m_1$, $m_2$ - иное мономиальное упорядочение. Тогда можно построить
+    базис Грёбнера $(G_2, m_2)$ за $O(nD(I)^3)$.
+    
+    \textbf{Доказательство:} Из $(G_1, m_1)$ мы можем построить $B(G_1) = {a_1,\ldots,a_{D(I)}}$, $M(G_1)$ и $T(G_1)$, как
+    было показано в предыдущей главе. Построим матрицу $C$ в которой $i-$й столбец будет координатами элемента $b_i \in B(G_2)$
+    относительно $B(G_1)$.
+    Будем строить новый бащиз итеративно.
+    Пусть $B(G_2) := {1}$ и $M(G_2) := \emptyset$. Пусть $m = min_{m_2} {x_jb_i | 1\leq j \leq n, b_i \in B(G_2), 
+    x_jb_i\notin B(G_2)\cup M(G_2)}$. Может возникнуть три случая:
+    \begin{enumerate}
+        \item m - старший терм g, какого-либо $g \in G_2$
+        \item m был добавлен в $B(G_2)$
+        \item m был добавлен в $M(G_2)$, но m - умножение старших членов для некоторых $g \in G$.
+    \end{enumerate}
+    Проверка того, что $m$ удовлетворяет третьему пункту - старший член $g$ строго меньше чем $m$ при любом допустимом упорядочении
+    и $g$ уже добавлен в $M(G_2)$.
+    Поскольку по построению, $m=x_jb_i$ мы можем посчитать уго координаты $c(m)_h$ относительно $B(G_1)$ используя матрицу $C$ и тензор
+    $T(G_1) = (t_{ijk})$:
+    $$m=x_jb_i=x_j*\sum_k c_{ki}*a_k = \sum_k x_j*c_{ki}*a_k = \sum_k c_{ki}*\sum_h t_{jhk}*a_h = \sum_h (\sum_k t_{jhk}c_{ji}) = \sum_h c(m)_ha_h$$
+    Если вектор $c(m)$ линейно независим от векторов из $C$, то выполняется второй пунк, и мы нашли новый $g \in G_2$.
+    \newpage
 
+    \begin{algorithmic}
+        \begin{algorithm}
+        \caption{Псевдокод}\label{alg:Conversion}
+        \begin{algorithmic}[1]
+
+        \Input
+        \State $m_2$ 
+        \Comment{новое упорядочение}
+        \State oldBasis 
+        \Comment{Базис Грёбнера нульмерного идела относительно упорядочения $m_1$}
+        \EndInput
+        \Statex 
+        \Output
+        \State newBasis 
+        \Comment{Базис Грёбнера нульмерного идеала относительно упорядочения $m_2$}
+        \EndOutput
+        \Statex 
+        \Subfunctions
+        \State NormalForm(polynom) 
+        \Comment{Возвращает редуцированную форму полиному относительно упорядочения $m_1$}
+        \State NextMonom() 
+        \Comment{Возвращает первый элемент ListOfNexts или nil, если ListOfNexts пуст. Первый элемент удаляется}
+        \State InsertNexts(monom)
+        \Comment{Добавляет в ListOfNexts произведение монома со всеми переменными, после чего сортирует лист и удаляет дубли}
+        \EndSubfunctions
+        \Statex 
+        \LocalVariables
+        \State staircase 
+        \Comment{Список ведущих мономов из NewBasis}
+        \State MBasis 
+        \Comment{Список пар $[a_i, b_i]$, где $[a_i]$ - лист мономов в нормальной форме относително нового базиса и 
+        $b_i = NormalForm(a_i)$, нормальная форма $a_i$ относительно старого базиса.}
+        \State ListOfNexts 
+        \Comment{Список "следующих" мономов. Отсортирован относительно $m_1$}
+
+        \EndLocalVariables
+        \Statex 
+            \While{$monom \neq nil$}
+            \State $MBasis := []; staircase := []; newBasis := []; ListOfNexts := []; monom := 1;$
+                \If {monom не делится на какие-нибудь элементы из staircase}
+                    \State $vector := NormalForm(monom)$
+                    \Comment{}
+                    \If {есть линейная зависимость $vector + \sum_{v \in MBasis} \lambda_v second(v) = 0$}
+                        \State $pol := monom + \sum_{v \in MBasis} \lambda_v first(v)$ 
+                        \State $newBasis := cons(pol, newBasis)$
+                        \State $staircase := cons(monom, staircase)$
+                    \Else
+                        \State $MBasis := cons([monom, vector], MBasis)$
+                        \State InsertNexts(monom)
+                    \EndIf
+                \EndIf
+                \State monom := NextMonom
+            \EndWhile
+         
+        \end{algorithmic}
+        \end{algorithm}
+    \newpage
+    \textbf{Доказательство корректности:}
+        
 \newpage
 \section{Используемая литература}
 \begin{enumerate}
