@@ -28,9 +28,9 @@
 \algblock[ALGORITHMBLOCK]{Subfunctions}{EndSubfunctions}
 \algblock[ALGORITHMBLOCK]{LocalVariables}{EndLocalVariables}
 
-    \begin{titlepage}
+\begin{titlepage}
         \maketitle
-    \end{titlepage}
+\end{titlepage}
     
 \section{Оглавление}
     \subsection{Постановка проблемы}
@@ -44,6 +44,7 @@
     Привести данный базис к иному мономиальному упорядочению $m_2$.
     \newpage
 \section{Дополнительная теория} 
+
     \subsection{Исключающий идеал}
 
     \textbf{Определение:} Пусть дан $I = \langle f_1, \ldots, f_n \rangle  \in F[x_1,\ldots,x_n]$. Тогда l-м исключающим идеалом $I_l$ называется 
@@ -101,12 +102,41 @@
       Идеал, удовлетворяюзий данной теореме называется нульмерным
 
     \newpage
-    \textbf{!!!Определение:} Пусть нульмерный идеал $I$ над $F[x_1,\ldots,x_n]$ и $G$ - его редуцированный базис Грёбнера.
-    Натуральным базисом, определяемым G K-векторного пространства R / I, назовем базис B(G),
-    элементами которого являются приведенные мономы относительно G. Обозначим за $D(I)$ размерность K-векторного пространства $R/I$
-    (степень идеала I). 
 
-    \textbf{!!!Определение:} Пусть $B(G)$ - натуральный базис для $R/I$. Тогда положим, что
+    \subsection{Нормальная форма полинома}
+
+    
+    \textbf{Определение(1):} Пусть $G$ - базис Грёбнера иделал $I$.
+    Будем называть $f \in F[x_1,\ldots,x_n]$ редуцированым по отношению к $G$ (или в нормальной форме по отношению к G), если 
+    не существует $g \in G$ старший член которого делит какие-либо члены из $f$.
+    
+    \textbf{Определение:} Алгоритм редукции - алгоритм, вычисляющий нормальную форму по полинома $f$.
+    
+    \textbf{Определение:} Базис Грёбнера $G$ называется редуцированным, если $\forall g \in G g$- редуцирован, по отношению к другим элементам G.
+    
+    \textbf{Определение:} Пусть $I$ - нульмерный идеал над $F[x_1,\ldots,x_n]$ и $G$ - его редуцированный базис Грёбнера.
+    Натуральным базисом, определяемым G K-векторного пространства R / I, назовем базис B(G),
+    
+    \textbf{Кажется, чуваки называют редуцированный базис натуральным}    
+    \textbf{Утверждение:} Данное определение редуцированого базиса Грёбнера совпадает с определением из лекции.  
+
+    \textbf{Доказательство:} 
+        \begin{enumerate}
+            \item $\forall p \in G LC(g) = 1$ 
+            \item Никакой моном никакого $p \in G$ не принадлежит $<LT(G\backslash{p})>$ 
+        \end{enumerate}
+
+    $\Rightarrow$(выполнено определение с лекции, значит выполнено определение (1)):
+        Никакой моном никакого $p \in G$ не принадлежит $<LT(G\backslash{p})>$, значит не найдётся такого $g \in G\backslash{p}$, что 
+        $LM(g)$ делит какие-либо члены $p$, по алгоритму проверки принадлежности многочлена идеалу.
+
+    $\Leftarrow$(выполнено определение (1), значит выполнено определение с лекции):
+        Рассмотрим $g \in G$, гдк $G$ - редуцированный базис Грёбнера в смысле (1). Тогда не существует такого $p \in G\backslash{g}$,
+        что старший член $p$ делит какие-либо члены $g$. Значит $g \notin <LT(G\backslash{p})>$, значит никакие мономы $p$ 
+        не принадлежат $<LT(G\backslash{p})>$, что и требовалось показать.
+
+    
+    \textbf{Определение:} Пусть $B(G)$ - натуральный базис для $R/I$. Тогда положим, что
     $$M(G) = {x_ib | b \in B(G), 1\leq i \leq n, x_ib \notin B(G)}$$ граница $G$.
 
     \newpage
@@ -115,7 +145,7 @@
     B(G) - натуральный базис Грёбнера для $R/I$, тогда $\forall m \in M(G)$ выполнено одно из данных условий:
 
     \begin{enumerate}
-        \item $\forall x_i : x_i | m m/x_i \in B(G)$, если $m$ - это старший моном элементов $G$.
+        \item $\forall x_i : x_i | m$ выполнено, что $m/x_i \in B(G)$, если $m$ - это старший моном элементов $G$.
         \item $m = x_jm_j$ для некоторых $j$ и $m_k \in M(G)$
     \end{enumerate}
 
@@ -137,6 +167,66 @@
             $t_{ijk}=j$-ая координата относительно $B(G)$ с элементами $x_ib_k (b_k \in B(G))$.
     
     \newpage
+        \begin{algorithm}
+        \caption{Псевдокод}\label{alg:Reduce}
+        \begin{algorithmic}[1]
+            \Input 
+                \State $m_1$
+                \Comment{мономиальное упорядочение} 
+                \State Basis
+                \Comment{минимальный редуцированный базис Грёбнера нульмерного идеала}
+            \EndInput
+            \Statex 
+            \Output
+                \State $\phi[i, m, m']$ for $i = 1,\ldots, n$
+                \Comment{$m, m'\in B(G)$ такие, что $\phi[i, *, *]$ - это матрица применений $p-NormalForm(x_ip)$, где p - редуцированные многочлены} 
+            \EndOutput  
+            \Statex 
+            \Subfunctions
+                \State NextMonom
+                \Comment{Вовзращает и удаляет первый элемент списка ListOfNexts. Возвращает nil, если список пуст.}
+                \State InsertNexts(monom)
+                \Comment{Добавляет monom в ListOfNexts и сортирует его, согласно $m_1$}
+            \EndSubfunctions
+            \Statex 
+            \LocalVariables
+                \State ListOfNexts
+                \Comment{Список "следующих" мономов. Отсортирован относительно $m_1$}
+            \EndLocalVariables
+            \Statex
+
+            \State $monom := 1$, $ListOfNexts := []$
+            \While{$monom \neq nil$}
+                \If{monom является произведением старших мономов каких-то элементов из Basis}
+                    \State{let $monom = x_jm $, где m - редуцируемо относительно Basis}
+                    \State{$NormalForm[monom] := \sum\lambda_i*NormalForm(x_jm_i)$}
+                    \ForAll{k, таких что $monom = x_km'$, где $m'$ - нередуцируем относительно Basis}
+                        \State $\phi[k, m'', m'] :=$ коэфициент $m''$ в $NormalForm[monom]$
+                    \EndFor
+                \ElsIf{monom - старший моном какого-то $p\in Basis$}
+                    \State $NormalForm[monom]:=-rest(p)$
+                    \ForAll{j, таких, что $monom = x_jm$}
+                        \State $\phi[j,m',m'']:=$ коэфициент $m'$ в $NormalForm[monom]$ 
+                \Else
+                    \State $NormalForm[monom] := monom$
+                    \State $InsertNexts(monom)$
+                    \ForAll{j, таких, что $monom = x_jm$}
+                        \State {
+                        \begin{equation*}
+                            \phi[j, m', m] :=  
+                             \begin{cases}
+                               1 &\text{if $m'=monom$}\\
+                               0 &\text{otherwise}
+                             \end{cases}
+                            \end{equation*}
+                        }
+                \EndIf        
+                $monom := NextMonom$
+        \end{algorithmic}
+        \end{algorithm}
+
+    \newpage    
+
     \subsection{Смена упорядочения}
     \textbf{Теорема:} Пусть $I$ - нульмерный идеал и $(G_1, m_1)$ - его редуцированный 
     базис Грёбнера, построенный для мономиального упорядочения $m_1$, $m_2$ - иное мономиальное упорядочение. Тогда можно построить
@@ -161,62 +251,62 @@
     Если вектор $c(m)$ линейно независим от векторов из $C$, то выполняется второй пунк, и мы нашли новый $g \in G_2$.
     \newpage
 
-    \begin{algorithmic}
         \begin{algorithm}
         \caption{Псевдокод}\label{alg:Conversion}
         \begin{algorithmic}[1]
+            \Input
+            \State $m_2$ 
+            \Comment{новое упорядочение}
+            \State oldBasis 
+            \Comment{Базис Грёбнера нульмерного идела относительно упорядочения $m_1$}
+            \EndInput
+            \Statex 
+            \Output
+            \State newBasis 
+            \Comment{Базис Грёбнера нульмерного идеала относительно упорядочения $m_2$}
+            \EndOutput
+            \Statex 
+            \Subfunctions
+            \State NormalForm(polynom) 
+            \Comment{Возвращает редуцированную форму полиному относительно упорядочения $m_1$}
+            \State NextMonom() 
+            \Comment{Возвращает первый элемент ListOfNexts или nil, если ListOfNexts пуст. Первый элемент удаляется}
+            \State InsertNexts(monom)
+            \Comment{Добавляет в ListOfNexts произведение монома со всеми переменными, после чего сортирует лист и удаляет дубли}
+            \EndSubfunctions
+            \Statex 
+            \LocalVariables
+            \State staircase 
+            \Comment{Список ведущих мономов из NewBasis}
+            \State MBasis 
+            \Comment{Список пар $[a_i, b_i]$, где $[a_i]$ - список мономов в нормальной форме относително нового базиса и 
+            $b_i = NormalForm(a_i)$, нормальная форма $a_i$ относительно старого базиса.}
+            \State ListOfNexts 
+            \Comment{Список "следующих" мономов. Отсортирован относительно $m_1$}
+            \EndLocalVariables
 
-        \Input
-        \State $m_2$ 
-        \Comment{новое упорядочение}
-        \State oldBasis 
-        \Comment{Базис Грёбнера нульмерного идела относительно упорядочения $m_1$}
-        \EndInput
-        \Statex 
-        \Output
-        \State newBasis 
-        \Comment{Базис Грёбнера нульмерного идеала относительно упорядочения $m_2$}
-        \EndOutput
-        \Statex 
-        \Subfunctions
-        \State NormalForm(polynom) 
-        \Comment{Возвращает редуцированную форму полиному относительно упорядочения $m_1$}
-        \State NextMonom() 
-        \Comment{Возвращает первый элемент ListOfNexts или nil, если ListOfNexts пуст. Первый элемент удаляется}
-        \State InsertNexts(monom)
-        \Comment{Добавляет в ListOfNexts произведение монома со всеми переменными, после чего сортирует лист и удаляет дубли}
-        \EndSubfunctions
-        \Statex 
-        \LocalVariables
-        \State staircase 
-        \Comment{Список ведущих мономов из NewBasis}
-        \State MBasis 
-        \Comment{Список пар $[a_i, b_i]$, где $[a_i]$ - лист мономов в нормальной форме относително нового базиса и 
-        $b_i = NormalForm(a_i)$, нормальная форма $a_i$ относительно старого базиса.}
-        \State ListOfNexts 
-        \Comment{Список "следующих" мономов. Отсортирован относительно $m_1$}
-
-        \EndLocalVariables
-        \Statex 
-            \While{$monom \neq nil$}
-            \State $MBasis := []; staircase := []; newBasis := []; ListOfNexts := []; monom := 1;$
-                \If {monom не делится на какие-нибудь элементы из staircase}
-                    \State $vector := NormalForm(monom)$
-                    \Comment{}
-                    \If {есть линейная зависимость $vector + \sum_{v \in MBasis} \lambda_v second(v) = 0$}
-                        \State $pol := monom + \sum_{v \in MBasis} \lambda_v first(v)$ 
-                        \State $newBasis := cons(pol, newBasis)$
-                        \State $staircase := cons(monom, staircase)$
-                    \Else
-                        \State $MBasis := cons([monom, vector], MBasis)$
-                        \State InsertNexts(monom)
+            \Statex 
+                \State {$MBasis := []; staircase := []; newBasis := []; ListOfNexts := []; monom := 1;$}
+                \While {$monom \neq nil$}
+                    \If {monom не делится на какие-нибудь элементы из staircase}
+                    \Comment{Провекра, это пункт 1 или 2}
+                        \State $vector := NormalForm(monom)$
+                        \Comment{}
+                        \If {есть линейная зависимость $vector + \sum_{v \in MBasis} \lambda_v second(v) = 0$}
+                            \State $pol := monom + \sum_{v \in MBasis} \lambda_v first(v)$ 
+                            \State $newBasis := cons(pol, newBasis)$
+                            \State $staircase := cons(monom, staircase)$
+                        \Else
+                            \State $MBasis := cons([monom, vector], MBasis)$
+                            \State InsertNexts(monom)
+                        \EndIf
                     \EndIf
-                \EndIf
-                \State monom := NextMonom
-            \EndWhile
-         
+                    \State monom := NextMonom
+                \EndWhile
+            
         \end{algorithmic}
         \end{algorithm}
+  
     \newpage
     \textbf{Доказательство корректности:}
         
