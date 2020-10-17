@@ -44,7 +44,6 @@
     Привести данный базис к иному мономиальному упорядочению $m_2$.
     \newpage
 \section{Дополнительная теория} 
-
     \subsection{Исключающий идеал}
 
     \textbf{Определение:} Пусть дан $I = \langle f_1, \ldots, f_n \rangle  \in F[x_1,\ldots,x_n]$. Тогда l-м исключающим идеалом $I_l$ называется 
@@ -82,10 +81,7 @@
     $$f(a_1,\ldots,a_n)=\sum_{i=1}^s h_i(a_1,\ldots,a_n)f_i(a_1,\ldots,a_n)=\sum_{i=1}^s h_i(a_1,\ldots,a_n)*0 = 0$$
     Следовательно, $V(f_1, \ldots, f_n) \in V(I)$, а значит эти два идеала равны. 
 
-    \textbf{Следствие:} Многообразия определены идеалами.
-
     \newpage
-
     \subsection{Нульмерный идеал}
 
     \textbf{Теорема:} Пусть поле $F$ алгебраически замкнуто и $I\in F[x_1, x_2,\ldots, x_n]$.
@@ -165,8 +161,19 @@
     \subsection{Вычисление нормальной формы}
     \textbf{Определение:}  Обозначим $T(G) = (t_{ijk})$ тензор $n \times D(I) \times D(I)$, чьи элементы:
             $t_{ijk}=j$-ая координата относительно $B(G)$ с элементами $x_ib_k (b_k \in B(G))$.
-    
-    \newpage
+
+    \textbf{Теорема:} $T(G)$ вычисляется за $O(nD(I)^3)$
+
+    \textbf{Доказательство:} Рассмотрим $MB(G) = B(G) \cup M(G)$ и упорядочим его элементы согласно $m_1$. Будем строить столбцы
+    $t_{i*k}$ в том порядке, в котором $x_ib_k$ появляется в $MB(G)$. Рассмотрим $m=x_ib_k$. Если $m \in B(G)$, значит,что $m$ - не 
+    редуцирован по отношению к $G$ и другие $t_{ijk} = 0$ для $j \neq k$, и $t_{ikk}=1$. В ином случае $m \in B(G)$, тогда, согласно теореме(), 
+    либо $\exists g \in G:\: g=m+\sum_{u=1}^{D(I)} a_ub_u$, тогда $t_{i*k}=(-a_1,\ldots, -a_{D(I)})^t$, либо
+    $m=x_lm'$, где $m'\in M(G)$ и $m'<m$. В этом случае, координаты $m'=x_sb_h$ по отношению к B(G), уже вычислены, и хранятся в $t_{i*k}$. 
+    Этого достаточно, чтобы добавить координаты $x_lb_v \: b_v \in B(G)$ умноженые на соответсвующий коэфициент, то есть
+    $x_ib_k = x_lx_sb_h = x_l\sum_{v} {t_{svh}b_v}=\sum_u\sum_v{t_{svh}t_{luv}b_u}$. В этом случае мы должны выполнить $D(I)^2$ операций
+    чтобы посчитать $t_{i*k}$, и, в итоге, данную операцию мы будем повторять $nD(I)$ раз.
+
+    \newpage 
         \begin{algorithm}
         \caption{Псевдокод}\label{alg:Reduce}
         \begin{algorithmic}[1]
@@ -206,7 +213,8 @@
                 \ElsIf{monom - старший моном какого-то $p\in Basis$}
                     \State $NormalForm[monom]:=-rest(p)$
                     \ForAll{j, таких, что $monom = x_jm$}
-                        \State $\phi[j,m',m'']:=$ коэфициент $m'$ в $NormalForm[monom]$ 
+                        \State $\phi[j,m',m'']:=$ коэфициент $m'$ в $NormalForm[monom]$
+                    \EndFor
                 \Else
                     \State $NormalForm[monom] := monom$
                     \State $InsertNexts(monom)$
@@ -220,13 +228,18 @@
                              \end{cases}
                             \end{equation*}
                         }
+                     \EndFor   
                 \EndIf        
                 $monom := NextMonom$
+            \EndWhile    
         \end{algorithmic}
         \end{algorithm}
 
     \newpage    
+    \textbf{Доказательство корректности:}
+        Корректность алгоритма следует из доказательства теоремы(). 
 
+    \newpage
     \subsection{Смена упорядочения}
     \textbf{Теорема:} Пусть $I$ - нульмерный идеал и $(G_1, m_1)$ - его редуцированный 
     базис Грёбнера, построенный для мономиального упорядочения $m_1$, $m_2$ - иное мономиальное упорядочение. Тогда можно построить
@@ -316,7 +329,7 @@
     \item Faugère, J.C., Gianni, P., Lazard, D., Mora, T. Efficient computation of zero-dimensional gröbner bases by change of ordering (1993) Journal of Symbolic Computation, 16 (4), pp. 329-344.
     \item \href{http://halgebra.math.msu.su/groebner.pdf}{http://halgebra.math.msu.su/groebner.pdf}
     \item Кокс Д., Литтл Дж., О'Ши Д. Идеалы, многообразия, кольца. Стр. 108. Стр. 153. 
-    \item \href{https://www.math.lsu.edu/system/files/Groeb_presentation_final.pdf}{https://www.math.lsu.edu/system/files/Groeb_presentation_final.pdf}
+    \item \href{https://www.math.lsu.edu/system/files/Groeb_presentation_final.pdf}{Презентация про FGLM алгоритм}
 \end{enumerate}
 
 
