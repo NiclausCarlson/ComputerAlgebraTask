@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1603119011 "c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.tex" "c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.pdf" "Essay" 1603119011
+["pdflatex"] 1603316581 "c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.tex" "c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.pdf" "Essay" 1603316581
   "Essay.aux" 0 -1 0 "pdflatex"
   "Essay.out" 0 -1 0 "pdflatex"
-  "Essay.tex" 1603119006 23258 72e1d3c7f71c40b6e0a501128ad47ea9 ""
+  "Essay.tex" 1603316567 22619 130fc0316bef8f65a3b8a892d06ca7d5 ""
   "c:/Users/Nik" 1503140139 15417 b2d666878474a7afcaa51a113e38777d ""
   "c:/Users/Nik Carlson/.texlive2020/texmf-var/fonts/tfm/lh/lh-t2a/labx1000.tfm" 1602449601 3300 6abb8e321227ead2a8e929e5abc72bd3 ""
   "c:/Users/Nik Carlson/.texlive2020/texmf-var/fonts/tfm/lh/lh-t2a/labx1200.tfm" 1602445224 3308 eee81981029f67083258db36df06e523 ""
@@ -14,8 +14,8 @@
   "c:/Users/Nik Carlson/.texlive2020/texmf-var/fonts/tfm/lh/lh-t2a/larm1200.tfm" 1602442124 3240 c2435f2b5cd66d4930bc29b8df87967e ""
   "c:/Users/Nik Carlson/.texlive2020/texmf-var/fonts/tfm/lh/lh-t2a/larm1440.tfm" 1602442126 3256 3daaa33cf35cf3f354983aa3214ecd7f ""
   "c:/Users/Nik Carlson/.texlive2020/texmf-var/fonts/tfm/lh/lh-t2a/larm1728.tfm" 1602442121 3252 3140686608bdcae603a09a7973fb9e55 ""
-  "c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.aux" 1603119011 9 a94a2480d3289e625eea47cd1b285758 ""
-  "c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.tex" 1603119006 23258 72e1d3c7f71c40b6e0a501128ad47ea9 ""
+  "c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.aux" 1603316581 9 a94a2480d3289e625eea47cd1b285758 ""
+  "c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.tex" 1603316567 22619 130fc0316bef8f65a3b8a892d06ca7d5 ""
   "c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc" 1602335616 3141 82d5616418ed8d5de703b3951bedecb4 ""
   "c:/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1602336515 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1602334824 1004 54797486969f23fa377b128694d548df ""
@@ -116,9 +116,9 @@
   "c:/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1602340619 2535247 a1cf10cf04c8a6418f4d0c57b1c15000 ""
   "c:/texlive/2020/texmf.cnf" 1602340324 673 2e5aa3ac564c6f70f54d6752d765c05d ""
   (generated)
-  "Essay.out"
+  "c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.log"
   "Essay.aux"
   "Essay.log"
-  "c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.log"
   "Essay.pdf"
+  "Essay.out"
   "c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.pdf"
