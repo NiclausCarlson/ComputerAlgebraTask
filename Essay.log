@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.10)  22 OCT 2020 00:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.10)  25 OCT 2020 02:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -496,69 +496,86 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \ALG@tmplength=\skip55
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
+) (c:/texlive/2020/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2020/09/12 v3.5b Customizing captions (AR)
+ (c:/texlive/2020/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2020/09/17 v2.1b caption3 kernel (AR)
+\captionmargin=\dimen155
+\captionmargin@=\dimen156
+\captionwidth=\dimen157
+\caption@tempdima=\dimen158
+\caption@indent=\dimen159
+\caption@parindent=\dimen160
+\caption@hangindent=\dimen161
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count282
+\c@continuedfloat=\count283
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
 ) (c:/texlive/2020/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
  (c:/texlive/2020/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count282
-\Gm@cntv=\count283
-\c@Gm@tempcnt=\count284
-\Gm@bindingoffset=\dimen155
-\Gm@wd@mp=\dimen156
-\Gm@odd@mp=\dimen157
-\Gm@even@mp=\dimen158
-\Gm@layoutwidth=\dimen159
-\Gm@layoutheight=\dimen160
-\Gm@layouthoffset=\dimen161
-\Gm@layoutvoffset=\dimen162
+\Gm@cnth=\count284
+\Gm@cntv=\count285
+\c@Gm@tempcnt=\count286
+\Gm@bindingoffset=\dimen162
+\Gm@wd@mp=\dimen163
+\Gm@odd@mp=\dimen164
+\Gm@even@mp=\dimen165
+\Gm@layoutwidth=\dimen166
+\Gm@layoutheight=\dimen167
+\Gm@layouthoffset=\dimen168
+\Gm@layoutvoffset=\dimen169
 \Gm@dimlist=\toks26
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 18.
+Package hyperref Info: Option `colorlinks' set `true' on input line 23.
  (c:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
-\l__kernel_color_stack_int=\count285
+\l__kernel_color_stack_int=\count287
 \l__pdf_internal_box=\box51
 ) (c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.aux)
 \openout1 = `Essay.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 25.
-LaTeX Font Info:    Trying to load font information for T2A+cmr on input line 25.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 30.
+LaTeX Font Info:    Trying to load font information for T2A+cmr on input line 30.
  (c:/texlive/2020/texmf-dist/tex/latex/cyrillic/t2acmr.fd
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Info: Redefining \th on input line 25.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Info: Redefining \th on input line 30.
  (c:/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count286
-\scratchdimen=\dimen163
+\scratchcounter=\count288
+\scratchdimen=\dimen170
 \scratchbox=\box52
-\nofMPsegments=\count287
-\nofMParguments=\count288
+\nofMPsegments=\count289
+\nofMParguments=\count290
 \everyMPshowfont=\toks27
-\MPscratchCnt=\count289
-\MPscratchDim=\dimen164
-\MPnumerator=\count290
-\makeMPintoPDFobject=\count291
+\MPscratchCnt=\count291
+\MPscratchDim=\dimen171
+\MPnumerator=\count292
+\makeMPintoPDFobject=\count293
 \everyMPtoPDFconversion=\toks28
 ) (c:/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -566,7 +583,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (c:/texlive/2020/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring ON on input line 25.
+Package hyperref Info: Link coloring ON on input line 30.
  (c:/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
  (c:/texlive/2020/texmf-dist/tex/latex/refcount/refcount.sty
@@ -574,14 +591,16 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (c:/texlive/2020/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count292
+\c@section@level=\count294
 )
-LaTeX Info: Redefining \ref on input line 25.
-LaTeX Info: Redefining \pageref on input line 25.
-LaTeX Info: Redefining \nameref on input line 25.
+LaTeX Info: Redefining \ref on input line 30.
+LaTeX Info: Redefining \pageref on input line 30.
+LaTeX Info: Redefining \nameref on input line 30.
 \@outlinefile=\write3
 \openout3 = `Essay.out'.
 
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -622,15 +641,21 @@ LaTeX Info: Redefining \nameref on input line 25.
 {c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.41     \newpage
+l.46     \newpage
                   [1] [2] [3]
-Overfull \hbox (15.05075pt too wide) in paragraph at lines 73--75
+Overfull \hbox (15.05075pt too wide) in paragraph at lines 78--79
 []\T2A/cmr/bx/n/10 Теорема: $\OML/cmm/m/it/10 V\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 I\OT1/cmr/m/n/10 )$ \T2A/cmr/m/n/10 яв-ля-ет-ся аф-фин-ным мно-го-об-ра-зи-ем. В част-но-сти, ес-ли $\OML/cmm/m/it/10 I \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 f[]; [] ; f[]\OMS/cmsy/m/n/10 i$\T2A/cmr/m/n/10 , то $\OML/cmm/m/it/10 V\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 I\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 V\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 f[]; [] ; f[]\OT1/cmr/m/n/10 )$ 
  []
 
 [4] [5] [6] [7]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 165.
- [8] [9] [10] [11] [12] [13] (c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.aux)
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 172.
+ [8] [9] [10] [11] [12]
+<charts//General scheme.jpg, id=103, 1938.24126pt x 1244.65pt>
+File: charts//General scheme.jpg Graphic file (type jpg)
+<use charts//General scheme.jpg>
+Package pdftex.def Info: charts//General scheme.jpg  used on input line 336.
+(pdftex.def)             Requested size: 484.55913pt x 311.16173pt.
+ [13 <c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/charts//General scheme.jpg>] [14] (c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.aux)
 
 Package rerunfilecheck Warning: File `Essay.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -638,24 +663,24 @@ Package rerunfilecheck Warning: File `Essay.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `Essay.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  9B339FD65CF9A26F622FF4F8D0EE0665;3465.
+(rerunfilecheck)             After:  C978D65DB93B8977F3157D806835AEBF;3757.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 11933 strings out of 479916
- 167249 string characters out of 5886647
- 486114 words of memory out of 5000000
- 28308 multiletter control sequences out of 15000+600000
- 547029 words of font info for 53 fonts, out of 8000000 for 9000
+ 13130 strings out of 479916
+ 190593 string characters out of 5886647
+ 507844 words of memory out of 5000000
+ 29492 multiletter control sequences out of 15000+600000
+ 547903 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,14n,66p,331b,453s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on "c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.pdf" (14 pages, 247442 bytes).
+ 60i,14n,66p,331b,550s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb>
+Output written on "c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.pdf" (15 pages, 377916 bytes).
 PDF statistics:
- 178 PDF objects out of 1000 (max. 8388607)
- 144 compressed objects within 2 object streams
- 47 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 192 PDF objects out of 1000 (max. 8388607)
+ 154 compressed objects within 2 object streams
+ 50 named destinations out of 1000 (max. 500000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
