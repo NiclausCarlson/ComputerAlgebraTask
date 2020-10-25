@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.10)  25 OCT 2020 02:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.10)  26 OCT 2020 01:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -648,14 +648,14 @@ Overfull \hbox (15.05075pt too wide) in paragraph at lines 78--79
  []
 
 [4] [5] [6] [7]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 172.
- [8] [9] [10] [11] [12]
-<charts//General scheme.jpg, id=103, 1938.24126pt x 1244.65pt>
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 181.
+ [8] [9] [10] [11] [12] [13]
+<charts//General scheme.jpg, id=108, 1938.24126pt x 1244.65pt>
 File: charts//General scheme.jpg Graphic file (type jpg)
 <use charts//General scheme.jpg>
-Package pdftex.def Info: charts//General scheme.jpg  used on input line 336.
+Package pdftex.def Info: charts//General scheme.jpg  used on input line 346.
 (pdftex.def)             Requested size: 484.55913pt x 311.16173pt.
- [13 <c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/charts//General scheme.jpg>] [14] (c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.aux)
+ [14 <c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/charts//General scheme.jpg>] [15] (c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.aux)
 
 Package rerunfilecheck Warning: File `Essay.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -669,18 +669,18 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 13130 strings out of 479916
- 190593 string characters out of 5886647
+ 13133 strings out of 479916
+ 190624 string characters out of 5886647
  507844 words of memory out of 5000000
- 29492 multiletter control sequences out of 15000+600000
- 547903 words of font info for 54 fonts, out of 8000000 for 9000
+ 29493 multiletter control sequences out of 15000+600000
+ 548794 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,14n,66p,331b,550s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on "c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.pdf" (15 pages, 377916 bytes).
+ 60i,14n,66p,350b,550s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbi1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb>
+Output written on "c:/Users/Nik Carlson/Desktop/ComputerAlgebraTask/Essay.pdf" (16 pages, 400711 bytes).
 PDF statistics:
- 192 PDF objects out of 1000 (max. 8388607)
- 154 compressed objects within 2 object streams
- 50 named destinations out of 1000 (max. 500000)
+ 200 PDF objects out of 1000 (max. 8388607)
+ 160 compressed objects within 2 object streams
+ 51 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
