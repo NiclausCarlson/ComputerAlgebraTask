@@ -303,7 +303,7 @@
             \State staircase 
             \Comment{Список ведущих мономов из NewBasis}
             \State MBasis 
-            \Comment{Список пар $[a_i, b_i]$, где $[a_i]$ - список мономов в нормальной форме относително нового базиса и 
+            \Comment{Список пар $[a_i, b_i]$, где $a_i$ - мономы в нормальной форме относительно нового базиса и 
             $b_i = NormalForm(a_i)$, нормальная форма $a_i$ относительно старого базиса.}
             \State ListOfNexts 
             \Comment{Список "следующих" мономов. Отсортирован относительно $m_2$}
@@ -312,7 +312,7 @@
             \Statex 
                 \State {$MBasis := []; staircase := []; newBasis := []; ListOfNexts := []; monom := 1;$}
                 \While {$monom \neq nil$}
-                    \If {monom не делится на какие-нибудь элементы из staircase}
+                    \If {monom не является произведением элементов из staircase}
                     \Comment{Провекра, это пункт 1 или 2}
                         \State $vector := NormalForm(monom)$
                         \Comment{}
