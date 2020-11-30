@@ -281,20 +281,23 @@
             \State oldBasis 
             \Comment{Базис Грёбнера нульмерного идела относительно упорядочения $m_1$}
             \EndInput
+
             \Statex 
             \Output
             \State newBasis 
             \Comment{Базис Грёбнера нульмерного идеала относительно упорядочения $m_2$}
             \EndOutput
+
             \Statex 
             \Subfunctions
             \State NormalForm(polynom) 
-            \Comment{Возвращает редуцированную форму полиному относительно упорядочения $m_1$}
+            \Comment{Возвращает редуцированную форму полинома относительно oldBasis и $m_1$}
             \State NextMonom() 
             \Comment{Возвращает первый элемент ListOfNexts или nil, если ListOfNexts пуст. Первый элемент удаляется}
             \State InsertNexts(monom)
-            \Comment{Добавляет в ListOfNexts произведение монома со всеми переменными, после чего сортирует лист и удаляет дубли}
+            \Comment{Добавляет в ListOfNexts произведение монома со всеми переменными, после чего сортирует список относительно $m_2$ и удаляет дубли}
             \EndSubfunctions
+            
             \Statex 
             \LocalVariables
             \State staircase 
@@ -303,7 +306,7 @@
             \Comment{Список пар $[a_i, b_i]$, где $[a_i]$ - список мономов в нормальной форме относително нового базиса и 
             $b_i = NormalForm(a_i)$, нормальная форма $a_i$ относительно старого базиса.}
             \State ListOfNexts 
-            \Comment{Список "следующих" мономов. Отсортирован относительно $m_1$}
+            \Comment{Список "следующих" мономов. Отсортирован относительно $m_2$}
             \EndLocalVariables
 
             \Statex 
