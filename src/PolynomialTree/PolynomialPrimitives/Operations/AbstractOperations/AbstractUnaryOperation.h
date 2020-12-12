@@ -12,8 +12,9 @@ class AbstractUnaryOperation : public Node {
 protected:
     Node *operand;
     const std::string type;
+    const bool associative; // false - left, true - right
 public:
-    AbstractUnaryOperation(Node *, std::string);
+    AbstractUnaryOperation(Node *, std::string, bool);
 
     std::string get_name() override;
 

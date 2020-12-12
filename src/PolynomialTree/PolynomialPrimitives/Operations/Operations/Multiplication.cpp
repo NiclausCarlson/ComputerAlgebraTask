@@ -4,5 +4,5 @@
 
 #include "Multiplication.h"
 
-Multiplication::Multiplication(Node *left, Node *right): AbstractBinaryOperation(left, right, "*") {
+Multiplication::Multiplication(Node *left, Node *right): AbstractBinaryOperation(left, right, "*", false) {
 }

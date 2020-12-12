@@ -4,6 +4,6 @@
 
 #include "Exponentiation.h"
 
-Exponentiation::Exponentiation(Node *operand): AbstractUnaryOperation(operand, "^") {
+Exponentiation::Exponentiation(Node *operand): AbstractUnaryOperation(operand, "^", true) {
 
 }

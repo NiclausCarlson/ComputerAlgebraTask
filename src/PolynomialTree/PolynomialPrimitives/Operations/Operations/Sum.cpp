@@ -4,5 +4,5 @@
 
 #include "Sum.h"
 
-Sum::Sum(Node *left, Node *right) : AbstractBinaryOperation(left, right, "+") {
+Sum::Sum(Node *left, Node *right) : AbstractBinaryOperation(left, right, "+", false) {
 }

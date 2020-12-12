@@ -4,5 +4,5 @@
 
 #include "UnaryMinus.h"
 
-UnaryMinus::UnaryMinus(Node *operand) : AbstractUnaryOperation(operand, "-") {
+UnaryMinus::UnaryMinus(Node *operand) : AbstractUnaryOperation(operand, "-", true) {
 }

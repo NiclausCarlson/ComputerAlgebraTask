@@ -6,8 +6,8 @@
 
 #include <utility>
 
-AbstractUnaryOperation::AbstractUnaryOperation(Node *operand, std::string type)
-        : operand(operand), type(std::move(type)) {
+AbstractUnaryOperation::AbstractUnaryOperation(Node *operand, std::string type, bool associative)
+        : operand(operand), type(std::move(type)), associative(associative) {
 }
 
 std::string AbstractUnaryOperation::get_name() {
