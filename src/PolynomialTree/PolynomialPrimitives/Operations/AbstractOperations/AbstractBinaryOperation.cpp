@@ -30,7 +30,7 @@ Node *AbstractBinaryOperation::getRightNode() {
 
 std::string AbstractBinaryOperation::to_str() {
     if (associative) {
-        return "(" + right->to_str() + " " + type + " " + left->to_str() + ")";
+        return "(" + right->to_str() + type + left->to_str() + ")";
     }
     return "(" + left->to_str() + " " + type + " " + right->to_str() + ")";
 }

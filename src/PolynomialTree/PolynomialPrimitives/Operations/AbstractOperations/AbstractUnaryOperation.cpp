@@ -23,8 +23,5 @@ Node *AbstractUnaryOperation::getOperand() {
 }
 
 std::string AbstractUnaryOperation::to_str() {
-    //проверка типа выражения
-    //если оператор - ^, то operand, type
-    //иначе:
     return type + operand->to_str();
 }

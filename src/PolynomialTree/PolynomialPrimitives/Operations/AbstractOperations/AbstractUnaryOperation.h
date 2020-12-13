@@ -7,6 +7,8 @@
 
 
 #include "../../Node/Node.h"
+#include "../Operations/Exponentiation.h"
+#include "../Operations/UnaryMinus.h"
 
 class AbstractUnaryOperation : public Node {
 protected:

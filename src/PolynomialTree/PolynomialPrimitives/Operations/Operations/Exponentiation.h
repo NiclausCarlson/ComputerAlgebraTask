@@ -6,11 +6,11 @@
 #define COMPUTERALGEBRATASK_EXPONENTIATION_H
 
 
-#include "../AbstractOperations/AbstractUnaryOperation.h"
+#include "../AbstractOperations/AbstractBinaryOperation.h"
 
-class Exponentiation : protected AbstractUnaryOperation {
+class Exponentiation : protected AbstractBinaryOperation {
 public:
-    explicit Exponentiation(Node *);
+    Exponentiation(Node *, Node *);
 };
 
 
