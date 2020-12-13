@@ -16,5 +16,6 @@ public:
     virtual std::string to_str() = 0;
 };
 
+typedef Node *PolynomialTree;
 
 #endif //COMPUTERALGEBRATASK_NODE_H
