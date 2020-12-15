@@ -10,15 +10,39 @@
 
 class Parser {
 private:
-    std::string input_str;
-    int curPos;
+    std::string str;
+    int cur_pos;
+    int length;
+    PolynomialTree polynomial;
 
-    std::string next_token();
+    enum class Token {
+        CONST,
+        VARIABLE,
+        UNARY_OPERATOR,
+        BINARY_OPERATOR,
+        END,
+        ERROR
+    };
+    std::pair<Token, std::string> cur_token;
+
+    void set_next_token();
+
+    void tokenizer_helper(int (*)(int));
+
+    void skip_whitespaces();
+
+    PolynomialTree parseExponential();
+
+    PolynomialTree parseProduct();
+
+    PolynomialTree parseSum();
+
+    PolynomialTree parseUnaryOperations();
+
+    PolynomialTree parseConstAndVariables();
 
 public:
-    Parser(std::string);
-
-    PolynomialTree parse();
+    PolynomialTree parse(std::string);
 };
 
 
