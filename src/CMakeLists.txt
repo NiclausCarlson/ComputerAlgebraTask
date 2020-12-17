@@ -27,6 +27,8 @@ add_executable(ComputerAlgebraTask
         PolynomialTree/PolynomialPrimitives/Operations/Operations/Exponentiation.cpp
         PolynomialTree/PolynomialPrimitives/Operations/Operations/Exponentiation.h
         Parser/Parser.cpp
-        Parser/Parser.h)
+        Parser/Parser.h
+        RationalNumber/RationalNumber.cpp
+        RationalNumber/RationalNumber.h)
 
 add_subdirectory(Google_tests)

@@ -4,10 +4,10 @@
 
 #include "Constant.h"
 
-Constant::Constant(double value) : value(value), stringValue(std::to_string(value)) {
+Constant::Constant(RationalNumber value) : value(value), stringValue(value.to_str()) {
 }
 
-double Constant::get_double_value() const {
+RationalNumber Constant::get_value() const {
     return value;
 }
 

@@ -50,11 +50,23 @@ void Parser::skip_whitespaces() {
 }
 
 PolynomialTree Parser::parseConstAndVariables() {
-    set_next_token();
-    Node *node;
-    if (cur_token.first == Token::CONST) {
 
-    }
+    return nullptr;
+}
+
+PolynomialTree Parser::parseUnaryOperations() {
+    return nullptr;
+}
+
+PolynomialTree Parser::parseSum() {
+    return nullptr;
+}
+
+PolynomialTree Parser::parseProduct() {
+    return nullptr;
+}
+
+PolynomialTree Parser::parseExponential() {
     return nullptr;
 }
 
