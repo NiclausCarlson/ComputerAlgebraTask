@@ -10,7 +10,7 @@
 
 class UnaryMinus : protected AbstractUnaryOperation {
 public:
-    explicit UnaryMinus(Node *);
+     UnaryMinus(Node *);
 };
 
 

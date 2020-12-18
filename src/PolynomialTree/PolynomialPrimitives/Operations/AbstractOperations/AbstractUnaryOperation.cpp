@@ -4,14 +4,8 @@
 
 #include "AbstractUnaryOperation.h"
 
-#include <utility>
-
-AbstractUnaryOperation::AbstractUnaryOperation(Node *operand, std::string type, bool associative)
+AbstractUnaryOperation::AbstractUnaryOperation(Node *operand, std::string type, Associativity associative)
         : operand(operand), type(std::move(type)), associative(associative) {
-}
-
-std::string AbstractUnaryOperation::get_name() {
-    return type;
 }
 
 Node const *AbstractUnaryOperation::getOperand() const {
@@ -20,6 +14,10 @@ Node const *AbstractUnaryOperation::getOperand() const {
 
 Node *AbstractUnaryOperation::getOperand() {
     return operand;
+}
+
+std::string AbstractUnaryOperation::get_name() {
+    return type;
 }
 
 std::string AbstractUnaryOperation::to_str() {

@@ -4,7 +4,7 @@
 
 #include "AbstractBinaryOperation.h"
 
-AbstractBinaryOperation::AbstractBinaryOperation(Node *left, Node *right, std::string type, bool associative)
+AbstractBinaryOperation::AbstractBinaryOperation(Node *left, Node *right, std::string type, Associativity associative)
         : left(left), right(right), type(std::move(type)), associative(associative) {
 }
 
@@ -29,8 +29,8 @@ Node *AbstractBinaryOperation::getRightNode() {
 }
 
 std::string AbstractBinaryOperation::to_str() {
-    if (associative) {
-        return "(" + right->to_str() + type + left->to_str() + ")";
+    if (associative == Associativity::RIGHT) {
+        return "(" + left->to_str() + type + right->to_str() + ")";
     }
     return "(" + left->to_str() + " " + type + " " + right->to_str() + ")";
 }

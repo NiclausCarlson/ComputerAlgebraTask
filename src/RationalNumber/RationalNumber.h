@@ -15,7 +15,9 @@ private:
     ll denominator;
     std::string string_value;
 public:
-    RationalNumber(ll, ll);
+    RationalNumber();
+
+    explicit RationalNumber(ll, ll denominator = 1);
 
     std::string to_str() const;
 };

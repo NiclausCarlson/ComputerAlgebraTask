@@ -4,6 +4,5 @@
 
 #include "Exponentiation.h"
 
-Exponentiation::Exponentiation(Node *left, Node *right) : AbstractBinaryOperation(left, right, "^", true) {
-
+Exponentiation::Exponentiation(Node *left, Node *right) : AbstractBinaryOperation(left, right, "^", Associativity::RIGHT) {
 }

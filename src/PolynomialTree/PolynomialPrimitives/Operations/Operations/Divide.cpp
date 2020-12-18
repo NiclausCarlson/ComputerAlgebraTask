@@ -4,6 +4,5 @@
 
 #include "Divide.h"
 
-Divide::Divide(Node *left, Node *right): AbstractBinaryOperation(left, right, "/", false) {
-
+Divide::Divide(Node *left, Node *right): AbstractBinaryOperation(left, right, "/", Associativity::LEFT) {
 }

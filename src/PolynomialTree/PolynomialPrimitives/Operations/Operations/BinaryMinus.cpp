@@ -4,5 +4,5 @@
 
 #include "BinaryMinus.h"
 
-BinaryMinus::BinaryMinus(Node *left, Node *right): AbstractBinaryOperation(left, right, "-", false) {
+BinaryMinus::BinaryMinus(Node *left, Node *right): AbstractBinaryOperation(left, right, "-", Associativity::LEFT) {
 }

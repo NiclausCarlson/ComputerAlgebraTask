@@ -4,7 +4,7 @@
 
 #include "RationalNumber.h"
 
-RationalNumber::RationalNumber(ll numerator, ll denominator = 1) :
+RationalNumber::RationalNumber(ll numerator, ll denominator) :
         numerator(numerator),
         denominator(denominator),
         string_value("(" + std::to_string(numerator) + "/"
@@ -12,5 +12,8 @@ RationalNumber::RationalNumber(ll numerator, ll denominator = 1) :
 
 std::string RationalNumber::to_str() const {
     return string_value;
+}
+
+RationalNumber::RationalNumber() : numerator(0), denominator(1) {
 }
 

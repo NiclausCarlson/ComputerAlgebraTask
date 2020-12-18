@@ -1,0 +1,13 @@
+//
+// Created by Nik Carlson on 18.12.2020.
+//
+
+#ifndef COMPUTERALGEBRATASK_ASSOCIATIVITY_H
+#define COMPUTERALGEBRATASK_ASSOCIATIVITY_H
+
+enum class Associativity{
+    LEFT,
+    RIGHT
+};
+
+#endif //COMPUTERALGEBRATASK_ASSOCIATIVITY_H

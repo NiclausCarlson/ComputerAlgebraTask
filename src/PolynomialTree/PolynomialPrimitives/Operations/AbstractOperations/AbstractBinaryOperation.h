@@ -7,15 +7,16 @@
 
 
 #include "../../Node/Node.h"
+#include "../../Associativity.h"
 
 class AbstractBinaryOperation : public Node {
 protected:
     Node *left;
     Node *right;
-    const bool associative; // false - left, true - right
+    const Associativity associative; // false - left, true - right
     const std::string type;
 public:
-    AbstractBinaryOperation(Node *, Node *, std::string, bool);
+    AbstractBinaryOperation(Node *, Node *, std::string, Associativity);
 
     std::string get_name() override;
 

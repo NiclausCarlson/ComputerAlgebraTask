@@ -21,7 +21,7 @@ public:
 
     RationalNumber get_value() const;
 
-    explicit Constant(RationalNumber);
+    explicit Constant(const RationalNumber&);
 
     virtual ~Constant() = default;
 };

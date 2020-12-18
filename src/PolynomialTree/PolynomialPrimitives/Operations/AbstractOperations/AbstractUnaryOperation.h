@@ -7,16 +7,15 @@
 
 
 #include "../../Node/Node.h"
-#include "../Operations/Exponentiation.h"
-#include "../Operations/UnaryMinus.h"
+#include "../../Associativity.h"
 
 class AbstractUnaryOperation : public Node {
 protected:
     Node *operand;
+    const Associativity associative; // false - left, true - right
     const std::string type;
-    const bool associative; // false - left, true - right
 public:
-    AbstractUnaryOperation(Node *, std::string, bool);
+    AbstractUnaryOperation(Node *, std::string, Associativity);
 
     std::string get_name() override;
 

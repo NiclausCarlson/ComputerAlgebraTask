@@ -7,6 +7,14 @@
 
 #include <string>
 #include "../PolynomialTree/PolynomialPrimitives/Node/Node.h"
+#include "../PolynomialTree/PolynomialPrimitives/Operations/Operations/Sum.h"
+#include "../PolynomialTree/PolynomialPrimitives/Operations/Operations/UnaryMinus.h"
+#include "../Exceptions/ParserExceptions/WrongToken.h"
+#include "../PolynomialTree/PolynomialPrimitives/Operations/Operations/Multiplication.h"
+#include "../PolynomialTree/PolynomialPrimitives/Operands/Constant.h"
+#include "../Exceptions/ParserExceptions/NotNumberDivision.h"
+#include "../PolynomialTree/PolynomialPrimitives/Operations/Operations/Exponentiation.h"
+#include "../PolynomialTree/PolynomialPrimitives/Operands/Variable.h"
 
 class Parser {
 private:
@@ -18,12 +26,17 @@ private:
     enum class Token {
         CONST,
         VARIABLE,
-        UNARY_OPERATOR,
-        BINARY_OPERATOR,
+        PLUS,
+        MINUS,
+        DOT,
+        DIV,
+        POW,
         END,
         ERROR
     };
     std::pair<Token, std::string> cur_token;
+
+    static Token getToken(char) ;
 
     void set_next_token();
 
@@ -33,16 +46,16 @@ private:
 
     PolynomialTree parseExponential();
 
-    PolynomialTree parseProduct();
+    PolynomialTree parseProductAndDivision();
 
     PolynomialTree parseSum();
 
-    PolynomialTree parseUnaryOperations();
-
-    PolynomialTree parseConstAndVariables();
+    PolynomialTree parseUnaryAndNullaryOperations();
 
 public:
     PolynomialTree parse(std::string);
+
+    Token getToken(std::string &) const;
 };
 
 
