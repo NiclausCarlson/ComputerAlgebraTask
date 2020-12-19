@@ -4,7 +4,6 @@
 
 #include "Parser.h"
 
-
 void Parser::tokenizer_helper(int (*func)(int)) {
     while (func(str[cur_pos]) && cur_pos < length) {
         cur_pos++;
@@ -45,7 +44,7 @@ PolynomialTree Parser::parseUnaryAndNullaryOperations() {
     switch (cur_token.first) {
         case Token::CONST:
             set_next_token();
-            return new Constant(RationalNumber(stol(token_copy.second)));
+            return new Constant(Rational(stol(token_copy.second)));
         case Token::VARIABLE:
             set_next_token();
             return new Variable(token_copy.second);
@@ -68,7 +67,7 @@ PolynomialTree Parser::parseExponential() {
 
 PolynomialTree Parser::parseProductAndDivision() {
     auto *left = parseExponential();
-    Node *right, *left_checker, *right_checker;
+    Node *right, *left_number, *right_number;
     while (true) {
         switch (cur_token.first) {
             case Token::DOT:
@@ -76,10 +75,11 @@ PolynomialTree Parser::parseProductAndDivision() {
                 continue;
             case Token::DIV:
                 right = parseExponential();
-                left_checker = dynamic_cast<Constant * >(left);
-                right_checker = dynamic_cast<Constant * >(right);
-                if (left_checker != nullptr && right_checker != nullptr) {
+                left_number = dynamic_cast<Constant *>(left);
+                right_number = dynamic_cast<Constant *>(right);
+                if (left_number != nullptr && right_number != nullptr) {
                     //left = поделим два рациональных числа друг на друга
+
                 } else {
                     throw NotNumberDivision(cur_token.second);
                 }

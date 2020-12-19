@@ -28,11 +28,18 @@ add_executable(ComputerAlgebraTask
         PolynomialTree/PolynomialPrimitives/Operations/Operations/Exponentiation.h
         Parser/Parser.cpp
         Parser/Parser.h
-        RationalNumber/RationalNumber.cpp
-        RationalNumber/RationalNumber.h
+        RationalNumber/Rational.cpp
+        RationalNumber/Rational.h
         PolynomialTree/PolynomialPrimitives/Associativity.h
         Exceptions/ParserExceptions/ParseException.cpp
         Exceptions/ParserExceptions/ParseException.h
-        Exceptions/ParserExceptions/DivisionByZero.cpp Exceptions/ParserExceptions/DivisionByZero.h Exceptions/ParserExceptions/LostOperand.cpp Exceptions/ParserExceptions/LostOperand.h Exceptions/ParserExceptions/NotNumberDivision.cpp Exceptions/ParserExceptions/NotNumberDivision.h Exceptions/ParserExceptions/WrongToken.cpp Exceptions/ParserExceptions/WrongToken.h)
+        Exceptions/ParserExceptions/DivisionByZero.cpp
+        Exceptions/ParserExceptions/DivisionByZero.h
+        Exceptions/ParserExceptions/LostOperand.cpp
+        Exceptions/ParserExceptions/LostOperand.h
+        Exceptions/ParserExceptions/NotNumberDivision.cpp
+        Exceptions/ParserExceptions/NotNumberDivision.h
+        Exceptions/ParserExceptions/WrongToken.cpp
+        Exceptions/ParserExceptions/WrongToken.h)
 
 add_subdirectory(Google_tests)

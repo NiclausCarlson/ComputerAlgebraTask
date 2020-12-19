@@ -8,20 +8,20 @@
 
 
 #include "../Node/Node.h"
-#include "../../../RationalNumber/RationalNumber.h"
+#include "../../../RationalNumber/Rational.h"
 
 class Constant : public Node {
 private:
-    const RationalNumber value;
+    const Rational value;
     const std::string stringValue;
 public:
     std::string get_name() override;
 
     std::string to_str() override;
 
-    RationalNumber get_value() const;
+    Rational get_value() const;
 
-    explicit Constant(const RationalNumber&);
+    explicit Constant(const Rational&);
 
     virtual ~Constant() = default;
 };

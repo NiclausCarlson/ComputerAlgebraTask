@@ -54,8 +54,6 @@ private:
 
 public:
     PolynomialTree parse(std::string);
-
-    Token getToken(std::string &) const;
 };
 
 
