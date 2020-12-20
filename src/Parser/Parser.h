@@ -12,7 +12,6 @@
 #include "../Exceptions/ParserExceptions/WrongToken.h"
 #include "../PolynomialTree/PolynomialPrimitives/Operations/Operations/Multiplication.h"
 #include "../PolynomialTree/PolynomialPrimitives/Operands/Constant.h"
-#include "../Exceptions/ParserExceptions/NotNumberDivision.h"
 #include "../PolynomialTree/PolynomialPrimitives/Operations/Operations/Exponentiation.h"
 #include "../PolynomialTree/PolynomialPrimitives/Operands/Variable.h"
 
@@ -35,8 +34,9 @@ private:
         ERROR
     };
     std::pair<Token, std::string> cur_token;
+    std::pair<Token, std::string> prev_token;
 
-    static Token getToken(char) ;
+    static Token getToken(char);
 
     void set_next_token();
 
@@ -51,6 +51,8 @@ private:
     PolynomialTree parseSum();
 
     PolynomialTree parseUnaryAndNullaryOperations();
+
+    void rightOperandChecker(Node* operand);
 
 public:
     PolynomialTree parse(std::string);

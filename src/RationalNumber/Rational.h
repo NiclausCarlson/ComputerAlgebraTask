@@ -16,7 +16,11 @@ private:
 public:
     Rational();
 
-    explicit Rational(ld, ld denominator = 1.0L);
+    Rational(ld, ld denominator = 1.0);
+
+    ld get_numerator() const;
+
+    ld get_denominator() const;
 
     std::string to_str() const;
 

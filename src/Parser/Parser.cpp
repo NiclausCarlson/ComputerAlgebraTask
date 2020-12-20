@@ -3,6 +3,9 @@
 //
 
 #include "Parser.h"
+#include "../Exceptions/ParserExceptions/UnsupportedOperation.h"
+#include "../Exceptions/ParserExceptions/LostOperand.h"
+#include "../Exceptions/ParserExceptions/InvalidArgument.h"
 
 void Parser::tokenizer_helper(int (*func)(int)) {
     while (func(str[cur_pos]) && cur_pos < length) {
@@ -12,6 +15,8 @@ void Parser::tokenizer_helper(int (*func)(int)) {
 
 void Parser::set_next_token() {
     skip_whitespaces();
+    prev_token = cur_token;
+
     if (cur_pos >= length) {
         cur_token = std::make_pair(Token::END, "");
         return;
@@ -24,7 +29,7 @@ void Parser::set_next_token() {
         tokenizer_helper(isalpha);
         cur_token = std::make_pair(Token::VARIABLE, str.substr(prev_pos, cur_pos - prev_pos));
     } else if (str[cur_pos] == '*' || str[cur_pos] == '+' || str[cur_pos] == '^' ||
-               str[cur_pos] == '-' || str[cur_pos] == '\\') {
+               str[cur_pos] == '-' || str[cur_pos] == '/') {
         cur_token = std::make_pair(getToken(str[cur_pos]), std::string(1, str[cur_pos]));
         cur_pos++;
     } else {
@@ -48,17 +53,31 @@ PolynomialTree Parser::parseUnaryAndNullaryOperations() {
         case Token::VARIABLE:
             set_next_token();
             return new Variable(token_copy.second);
+        case Token::END:
+            return nullptr;
         default:
-            set_next_token();
+            cur_token = std::make_pair(Token::ERROR, "can't parse token");
             return nullptr;
     }
 }
 
 PolynomialTree Parser::parseExponential() {
     auto *left = parseUnaryAndNullaryOperations();
+    auto *left_checker = dynamic_cast<Constant *>(left);
+    Constant *right_number;
     while (true) {
         if (cur_token.first == Token::POW) {
-            left = (Node *) (new Exponentiation(left, parseUnaryAndNullaryOperations()));
+            if (left_checker != nullptr) {
+                throw UnsupportedOperation(cur_token.second, "Number exponentiation is prohibit.");
+            }
+            right_number = dynamic_cast<Constant *>(parseUnaryAndNullaryOperations());
+            if (right_number == nullptr) {
+                throw UnsupportedOperation(cur_token.second, "Polynomial exponentiation is prohibit.");
+            }
+            if (right_number->get_value().get_denominator() != 1) {//TODO: problems with double
+                throw UnsupportedOperation(cur_token.second, "Invalid monomial power.");
+            }
+            left = (Node *) (new Exponentiation(left, right_number));
         } else {
             return left;
         }
@@ -67,21 +86,33 @@ PolynomialTree Parser::parseExponential() {
 
 PolynomialTree Parser::parseProductAndDivision() {
     auto *left = parseExponential();
-    Node *right, *left_number, *right_number;
+    Node *right;
+    Constant *left_number, *right_number;
+    Rational n;
     while (true) {
+        left_number = dynamic_cast<Constant *>(left);
         switch (cur_token.first) {
             case Token::DOT:
-                left = (Node *) (new Multiplication(left, parseProductAndDivision()));
+                right = parseExponential();
+                right_number = dynamic_cast<Constant *>(right);
+                if (left_number != nullptr && right_number != nullptr) {
+                    n = left_number->get_value() * right_number->get_value();
+                    left = (Node *) (new Constant(n));
+                } else {
+                    left = (Node *) (new Multiplication(left, right));
+                }
                 continue;
             case Token::DIV:
                 right = parseExponential();
-                left_number = dynamic_cast<Constant *>(left);
                 right_number = dynamic_cast<Constant *>(right);
                 if (left_number != nullptr && right_number != nullptr) {
-                    //left = поделим два рациональных числа друг на друга
-
+                    n = left_number->get_value() / right_number->get_value();
+                    left = (Node *) (new Constant(n));
+                } else if (left_number != nullptr) {
+                    n = Rational(1, 1) / left_number->get_value();
+                    left = (Node *) (new Multiplication((Node *) (new Constant(n)), right));
                 } else {
-                    throw NotNumberDivision(cur_token.second);
+                    throw UnsupportedOperation(cur_token.second, "Polynomial division is prohibit");
                 }
                 continue;
             default:
@@ -95,14 +126,19 @@ PolynomialTree Parser::parseProductAndDivision() {
 
 PolynomialTree Parser::parseSum() {
     auto *left = parseProductAndDivision();
+    Node *right;
     while (true) {
         switch (cur_token.first) {
             case Token::PLUS:
-                left = (Node *) (new Sum(left, parseProductAndDivision()));
+                right = parseProductAndDivision();
+                rightOperandChecker(right);
+                left = (Node *) (new Sum(left, right));
                 break;
             case Token::MINUS:
+                right = parseProductAndDivision();
+                rightOperandChecker(right);
                 left = (Node *) (new Sum((Node *) (new UnaryMinus(left)),
-                                         parseProductAndDivision()));
+                                         right));
                 break;
             default:
                 if (cur_token.first == Token::ERROR) {
@@ -126,7 +162,13 @@ Parser::Token Parser::getToken(char op) {
     if (op == '+') return Token::PLUS;
     if (op == '-') return Token::MINUS;
     if (op == '*') return Token::DOT;
-    if (op == '\\') return Token::DIV;
-    if (op == '^')return Token::POW;
+    if (op == '/') return Token::DIV;
+    if (op == '^') return Token::POW;
     return Token::ERROR;
+}
+
+void Parser::rightOperandChecker(Node* operand) {
+    if (operand == nullptr) {
+        throw LostOperand(prev_token.second);
+    }
 }

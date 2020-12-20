@@ -5,4 +5,4 @@
 #include "LostOperand.h"
 
 LostOperand::LostOperand(const std::string &message) :
-        ParseException(std::move("Lost operand: " + message)) {}
+        ParseException(std::move("Lost operand for " + message)) {}

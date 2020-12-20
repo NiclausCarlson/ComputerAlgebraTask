@@ -15,13 +15,13 @@ private:
     const Rational value;
     const std::string stringValue;
 public:
+    explicit Constant(const Rational&);
+
     std::string get_name() override;
 
     std::string to_str() override;
 
     Rational get_value() const;
-
-    explicit Constant(const Rational&);
 
     virtual ~Constant() = default;
 };

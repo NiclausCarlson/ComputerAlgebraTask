@@ -59,3 +59,11 @@ Rational &operator/(Rational &left, const Rational &right) {
     left.denominator *= right.numerator;
     return left;
 }
+
+ld Rational::get_numerator() const {
+    return numerator;
+}
+
+ld Rational::get_denominator() const {
+    return denominator;
+}

@@ -5,6 +5,8 @@ set(CMAKE_SXX_STANDARD 20)
 
 add_executable(ComputerAlgebraTask
         main.cpp
+        RationalNumber/Rational.cpp
+        RationalNumber/Rational.h
         PolynomialTree/PolynomialPrimitives/Node/Node.h
         PolynomialTree/PolynomialPrimitives/Operands/Variable.cpp
         PolynomialTree/PolynomialPrimitives/Operands/Variable.h
@@ -28,8 +30,6 @@ add_executable(ComputerAlgebraTask
         PolynomialTree/PolynomialPrimitives/Operations/Operations/Exponentiation.h
         Parser/Parser.cpp
         Parser/Parser.h
-        RationalNumber/Rational.cpp
-        RationalNumber/Rational.h
         PolynomialTree/PolynomialPrimitives/Associativity.h
         Exceptions/ParserExceptions/ParseException.cpp
         Exceptions/ParserExceptions/ParseException.h
@@ -37,9 +37,9 @@ add_executable(ComputerAlgebraTask
         Exceptions/ParserExceptions/DivisionByZero.h
         Exceptions/ParserExceptions/LostOperand.cpp
         Exceptions/ParserExceptions/LostOperand.h
-        Exceptions/ParserExceptions/NotNumberDivision.cpp
-        Exceptions/ParserExceptions/NotNumberDivision.h
         Exceptions/ParserExceptions/WrongToken.cpp
-        Exceptions/ParserExceptions/WrongToken.h)
+        Exceptions/ParserExceptions/WrongToken.h
+        Exceptions/ParserExceptions/UnsupportedOperation.cpp
+        Exceptions/ParserExceptions/UnsupportedOperation.h Exceptions/ParserExceptions/InvalidArgument.cpp Exceptions/ParserExceptions/InvalidArgument.h)
 
 add_subdirectory(Google_tests)
