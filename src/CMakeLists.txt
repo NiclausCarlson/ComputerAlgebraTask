@@ -40,6 +40,8 @@ add_executable(ComputerAlgebraTask
         Exceptions/ParserExceptions/WrongToken.cpp
         Exceptions/ParserExceptions/WrongToken.h
         Exceptions/ParserExceptions/UnsupportedOperation.cpp
-        Exceptions/ParserExceptions/UnsupportedOperation.h Exceptions/ParserExceptions/InvalidArgument.cpp Exceptions/ParserExceptions/InvalidArgument.h)
+        Exceptions/ParserExceptions/UnsupportedOperation.h
+        Exceptions/ParserExceptions/InvalidArgument.cpp
+        Exceptions/ParserExceptions/InvalidArgument.h)
 
 add_subdirectory(Google_tests)
