@@ -137,8 +137,8 @@ PolynomialTree Parser::parseSum() {
             case Token::MINUS:
                 right = parseProductAndDivision();
                 rightOperandChecker(right);
-                left = (Node *) (new Sum((Node *) (new UnaryMinus(left)),
-                                         right));
+                left = (Node *) (new Sum(left,
+                                         (Node *) (new UnaryMinus(right))));
                 break;
             default:
                 if (cur_token.first == Token::ERROR) {
@@ -167,7 +167,7 @@ Parser::Token Parser::getToken(char op) {
     return Token::ERROR;
 }
 
-void Parser::rightOperandChecker(Node* operand) {
+void Parser::rightOperandChecker(Node *operand) {
     if (operand == nullptr) {
         throw LostOperand(prev_token.second);
     }
