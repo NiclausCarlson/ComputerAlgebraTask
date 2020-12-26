@@ -25,6 +25,8 @@ public:
 
     Node *getOperand();
 
+    void get_monomials(std::vector<Node *> &monomials) override;
+
     ~AbstractUnaryOperation() = default;
 };
 

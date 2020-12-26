@@ -19,3 +19,7 @@ std::string Variable::get_name() {
 std::string Variable::to_str() {
     return get_name();
 }
+
+void Variable::get_monomials(std::vector<Node *> &monomials) {
+    monomials.push_back(this);
+}

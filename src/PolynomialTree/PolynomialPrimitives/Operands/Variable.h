@@ -19,6 +19,8 @@ public:
 
     std::string get_value() const;
 
+    void get_monomials(std::vector<Node*>& monomials) override;
+
     explicit Variable(std::string);
 
     virtual ~Variable() = default;

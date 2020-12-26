@@ -18,3 +18,8 @@ std::string Constant::get_name() {
 std::string Constant::to_str() {
     return get_name();
 }
+
+void Constant::get_monomials(std::vector<Node *> &monomials) {
+    monomials.push_back(this);
+}
+

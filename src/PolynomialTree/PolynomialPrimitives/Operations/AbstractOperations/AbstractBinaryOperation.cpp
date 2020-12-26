@@ -3,6 +3,8 @@
 //
 
 #include "AbstractBinaryOperation.h"
+#include "../Operations/Sum.h"
+
 
 AbstractBinaryOperation::AbstractBinaryOperation(Node *left, Node *right, std::string type, Associativity associative)
         : left(left), right(right), type(std::move(type)), associative(associative) {
@@ -30,7 +32,31 @@ Node *AbstractBinaryOperation::getRightNode() {
 
 std::string AbstractBinaryOperation::to_str() {
     if (associative == Associativity::RIGHT) {
-        return  left->to_str() + type + right->to_str();
+        return left->to_str() + type + right->to_str();
     }
     return left->to_str() + " " + type + " " + right->to_str();
+}
+
+void AbstractBinaryOperation::get_monomials(std::vector<Node *> &monomials) {
+    auto *sum_checker = dynamic_cast<Sum *>(this);
+    if (sum_checker != nullptr) {
+        Sum *left_checker = dynamic_cast<Sum *>(this->left);
+        Sum *right_checker = dynamic_cast<Sum *>(this->right);
+
+        if (left_checker != nullptr && right_checker != nullptr) {
+            this->left->get_monomials(monomials);
+            this->right->get_monomials(monomials);
+        } else if (left_checker != nullptr) {
+            this->left->get_monomials(monomials);
+            monomials.push_back(this->right);
+        } else if (right_checker != nullptr) {
+            monomials.push_back(this->left);
+            this->right->get_monomials(monomials);
+        } else {
+            monomials.push_back(this);
+        }
+
+    } else {
+        monomials.push_back(this);
+    }
 }
