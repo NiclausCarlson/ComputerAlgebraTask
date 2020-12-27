@@ -8,6 +8,9 @@
 
 #include "../../PolynomialTree/PolynomialPrimitives/Node/Node.h"
 
+/*
+ * using for order monomial list
+ */
 class MonomialOrder {
 public:
     virtual bool compare(PolynomialTree t1, PolynomialTree t2) = 0;
