@@ -8,9 +8,12 @@
 
 #include "../AbstractOperations/AbstractUnaryOperation.h"
 
-class UnaryMinus : protected AbstractUnaryOperation {
+class UnaryMinus : virtual public AbstractUnaryOperation {
 public:
      UnaryMinus(Node *);
+
+    std::string get_name() override;
+
 };
 
 

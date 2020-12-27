@@ -6,3 +6,7 @@
 
 Multiplication::Multiplication(Node *left, Node *right): AbstractBinaryOperation(left, right, "*", Associativity::LEFT) {
 }
+
+std::string Multiplication::get_name() {
+    return "*";
+}

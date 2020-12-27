@@ -8,9 +8,12 @@
 
 #include "../AbstractOperations/AbstractBinaryOperation.h"
 
-class Exponentiation : protected AbstractBinaryOperation {
+class Exponentiation : virtual public AbstractBinaryOperation {
 public:
     Exponentiation(Node *, Node *);
+
+    std::string get_name() override;
+
 };
 
 

@@ -8,9 +8,12 @@
 
 #include "../AbstractOperations/AbstractBinaryOperation.h"
 
-class BinaryMinus : protected AbstractBinaryOperation {
+class BinaryMinus : virtual public AbstractBinaryOperation {
 public:
     BinaryMinus(Node *, Node *);
+
+    std::string get_name() override;
+
 };
 
 

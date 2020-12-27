@@ -16,10 +16,6 @@ Node *AbstractUnaryOperation::getOperand() {
     return operand;
 }
 
-std::string AbstractUnaryOperation::get_name() {
-    return type;
-}
-
 std::string AbstractUnaryOperation::to_str() {
     return type + operand->to_str();
 }

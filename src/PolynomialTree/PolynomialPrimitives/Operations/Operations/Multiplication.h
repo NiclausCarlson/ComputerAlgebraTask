@@ -8,9 +8,12 @@
 
 #include "../AbstractOperations/AbstractBinaryOperation.h"
 
-class Multiplication: protected AbstractBinaryOperation {
+class Multiplication: virtual public AbstractBinaryOperation {
 public:
     Multiplication(Node*, Node*);
+
+    std::string get_name() override;
+
 };
 
 

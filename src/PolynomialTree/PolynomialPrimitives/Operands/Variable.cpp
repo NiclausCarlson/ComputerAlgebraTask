@@ -12,12 +12,8 @@ std::string Variable::get_value() const {
     return name;
 }
 
-std::string Variable::get_name() {
-    return name;
-}
-
 std::string Variable::to_str() {
-    return get_name();
+    return name;
 }
 
 void Variable::get_monomials(std::vector<Node *> &monomials) {

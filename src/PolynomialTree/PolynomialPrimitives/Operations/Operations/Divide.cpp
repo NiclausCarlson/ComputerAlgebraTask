@@ -6,3 +6,7 @@
 
 Divide::Divide(Node *left, Node *right): AbstractBinaryOperation(left, right, "/", Associativity::LEFT) {
 }
+
+std::string Divide::get_name() {
+    return "/";
+}

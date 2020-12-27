@@ -8,9 +8,12 @@
 
 #include "../AbstractOperations/AbstractBinaryOperation.h"
 
-class Divide: protected AbstractBinaryOperation {
+class Divide: virtual public AbstractBinaryOperation {
 public:
     Divide(Node*, Node*);
+
+    std::string get_name() override;
+
 };
 
 

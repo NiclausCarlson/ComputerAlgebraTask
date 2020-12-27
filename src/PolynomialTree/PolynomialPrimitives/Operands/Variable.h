@@ -13,7 +13,6 @@ private:
     std::string name = "variable";
     const std::string value;
 public:
-    std::string get_name() override;
 
     std::string to_str() override;
 

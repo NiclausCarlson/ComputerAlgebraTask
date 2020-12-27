@@ -6,3 +6,7 @@
 
 BinaryMinus::BinaryMinus(Node *left, Node *right): AbstractBinaryOperation(left, right, "-", Associativity::LEFT) {
 }
+
+std::string BinaryMinus::get_name() {
+    return "-";
+}

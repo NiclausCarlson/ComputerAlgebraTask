@@ -6,3 +6,7 @@
 
 Sum::Sum(Node *left, Node *right) : AbstractBinaryOperation(left, right, "+", Associativity::LEFT) {
 }
+
+std::string Sum::get_name() {
+    return "+";
+}

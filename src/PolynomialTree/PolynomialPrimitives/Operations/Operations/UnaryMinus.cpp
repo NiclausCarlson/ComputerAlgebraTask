@@ -6,3 +6,7 @@
 
 UnaryMinus::UnaryMinus(Node *operand) : AbstractUnaryOperation(operand, "-", Associativity::RIGHT) {
 }
+
+std::string UnaryMinus::get_name() {
+    return "--";
+}

@@ -9,16 +9,16 @@
 #include "../../Node/Node.h"
 #include "../../Associativity.h"
 
-class AbstractBinaryOperation : public Node {
+class AbstractBinaryOperation : virtual public Node {
 protected:
     Node *left;
     Node *right;
-    const Associativity associative; // false - left, true - right
+    const Associativity associative;
     const std::string type;
 public:
     AbstractBinaryOperation(Node *, Node *, std::string, Associativity);
 
-    std::string get_name() override;
+    virtual std::string get_name() = 0;
 
     std::string to_str() override;
 

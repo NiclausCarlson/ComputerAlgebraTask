@@ -8,9 +8,12 @@
 
 #include "../AbstractOperations/AbstractBinaryOperation.h"
 
-class Sum : protected AbstractBinaryOperation {
+class Sum : virtual public AbstractBinaryOperation {
 public:
     Sum(Node *, Node *);
+
+    std::string get_name() override;
+
 };
 
 

@@ -6,3 +6,7 @@
 
 Exponentiation::Exponentiation(Node *left, Node *right) : AbstractBinaryOperation(left, right, "^", Associativity::RIGHT) {
 }
+
+std::string Exponentiation::get_name() {
+    return "^";
+}

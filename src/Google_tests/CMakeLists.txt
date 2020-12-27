@@ -48,5 +48,5 @@ add_executable(Google_Tests_run
         ../Exceptions/ParserExceptions/UnsupportedOperation.h
         ../Exceptions/ParserExceptions/InvalidArgument.cpp
         ../Exceptions/ParserExceptions/InvalidArgument.h
-        ParserTest.cpp)
+        ParserTest.cpp TreeOperationTest.cpp)
 target_link_libraries(Google_Tests_run gtest gtest_main)

@@ -11,12 +11,8 @@ Rational Constant::get_value() const {
     return value;
 }
 
-std::string Constant::get_name() {
-    return stringValue;
-}
-
 std::string Constant::to_str() {
-    return get_name();
+    return stringValue;
 }
 
 void Constant::get_monomials(std::vector<Node *> &monomials) {
