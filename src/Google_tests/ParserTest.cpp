@@ -33,6 +33,9 @@ TEST_F(ParserTest, SIMPLE_PARSING_TEST) {
     ASSERT_STREQ("x^2.000000 * y^2.000000", parser.parse("x^2*y^2")->to_str().c_str());
     ASSERT_STREQ("x^2.000000 * y^2.000000 * z^233.000000", parser.parse("x^2*y^2*z^233")->to_str().c_str());
     ASSERT_STREQ("x^2.000000 + y^2.000000 + z^233.000000", parser.parse("x^2+y^2+z^233")->to_str().c_str());
+    ASSERT_STREQ("-x", parser.parse("-x")->to_str().c_str());
+    ASSERT_STREQ("-x + y", parser.parse("-x+y")->to_str().c_str());
+    ASSERT_STREQ("-x + -y", parser.parse("-x-y")->to_str().c_str());
 }
 
 TEST_F(ParserTest, ADVANCED_PARSING_TEST){
@@ -47,6 +50,9 @@ TEST_F(ParserTest, ADVANCED_PARSING_TEST){
     ASSERT_STREQ("x * y + -y * z + -z * x", parser.parse("x * y-  y   * z- z *x ")->to_str().c_str());
     ASSERT_STREQ("x^2.000000 * y^2.000000 * z^233.000000", parser.parse("x^2  *y^ 2* z ^233")->to_str().c_str());
     ASSERT_STREQ("x^2.000000 + y^2.000000 + z^233.000000", parser.parse("           x ^ 2 + y^2   +z^    233")->to_str().c_str());
+    ASSERT_STREQ("-x", parser.parse("-       x")->to_str().c_str());
+    ASSERT_STREQ("-x + y", parser.parse("- x +  y")->to_str().c_str());
+    ASSERT_STREQ("-x + -y", parser.parse("-x -      y")->to_str().c_str());
 }
 
 TEST_F(ParserTest, NUMERIC_PARSING_TEST){

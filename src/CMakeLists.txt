@@ -42,6 +42,6 @@ add_executable(ComputerAlgebraTask
         Exceptions/ParserExceptions/UnsupportedOperation.cpp
         Exceptions/ParserExceptions/UnsupportedOperation.h
         Exceptions/ParserExceptions/InvalidArgument.cpp
-        Exceptions/ParserExceptions/InvalidArgument.h)
+        Exceptions/ParserExceptions/InvalidArgument.h PolynomialOperations/MonomialOrder/MonomialOrder.h PolynomialOperations/MonomialOrder/Orders/Lex.cpp PolynomialOperations/MonomialOrder/Orders/Lex.h)
 
 add_subdirectory(Google_tests)

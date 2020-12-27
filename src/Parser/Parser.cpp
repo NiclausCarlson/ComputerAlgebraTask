@@ -45,14 +45,17 @@ void Parser::skip_whitespaces() {
 
 PolynomialTree Parser::parseUnaryAndNullaryOperations() {
     set_next_token();
-    auto token_copy = cur_token;
+    Node *right;
     switch (cur_token.first) {
         case Token::CONST:
             set_next_token();
-            return new Constant(Rational(stol(token_copy.second)));
+            return new Constant(Rational(stol(prev_token.second)));
         case Token::VARIABLE:
             set_next_token();
-            return new Variable(token_copy.second);
+            return new Variable(prev_token.second);
+        case Token::MINUS:
+            right = parseUnaryAndNullaryOperations();
+            return new UnaryMinus(right);
         case Token::END:
             return nullptr;
         default:
