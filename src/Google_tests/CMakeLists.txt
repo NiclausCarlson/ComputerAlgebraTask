@@ -10,8 +10,6 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 
 add_executable(Google_Tests_run
-        ../RationalNumber/Rational.cpp
-        ../RationalNumber/Rational.h
         ../PolynomialTree/PolynomialPrimitives/Node/Node.h
         ../PolynomialTree/PolynomialPrimitives/Operands/Variable.cpp
         ../PolynomialTree/PolynomialPrimitives/Operands/Variable.h

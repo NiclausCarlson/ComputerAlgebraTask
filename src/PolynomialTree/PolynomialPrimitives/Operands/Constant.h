@@ -8,20 +8,28 @@
 
 
 #include "../Node/Node.h"
-#include "../../../RationalNumber/Rational.h"
+
+typedef long double ld;
+
+const ld eps = 1e10;
+
+inline ld absolute(ld number) {
+    return number <= 0 ? -number : number;
+}
 
 class Constant : public Node {
 private:
-    const Rational value;
+    const ld value;
     const std::string stringValue;
 public:
-    explicit Constant(const Rational&);
+
+    explicit Constant(ld);
 
     std::string to_str() override;
 
-    void get_monomials(std::vector<Node*>& monomials) override;
+    void get_monomials(std::vector<Node *> &monomials) override;
 
-    Rational get_value() const;
+    ld get_value() const;
 
     virtual ~Constant() = default;
 };

@@ -5,8 +5,6 @@ set(CMAKE_SXX_STANDARD 20)
 
 add_executable(ComputerAlgebraTask
         main.cpp
-        RationalNumber/Rational.cpp
-        RationalNumber/Rational.h
         PolynomialTree/PolynomialPrimitives/Node/Node.h
         PolynomialTree/PolynomialPrimitives/Operands/Variable.cpp
         PolynomialTree/PolynomialPrimitives/Operands/Variable.h
