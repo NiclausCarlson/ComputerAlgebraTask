@@ -23,14 +23,12 @@
  */
 class MonomialOrder {
 private:
-
     virtual PolynomialTree generate_new_monomial(bool, ld, std::map<std::string, int> &) = 0;
-
 public:
-
+    //this method compare only ordered monomials
     virtual bool compare(PolynomialTree t1, PolynomialTree t2) = 0;
 
-    virtual void sort_monomial(PolynomialTree monomial) = 0;
+    virtual void sort_monomial(PolynomialTree& monomial) = 0;
 
 };
 

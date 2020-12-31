@@ -14,7 +14,9 @@ class Node {
 public:
     virtual std::string to_str() = 0;
 
-    virtual void get_monomials(std::vector<Node*>& monomials) = 0;
+    virtual void get_monomials(std::vector<Node *> &monomials) = 0;
+
+    virtual ~Node() {}
 };
 
 typedef Node *PolynomialTree;

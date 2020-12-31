@@ -17,6 +17,8 @@ inline std::string get_instance(PolynomialTree tree) {
     if (dynamic_cast<Constant *>( tree) != nullptr) return "Constant";
     if (dynamic_cast<Variable *>( tree) != nullptr) return "Variable";
     if (dynamic_cast<Exponentiation *>( tree) != nullptr) return "Exponentiation";
+    if (dynamic_cast<Multiplication *>( tree) != nullptr) return "Multiplication";
+
     //TODO: Throw Exception
 }
 

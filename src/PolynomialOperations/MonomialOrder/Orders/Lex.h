@@ -28,7 +28,7 @@ public:
     bool compare(PolynomialTree t1, PolynomialTree t2) override;
 
     //method which order monomial
-    void sort_monomial(PolynomialTree monomial) override;
+    void sort_monomial(PolynomialTree& monomial) override;
 
 };
 
