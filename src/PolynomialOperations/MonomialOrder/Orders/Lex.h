@@ -23,7 +23,7 @@ private:
 
     Parser parser;
 public:
-    explicit Lex(std::vector<std::string>);
+    explicit Lex(const std::vector<std::string>&);
 
     bool compare(PolynomialTree t1, PolynomialTree t2) override;
 

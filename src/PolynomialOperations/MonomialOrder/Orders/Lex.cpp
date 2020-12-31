@@ -4,8 +4,10 @@
 
 #include "Lex.h"
 
+#include <utility>
 
-Lex::Lex(std::vector<std::string> order) : variables(std::move(order)) {
+Lex::Lex(const std::vector<std::string> &order) {
+    for (const auto& i : order) variables.push_back(i);
 }
 
 bool Lex::compare(PolynomialTree t1, PolynomialTree t2) {
@@ -24,10 +26,12 @@ void Lex::sort_monomial(PolynomialTree monomial) {
 
     std::vector<Node *> terms;
     monom->get_terms(terms);
+
     // there can be only Constants, Powers, Variables and Unary Minuses
     bool minus = false;//true - monomial have '-'
     ld constant = 1.0;
     std::map<std::string, int> variablesMap; // there <variable, degree>
+    for (const auto &k: variables) variablesMap[k] = 0;
     for (auto i : terms) {
         std::string id = get_instance(i);
         if (id == "UnaryMinus") {
@@ -45,7 +49,7 @@ void Lex::sort_monomial(PolynomialTree monomial) {
             update_exp(i, variablesMap);
         } else if (id == "Constant") {
             constant *= dynamic_cast<Constant *>(i)->get_value();
-        } else if (id == "Variables") {
+        } else if (id == "Variable") {
             update_variable(i, variablesMap);
         } else {
             //TODO:: throw exception

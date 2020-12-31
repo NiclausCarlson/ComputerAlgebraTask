@@ -23,7 +23,7 @@ void Parser::set_next_token() {
     }
     int prev_pos = cur_pos;
     if (isdigit(str[cur_pos])) {
-        tokenizer_helper(isdigit);
+        tokenizer_helper(isdigitOrIsDot);
         cur_token = std::make_pair(Token::CONST, str.substr(prev_pos, cur_pos - prev_pos));
     } else if (isalpha(str[cur_pos])) {
         tokenizer_helper(isalpha);
@@ -54,7 +54,7 @@ PolynomialTree Parser::parseUnaryAndNullaryOperations() {
             set_next_token();
             return new Variable(prev_token.second);
         case Token::MINUS:
-            right = parseUnaryAndNullaryOperations();
+            right = parseExponential();
             return new UnaryMinus(right);
         case Token::END:
             return nullptr;
@@ -95,7 +95,7 @@ PolynomialTree Parser::parseProductAndDivision() {
     while (true) {
         left_number = dynamic_cast<Constant *>(left);
         switch (cur_token.first) {
-            case Token::DOT:
+            case Token::MULT:
                 right = parseExponential();
                 right_number = dynamic_cast<Constant *>(right);
                 if (left_number != nullptr && right_number != nullptr) {
@@ -164,7 +164,7 @@ PolynomialTree Parser::parse(std::string toParse) {
 Parser::Token Parser::getToken(char op) {
     if (op == '+') return Token::PLUS;
     if (op == '-') return Token::MINUS;
-    if (op == '*') return Token::DOT;
+    if (op == '*') return Token::MULT;
     if (op == '/') return Token::DIV;
     if (op == '^') return Token::POW;
     return Token::ERROR;
@@ -174,4 +174,8 @@ void Parser::rightOperandChecker(Node *operand) {
     if (operand == nullptr) {
         throw LostOperand(prev_token.second);
     }
+}
+
+int Parser::isdigitOrIsDot(int ch) {
+    return isdigit(ch) || (ch == '.');
 }

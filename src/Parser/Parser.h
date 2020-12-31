@@ -27,10 +27,11 @@ private:
         VARIABLE,
         PLUS,
         MINUS,
-        DOT,
+        MULT,
         DIV,
         POW,
         END,
+        DOT,
         ERROR
     };
     std::pair<Token, std::string> cur_token;
@@ -42,6 +43,8 @@ private:
 
     void tokenizer_helper(int (*)(int));
 
+    static int isdigitOrIsDot(int);
+
     void skip_whitespaces();
 
     PolynomialTree parseExponential();
@@ -52,7 +55,7 @@ private:
 
     PolynomialTree parseUnaryAndNullaryOperations();
 
-    void rightOperandChecker(Node* operand);
+    void rightOperandChecker(Node *operand);
 
 public:
     PolynomialTree parse(std::string);
