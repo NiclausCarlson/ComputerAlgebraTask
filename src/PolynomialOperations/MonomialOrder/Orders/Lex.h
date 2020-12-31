@@ -6,16 +6,30 @@
 #define COMPUTERALGEBRATASK_LEX_H
 
 
-#include <set>
 #include "../MonomialOrder.h"
+#include "../../../Parser/Parser.h"
+
 
 class Lex : virtual public MonomialOrder {
 private:
-    std::set<std::string> variables;
+    //list of variables for ordering
+    std::vector<std::string> variables;
+
+    static void update_exp(PolynomialTree val, std::map<std::string, int> &variablesMap);
+
+    static void update_variable(PolynomialTree val, std::map<std::string, int> &variablesMap);
+
+    PolynomialTree generate_new_monomial(bool, ld, std::map<std::string, int> &) override;
+
+    Parser parser;
 public:
-    Lex(const std::vector<std::string>&);
+    explicit Lex(std::vector<std::string>);
 
     bool compare(PolynomialTree t1, PolynomialTree t2) override;
+
+    //method which order monomial
+    void sort_monomial(PolynomialTree monomial) override;
+
 };
 
 
