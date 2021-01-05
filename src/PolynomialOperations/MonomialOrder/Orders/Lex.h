@@ -14,6 +14,7 @@ class Lex : virtual public MonomialOrder {
 private:
     //list of variables for ordering
     std::vector<std::string> variables;
+    std::map<std::string, size_t> variables_order;
 
     static void update_exp(PolynomialTree val, std::map<std::string, int> &variablesMap);
 
@@ -23,12 +24,12 @@ private:
 
     Parser parser;
 public:
-    explicit Lex(const std::vector<std::string>&);
+    explicit Lex(const std::vector<std::string> &);
 
     bool compare(PolynomialTree t1, PolynomialTree t2) override;
 
     //method which order monomial
-    void sort_monomial(PolynomialTree& monomial) override;
+    void sort_monomial(PolynomialTree &monomial) override;
 
 };
 

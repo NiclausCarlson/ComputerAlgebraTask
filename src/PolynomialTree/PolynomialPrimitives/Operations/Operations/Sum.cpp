@@ -10,3 +10,7 @@ Sum::Sum(Node *left, Node *right) : AbstractBinaryOperation(left, right, "+", As
 std::string Sum::get_name() {
     return "+";
 }
+
+void Sum::get_terms(std::vector<Node *> &terms) {
+   throw nullptr; // TODO: create exception
+}

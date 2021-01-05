@@ -57,3 +57,4 @@ void AbstractBinaryOperation::get_monomials(std::vector<Node *> &monomials) {
         monomials.push_back(this);
     }
 }
+

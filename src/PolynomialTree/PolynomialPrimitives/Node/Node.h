@@ -16,6 +16,8 @@ public:
 
     virtual void get_monomials(std::vector<Node *> &monomials) = 0;
 
+    virtual void get_terms(std::vector<Node *> &terms) = 0;
+
     virtual ~Node() {}
 };
 

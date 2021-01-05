@@ -29,9 +29,11 @@ public:
 
     void get_monomials(std::vector<Node *> &monomials) override;
 
+    void get_terms(std::vector<Node *> &terms) override;
+
     ld get_value() const;
 
-    virtual ~Constant() = default;
+    ~Constant() override = default;
 };
 
 

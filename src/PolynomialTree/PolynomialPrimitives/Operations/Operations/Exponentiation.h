@@ -14,6 +14,7 @@ public:
 
     std::string get_name() override;
 
+    void get_terms(std::vector<Node *> &terms) override;
 };
 
 

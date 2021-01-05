@@ -8,13 +8,13 @@
 
 #include "../AbstractOperations/AbstractBinaryOperation.h"
 
-class Multiplication: virtual public AbstractBinaryOperation {
+class Multiplication : virtual public AbstractBinaryOperation {
 public:
-    Multiplication(Node*, Node*);
+    Multiplication(Node *, Node *);
 
     std::string get_name() override;
 
-    void get_terms(std::vector<Node*>& terms);
+    void get_terms(std::vector<Node *> &terms) override;
 };
 
 

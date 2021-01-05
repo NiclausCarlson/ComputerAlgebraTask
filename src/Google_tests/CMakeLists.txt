@@ -23,10 +23,6 @@ add_executable(Google_Tests_run
         ../PolynomialTree/PolynomialPrimitives/Operations/Operations/Sum.h
         ../PolynomialTree/PolynomialPrimitives/Operations/Operations/UnaryMinus.cpp
         ../PolynomialTree/PolynomialPrimitives/Operations/Operations/UnaryMinus.h
-        ../PolynomialTree/PolynomialPrimitives/Operations/Operations/BinaryMinus.cpp
-        ../PolynomialTree/PolynomialPrimitives/Operations/Operations/BinaryMinus.h
-        ../PolynomialTree/PolynomialPrimitives/Operations/Operations/Divide.cpp
-        ../PolynomialTree/PolynomialPrimitives/Operations/Operations/Divide.h
         ../PolynomialTree/PolynomialPrimitives/Operations/Operations/Multiplication.cpp
         ../PolynomialTree/PolynomialPrimitives/Operations/Operations/Multiplication.h
         ../PolynomialTree/PolynomialPrimitives/Operations/Operations/Exponentiation.cpp

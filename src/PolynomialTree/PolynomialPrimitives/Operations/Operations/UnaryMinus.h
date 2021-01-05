@@ -10,9 +10,11 @@
 
 class UnaryMinus : virtual public AbstractUnaryOperation {
 public:
-     UnaryMinus(Node *);
+    explicit UnaryMinus(Node *);
 
     std::string get_name() override;
+
+    void get_terms(std::vector<Node *> &terms) override;
 
 };
 

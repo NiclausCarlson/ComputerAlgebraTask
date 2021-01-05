@@ -18,11 +18,13 @@ public:
 
     std::string get_value() const;
 
-    void get_monomials(std::vector<Node*>& monomials) override;
+    void get_monomials(std::vector<Node *> &monomials) override;
+
+    void get_terms(std::vector<Node *> &terms) override;
 
     explicit Variable(std::string);
 
-    virtual ~Variable() = default;
+    ~Variable() override = default;
 };
 
 

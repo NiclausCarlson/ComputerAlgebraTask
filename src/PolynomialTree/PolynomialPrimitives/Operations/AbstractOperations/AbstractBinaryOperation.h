@@ -30,9 +30,11 @@ public:
 
     Node *getRightNode();
 
-    void get_monomials(std::vector<Node*>& monomials) override;
+    void get_monomials(std::vector<Node *> &monomials) override;
 
-    ~AbstractBinaryOperation() = default;
+    void get_terms(std::vector<Node *> &terms) override = 0;
+
+    ~AbstractBinaryOperation() override = default;
 };
 
 

@@ -19,3 +19,7 @@ void Constant::get_monomials(std::vector<Node *> &monomials) {
     monomials.push_back(this);
 }
 
+void Constant::get_terms(std::vector<Node *> &terms) {
+    this->get_monomials(terms);
+}
+

@@ -19,6 +19,8 @@ public:
 
     virtual std::string get_name() = 0;
 
+    virtual void get_terms(std::vector<Node*>& terms) override;
+
     std::string to_str() override;
 
     Node const *getOperand() const;
@@ -27,7 +29,7 @@ public:
 
     void get_monomials(std::vector<Node *> &monomials) override;
 
-    ~AbstractUnaryOperation() = default;
+    ~AbstractUnaryOperation() override = default;
 };
 
 

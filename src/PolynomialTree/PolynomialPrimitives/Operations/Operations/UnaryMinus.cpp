@@ -10,3 +10,8 @@ UnaryMinus::UnaryMinus(Node *operand) : AbstractUnaryOperation(operand, "-", Ass
 std::string UnaryMinus::get_name() {
     return "--";
 }
+
+void UnaryMinus::get_terms(std::vector<Node *> &terms) {
+    terms.push_back(this);
+    this->operand->get_terms(terms);
+}

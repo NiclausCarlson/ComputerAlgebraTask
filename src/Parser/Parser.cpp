@@ -46,6 +46,7 @@ void Parser::skip_whitespaces() {
 PolynomialTree Parser::parseUnaryAndNullaryOperations() {
     set_next_token();
     Node *right;
+    Constant *constant;
     switch (cur_token.first) {
         case Token::CONST:
             set_next_token();
@@ -55,7 +56,13 @@ PolynomialTree Parser::parseUnaryAndNullaryOperations() {
             return new Variable(prev_token.second);
         case Token::MINUS:
             right = parseExponential();
-            return new UnaryMinus(right);
+            if (prev_token.first == Token::CONST) {
+                constant = dynamic_cast<Constant *>(right);
+                return new Constant(-constant->get_value());
+            } else {
+                return new UnaryMinus(right);
+            }
+
         case Token::END:
             return nullptr;
         default:

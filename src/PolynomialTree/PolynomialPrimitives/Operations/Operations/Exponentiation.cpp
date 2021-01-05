@@ -4,9 +4,14 @@
 
 #include "Exponentiation.h"
 
-Exponentiation::Exponentiation(Node *left, Node *right) : AbstractBinaryOperation(left, right, "^", Associativity::RIGHT) {
+Exponentiation::Exponentiation(Node *left, Node *right) : AbstractBinaryOperation(left, right, "^",
+                                                                                  Associativity::RIGHT) {
 }
 
 std::string Exponentiation::get_name() {
     return "^";
+}
+
+void Exponentiation::get_terms(std::vector<Node *> &terms) {
+    terms.push_back(this);
 }

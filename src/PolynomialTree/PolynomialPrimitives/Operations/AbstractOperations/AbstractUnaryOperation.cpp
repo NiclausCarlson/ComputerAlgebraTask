@@ -23,3 +23,7 @@ std::string AbstractUnaryOperation::to_str() {
 void AbstractUnaryOperation::get_monomials(std::vector<Node *> &monomials) {
     monomials.push_back(this);
 }
+
+void AbstractUnaryOperation::get_terms(std::vector<Node *> &terms) {
+
+}
