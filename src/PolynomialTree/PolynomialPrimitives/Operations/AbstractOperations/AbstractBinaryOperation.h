@@ -22,9 +22,9 @@ public:
 
     std::string to_str() override;
 
-    Node const *getLeftNode() const;
+    void set_left_node(Node* node);
 
-    Node const *getRightNode() const;
+    void set_right_node(Node* node);
 
     Node *getLeftNode();
 

@@ -3,3 +3,10 @@
 //
 
 #include "Grlex.h"
+
+Grlex::Grlex(const std::vector<std::string> &order) : MonomialOrder(order) {
+}
+
+bool Grlex::compare(PolynomialTree t1, PolynomialTree t2) {
+    return false;
+}

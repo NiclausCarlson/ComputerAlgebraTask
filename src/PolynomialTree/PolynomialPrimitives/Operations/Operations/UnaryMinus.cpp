@@ -8,7 +8,7 @@ UnaryMinus::UnaryMinus(Node *operand) : AbstractUnaryOperation(operand, "-", Ass
 }
 
 std::string UnaryMinus::get_name() {
-    return "--";
+    return "-";
 }
 
 void UnaryMinus::get_terms(std::vector<Node *> &terms) {

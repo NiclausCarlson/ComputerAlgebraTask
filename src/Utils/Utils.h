@@ -13,6 +13,7 @@
 #include "../PolynomialTree/PolynomialPrimitives/Operations/Operations/Exponentiation.h"
 #include "../PolynomialTree/PolynomialPrimitives/Operations/Operations/Sum.h"
 #include "../Exceptions/ParserExceptions/UnsupportedOperation.h"
+#include "../PolynomialTree/PolynomialPrimitives/Operations/Operations/Multiplication.h"
 
 inline std::string get_instance(PolynomialTree tree) {
     if (dynamic_cast<Constant *>(tree) != nullptr) return "Constant";
@@ -22,7 +23,7 @@ inline std::string get_instance(PolynomialTree tree) {
     if (dynamic_cast<Multiplication *>(tree) != nullptr) return "Multiplication";
     if (dynamic_cast<Sum *>(tree) != nullptr) return "Sum";
 
-    throw UnsupportedOperation(tree->to_str());
+    throw UnsupportedOperation("in get_instance", tree->to_str());
 }
 
 #endif //COMPUTERALGEBRATASK_UTILS_H

@@ -40,6 +40,6 @@ add_executable(ComputerAlgebraTask
         PolynomialOperations/MonomialOrder/MonomialOrder.h
         PolynomialOperations/MonomialOrder/Orders/Lex.cpp
         PolynomialOperations/MonomialOrder/Orders/Lex.h
-        Utils/Utils.h PolynomialOperations/Simplify/Simplify.cpp Exceptions/OrderExceptions/OrderException.cpp Exceptions/OrderExceptions/OrderException.h Exceptions/OrderExceptions/UnexpectedOperationException.cpp Exceptions/OrderExceptions/UnexpectedOperationException.h PolynomialOperations/MonomialOrder/Orders/Grlex.cpp PolynomialOperations/MonomialOrder/Orders/Grlex.h PolynomialOperations/MonomialOrder/Orders/Plex.cpp PolynomialOperations/MonomialOrder/Orders/Plex.h FGLM/FGLM.cpp FGLM/FGLM.h)
+        Utils/Utils.h PolynomialOperations/Simplify/Simplify.h Exceptions/OrderExceptions/OrderException.cpp Exceptions/OrderExceptions/OrderException.h Exceptions/OrderExceptions/UnexpectedOperationException.cpp Exceptions/OrderExceptions/UnexpectedOperationException.h PolynomialOperations/MonomialOrder/Orders/Grlex.cpp PolynomialOperations/MonomialOrder/Orders/Grlex.h PolynomialOperations/MonomialOrder/Orders/Plex.cpp PolynomialOperations/MonomialOrder/Orders/Plex.h FGLM/FGLM.cpp FGLM/FGLM.h PolynomialOperations/MonomialOrder/MonomialOrder.cpp PolynomialOperations/Simplify/Equals.h)
 
 add_subdirectory(Google_tests)

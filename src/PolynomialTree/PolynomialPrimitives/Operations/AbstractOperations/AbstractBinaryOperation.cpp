@@ -10,13 +10,6 @@ AbstractBinaryOperation::AbstractBinaryOperation(Node *left, Node *right, std::s
         : left(left), right(right), type(std::move(type)), associative(associative) {
 }
 
-Node const *AbstractBinaryOperation::getLeftNode() const {
-    return left;
-}
-
-Node const *AbstractBinaryOperation::getRightNode() const {
-    return right;
-}
 
 Node *AbstractBinaryOperation::getLeftNode() {
     return left;
@@ -56,5 +49,13 @@ void AbstractBinaryOperation::get_monomials(std::vector<Node *> &monomials) {
     } else {
         monomials.push_back(this);
     }
+}
+
+void AbstractBinaryOperation::set_left_node(Node *node) {
+    this->left = node;
+}
+
+void AbstractBinaryOperation::set_right_node(Node *node) {
+    this->right = node;
 }
 

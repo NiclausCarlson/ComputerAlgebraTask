@@ -6,6 +6,7 @@
 #define COMPUTERALGEBRATASK_MONOMIALORDER_H
 
 
+#include "../../Exceptions/OrderExceptions/UnexpectedOperationException.h"
 #include "../../PolynomialTree/PolynomialPrimitives/Node/Node.h"
 #include "../../PolynomialTree/PolynomialPrimitives/Operations/Operations/Multiplication.h"
 #include "../../PolynomialTree/PolynomialPrimitives/Operands/Constant.h"
@@ -13,6 +14,7 @@
 #include "../../PolynomialTree/PolynomialPrimitives/Operands/Variable.h"
 #include "../../PolynomialTree/PolynomialPrimitives/Operations/Operations/Exponentiation.h"
 #include "../../Utils/Utils.h"
+#include "../../Parser/Parser.h"
 
 #include <utility>
 #include <map>
@@ -23,13 +25,25 @@
  */
 class MonomialOrder {
 private:
-    virtual PolynomialTree generate_new_monomial(bool, ld, std::map<std::string, int> &) = 0;
+    PolynomialTree generate_new_monomial(bool, ld, std::map<std::string, int> &);
+    Parser parser;
+protected:
+    bool simplify_monomial(bool &minus,
+                           ld &constant,
+                           std::map<std::string, int> &variablesMap,
+                           PolynomialTree monomial);
+
+    std::vector<std::string> variables;
+    std::map<std::string, size_t> variables_order;
+
 public:
+
+    explicit MonomialOrder(const std::vector<std::string> &order);
+
     //this method compare only ordered monomials
     virtual bool compare(PolynomialTree t1, PolynomialTree t2) = 0;
 
-    virtual void sort_monomial(PolynomialTree& monomial) = 0;
-
+    void sort_monomial(PolynomialTree &monomial);
 };
 
 
