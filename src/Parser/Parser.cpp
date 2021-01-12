@@ -60,7 +60,7 @@ PolynomialTree Parser::parseUnaryAndNullaryOperations() {
                 constant = dynamic_cast<Constant *>(right);
                 return new Constant(-constant->get_value());
             } else {
-                return new UnaryMinus(right);
+                return new Multiplication(new Constant(-1.0), right);
             }
 
         case Token::END:
@@ -148,7 +148,7 @@ PolynomialTree Parser::parseSum() {
                 right = parseProductAndDivision();
                 rightOperandChecker(right);
                 left = (Node *) (new Sum(left,
-                                         (Node *) (new UnaryMinus(right))));
+                                         (Node *) (new Multiplication(new Constant(-1.0), right))));
                 break;
             default:
                 if (cur_token.first == Token::ERROR) {
