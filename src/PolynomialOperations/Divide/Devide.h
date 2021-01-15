@@ -1,9 +1,0 @@
-//
-// Created by Nik Carlson on 13.01.2021.
-//
-
-#ifndef COMPUTERALGEBRATASK_DEVIDE_H
-#define COMPUTERALGEBRATASK_DEVIDE_H
-
-
-#endif //COMPUTERALGEBRATASK_DEVIDE_H

@@ -19,8 +19,8 @@ bool Plex::compare(PolynomialTree t1, PolynomialTree t2) {
     for (size_t i = 0; i < __min(t1_terms.size(), t2_terms.size()); ++i) {
         std::string t1_instance = get_instance(t1_terms[i]);
         std::string t2_instance = get_instance(t2_terms[i]);
-        if (t1_instance == "Constant" || t1_instance == "UnaryMinus") ++t1_pos;
-        if (t2_instance == "Constant" || t2_instance == "UnaryMinus") ++t2_pos;
+        if (t1_instance == "Constant") ++t1_pos;
+        if (t2_instance == "Constant") ++t2_pos;
     }
     //here can be only Variables or Exponentiation
     do {
@@ -56,4 +56,6 @@ bool Plex::compare(PolynomialTree t1, PolynomialTree t2) {
 
     return false;
 }
+
+Plex::~Plex() = default;
 

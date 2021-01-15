@@ -82,3 +82,6 @@ PolynomialTree MonomialOrder::generate_new_monomial(bool minus, ld number, std::
     return parser.parse(str);
 }
 
+MonomialOrder::~MonomialOrder() = default;
+
+

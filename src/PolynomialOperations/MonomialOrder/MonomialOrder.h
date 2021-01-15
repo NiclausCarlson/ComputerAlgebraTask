@@ -26,6 +26,7 @@
 class MonomialOrder {
 private:
     PolynomialTree generate_new_monomial(bool, ld, std::map<std::string, int> &);
+
     Parser parser;
 protected:
     bool simplify_monomial(bool &minus,
@@ -44,6 +45,8 @@ public:
     virtual bool compare(PolynomialTree t1, PolynomialTree t2) = 0;
 
     void sort_monomial(PolynomialTree &monomial);
+
+    virtual ~MonomialOrder();
 };
 
 

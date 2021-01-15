@@ -2,6 +2,7 @@
 // Created by Nik Carlson on 27.12.2020.
 //
 
+#include <algorithm>
 #include "gtest/gtest.h"
 #include "../Parser/Parser.h"
 #include "../PolynomialOperations/MonomialOrder/Orders/Lex.h"
@@ -42,6 +43,20 @@ protected:
         tree->get_terms(terms);
         return terms;
     }
+
+//    static void set_monomials(std::string &monomial, std::vector<Node *> &monomials) {
+//        if (!monomials.empty()) monomials.clear();
+//        Node *tree = parser.parse(monomial);
+//        tree->get_monomials(monomials);
+//    }
+//
+//    static bool compare(std::vector<Node *> &monomials1, std::vector<Node *> &monomials2, MonomialOrder *order) {
+//        auto comparator = [&](Node *t1, Node *t2) { return order->compare(t1, t2); };
+//        for (size_t i = 0; i < std::min(monomials1.size(), monomials2.size()); ++i) {
+//            if (!order->compare(monomials1[i], monomials2[i])) return false;
+//        }
+//        return true;
+//    }
 
     std::vector<PolynomialTree> get_expected_polynomials(const std::vector<std::string> &monomials) {
         std::vector<PolynomialTree> expected;
@@ -140,27 +155,56 @@ TEST_F(TreeOperationTest, GetTermsTest) {
 
 }
 
-//TEST_F(TreeOperationTest, SortMonomialTest) {
-//    MonomialOrder *lexOrder = new Lex({"x", "y", "z"});
-//    PolynomialTree tree = parser.parse("x");
-//    lexOrder->sort_monomial(tree);
-//    ASSERT_STREQ("x", tree->to_str().c_str());
-//
-//    tree = parser.parse("x+y");
-//    lexOrder->sort_monomial(tree);
-//    ASSERT_STREQ("x + y", tree->to_str().c_str());
-//
-//    tree = parser.parse("x^2*y^3");
-//    lexOrder->sort_monomial(tree);
-//    ASSERT_STREQ("x^2.000000 * y^3.000000", tree->to_str().c_str());
-//
-//    tree = parser.parse("z  * x * y *  z * z * z * y * x");
-//    lexOrder->sort_monomial(tree);
-//    ASSERT_STREQ("x ^ 2.000000 * y ^ 2.000000 * z ^ 4.000000", tree->to_str().c_str());
-//}
+TEST_F(TreeOperationTest, LexSortMonomialTest) {
+    MonomialOrder *lex_order = new Lex({"x", "y", "z"});
+    PolynomialTree tree = parser.parse("x");
+    lex_order->sort_monomial(tree);
+    ASSERT_STREQ("x", tree->to_str().c_str());
 
-//TEST_F(TreeOperationTest, LexOrderTest) {
-//    MonomialOrder *lexOrder = new Lex({"x", "y", "z"});
-//
-//}
-//
+    tree = parser.parse("x*y");
+    lex_order->sort_monomial(tree);
+    ASSERT_STREQ("x * y", tree->to_str().c_str());
+
+    tree = parser.parse("x^2*y^3");
+    lex_order->sort_monomial(tree);
+    ASSERT_STREQ("x^2.000000 * y^3.000000", tree->to_str().c_str());
+
+    tree = parser.parse("z  * x * y *  z * z * z * y * x");
+    lex_order->sort_monomial(tree);
+    ASSERT_STREQ("x^2.000000 * y^2.000000 * z^4.000000", tree->to_str().c_str());
+
+    tree = parser.parse("y*y*y*z*z*z*x*y*z*y");
+    lex_order->sort_monomial(tree);
+    ASSERT_STREQ("x * y^5.000000 * z^4.000000", tree->to_str().c_str());
+
+    tree = parser.parse("17*y*y*z");
+    lex_order->sort_monomial(tree);
+    ASSERT_STREQ("17.000000 * y^2.000000 * z", tree->to_str().c_str());
+
+    tree = parser.parse("2*x*y*y*y*x*25*z");
+    lex_order->sort_monomial(tree);
+    ASSERT_STREQ("50.000000 * x^2.000000 * y^3.000000 * z", tree->to_str().c_str());
+
+    tree = parser.parse("-5 * x * x * 5");
+    lex_order->sort_monomial(tree);
+    ASSERT_STREQ("-25.000000 * x^2.000000", tree->to_str().c_str());
+
+    tree = parser.parse("-5 * x * x * -5");
+    lex_order->sort_monomial(tree);
+    ASSERT_STREQ("25.000000 * x^2.000000", tree->to_str().c_str());
+
+}
+
+TEST_F(TreeOperationTest, LexOrderCompareTest) {
+    MonomialOrder *lex_order = new Lex({"x", "y", "z"});
+    std::vector<Node *> monomials1;
+    std::vector<Node *> monomials2;
+    std::string monomial1 = "x";
+    std::string monomial2 = "y";
+
+//    set_monomials(monomial1, monomials1);
+//    set_monomials(monomial1, monomials2);
+//    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
+}
+
+TEST_F(TreeOperationTest, SimplifyLexOrderTest) {}

@@ -17,6 +17,7 @@ public:
 
     bool compare(PolynomialTree t1, PolynomialTree t2) override;
 
+    ~Plex() override;
 };
 
 #endif //COMPUTERALGEBRATASK_PLEX_H

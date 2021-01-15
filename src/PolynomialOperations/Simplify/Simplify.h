@@ -6,14 +6,8 @@
 
 #include <algorithm>
 
-#include "../../PolynomialTree/PolynomialPrimitives/Node/Node.h"
-#include "../MonomialOrder/MonomialOrder.h"
+#include "../MonomialslJoiner/Join.h"
 #include "Equals.h"
-
-PolynomialTree recursive(std::vector<Node *>::iterator from,
-                         std::vector<Node *>::iterator to);
-
-PolynomialTree join_monomials(std::vector<Node *> &monomials);
 
 //This method returns simplified polynomial
 PolynomialTree get_simplified(PolynomialTree &t, MonomialOrder *order);

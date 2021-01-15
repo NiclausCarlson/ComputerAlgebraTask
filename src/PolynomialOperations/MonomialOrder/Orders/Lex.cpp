@@ -58,3 +58,4 @@ bool Lex::compare(PolynomialTree t1, PolynomialTree t2) {
     return false;
 }
 
+Lex::~Lex() = default;

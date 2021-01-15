@@ -13,6 +13,8 @@ public:
     explicit Lex(const std::vector<std::string> &order);
 
     bool compare(PolynomialTree t1, PolynomialTree t2) override;
+
+    ~Lex() override;
 };
 
 

@@ -26,7 +26,7 @@ bool equals(std::vector<PolynomialTree> &t1_terms, std::vector<PolynomialTree> &
         if (t1_instance == "Constant") ++t1_pos;
         if (t2_instance == "Constant") ++t2_pos;
     }
-    //if (t1_pos >= t1_terms.size() || t2_pos >= t2_terms.size()) return false;
+
     if (t1_terms.size() - t1_pos != t2_terms.size() - t2_pos) return false;
 
     while (t1_pos < t1_terms.size() && t2_pos < t2_terms.size()) {
