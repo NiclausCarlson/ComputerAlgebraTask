@@ -11,6 +11,7 @@
 #include "../../PolynomialTree/PolynomialPrimitives/Operations/Operations/Sum.h"
 #include "../../PolynomialOperations/Simplify/Simplify.h"
 #include "../MonomialslJoiner/Join.h"
+#include "../../PolynomialTree/MonomialThings/MonomialThings.h"
 
 PolynomialTree sum(PolynomialTree left, PolynomialTree right, MonomialOrder *order);
 
@@ -18,6 +19,6 @@ PolynomialTree multiply_to_monomial(PolynomialTree polynomial, PolynomialTree mo
 
 PolynomialTree divide_monomials(Node *divider, Node *dividend);
 
-std::pair<PolynomialTree, PolynomialTree> divide(PolynomialTree, const std::vector<PolynomialTree> &);
+std::pair<std::vector<PolynomialTree>, PolynomialTree> divide(PolynomialTree, const std::vector<PolynomialTree> &, MonomialOrder *);
 
 #endif //COMPUTERALGEBRATASK_ARITHMETICOPERATIONS_H

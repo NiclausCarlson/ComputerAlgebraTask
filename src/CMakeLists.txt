@@ -61,6 +61,6 @@ add_executable(ComputerAlgebraTask
         PolynomialOperations/Simplify/Equals.h
         PolynomialOperations/Simplify/Equals.cpp
         PolynomialOperations/Simplify/Simplify.cpp
-        PolynomialOperations/ArithmeticOperations/ArithmeticOperations.h PolynomialOperations/ArithmeticOperations/ArithmeticOperations.cpp PolynomialOperations/MonomialslJoiner/Join.h PolynomialOperations/MonomialslJoiner/Join.cpp)
+        PolynomialOperations/ArithmeticOperations/ArithmeticOperations.h PolynomialOperations/ArithmeticOperations/ArithmeticOperations.cpp PolynomialOperations/MonomialslJoiner/Join.h PolynomialOperations/MonomialslJoiner/Join.cpp PolynomialTree/MonomialThings/MonomialThings.h PolynomialTree/MonomialThings/MonomialThings.cpp)
 
 add_subdirectory(Google_tests)

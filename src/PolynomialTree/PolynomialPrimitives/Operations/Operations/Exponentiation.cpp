@@ -15,3 +15,4 @@ std::string Exponentiation::get_name() {
 void Exponentiation::get_terms(std::vector<Node *> &terms) {
     terms.push_back(this);
 }
+
