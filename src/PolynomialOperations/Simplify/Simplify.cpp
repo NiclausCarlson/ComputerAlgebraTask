@@ -11,6 +11,9 @@ PolynomialTree get_simplified(PolynomialTree &t, MonomialOrder *order) {
     for (auto &i: monomials) order->sort_monomial(i);
     auto comp = [&](PolynomialTree t1, PolynomialTree t2) { return order->compare(t1, t2); };
     std::sort(monomials.begin(), monomials.end(), comp);
+    for(auto i: monomials){
+        std::string q = i->to_str();
+    }
     std::vector<Node *> new_polynomial;
 
     Node *node = monomials[0];

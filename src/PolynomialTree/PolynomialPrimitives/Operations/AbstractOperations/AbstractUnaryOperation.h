@@ -17,9 +17,11 @@ protected:
 public:
     AbstractUnaryOperation(Node *, std::string, Associativity);
 
+    AbstractUnaryOperation *clone() override = 0;
+
     virtual std::string get_name() = 0;
 
-    virtual void get_terms(std::vector<Node*>& terms) override;
+    void get_terms(std::vector<Node *> &terms) override;
 
     std::string to_str() override;
 

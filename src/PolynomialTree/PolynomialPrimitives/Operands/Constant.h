@@ -25,6 +25,8 @@ public:
 
     explicit Constant(ld);
 
+    Constant *clone() override;
+
     std::string to_str() override;
 
     void get_monomials(std::vector<Node *> &monomials) override;

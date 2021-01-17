@@ -12,6 +12,8 @@ class Exponentiation : virtual public AbstractBinaryOperation {
 public:
     Exponentiation(Node *, Node *);
 
+    Exponentiation *clone() override;
+
     std::string get_name() override;
 
     void get_terms(std::vector<Node *> &terms) override;

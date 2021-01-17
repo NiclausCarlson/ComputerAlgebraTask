@@ -23,3 +23,7 @@ void Variable::get_monomials(std::vector<Node *> &monomials) {
 void Variable::get_terms(std::vector<Node *> &terms) {
     this->get_monomials(terms);
 }
+
+Variable *Variable::clone() {
+    return new Variable(*this);
+}

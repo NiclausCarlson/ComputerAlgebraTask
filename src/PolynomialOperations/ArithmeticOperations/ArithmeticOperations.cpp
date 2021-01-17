@@ -18,7 +18,7 @@ PolynomialTree multiply_to_monomial(PolynomialTree polynomial, PolynomialTree mo
     return get_simplified(result, order);
 }
 
-PolynomialTree divide_monomials(Node *divider, Node *dividend, MonomialOrder *order) {
+PolynomialTree divide_monomials(Node *dividend, Node *divider, MonomialOrder *order) {
     auto *is_constant = dynamic_cast<Constant *>(divider);
     if (is_constant != nullptr)
         return multiply_to_monomial(dividend, new Constant(1.0 / is_constant->get_value()), order);
@@ -89,7 +89,7 @@ divide(PolynomialTree numerator, const std::vector<PolynomialTree> &denominators
     std::vector<Node *> quotient;
     quotient.reserve(denominators.size());
     for (int i = 0; i < denominators.size(); ++i) quotient.emplace_back(nullptr);
-    Node *modulo = nullptr;
+    PolynomialTree modulo = nullptr;
 
     auto update_value = [&order](PolynomialTree &to_update, Node *val) {
         if (to_update == nullptr) to_update = val;
@@ -107,27 +107,26 @@ divide(PolynomialTree numerator, const std::vector<PolynomialTree> &denominators
         have_division = false;
         denominators_idx = 0;
         lt_1 = nullptr;
-        lt_2 = nullptr;
         while (!have_division && denominators_idx < denominators.size()) {
             std::vector<Node *> monomials;
             denominators[denominators_idx]->get_monomials(monomials);
             lt_1 = get_LT(numerator);
             lt_2 = get_LT(denominators[denominators_idx]);
-            Node *div_res = divide_monomials(lt_2, lt_1, order);
+            Node *div_res = divide_monomials(lt_1, lt_2, order);
             if (div_res != nullptr) {
                 std::string a = div_res->to_str();
                 update_value(quotient[denominators_idx], div_res);
-                numerator = sum(numerator, multiply_to_monomial(
+                numerator = sum(multiply_to_monomial(
                         new Multiplication(new Constant(-1.0), div_res),
-                        denominators[denominators_idx], order), order);
+                        denominators[denominators_idx], order), numerator, order);
                 numerator = get_simplified(numerator, order);
                 have_division = true;
             } else ++denominators_idx;
         }
         if (!have_division) {
-            update_value(modulo, lt_1);
-            numerator = sum(numerator,
-                            new Multiplication(new Constant(-1.0), lt_1), order);
+            Node *copyed = lt_1->clone();
+            update_value(modulo, copyed);
+            numerator = sum(new Multiplication(new Constant(-1.0), lt_1), numerator, order);
         }
         is_zero = dynamic_cast<Constant *>(numerator);
     }

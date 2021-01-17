@@ -12,6 +12,8 @@ class Sum : virtual public AbstractBinaryOperation {
 public:
     Sum(Node *, Node *);
 
+    Sum *clone() override;
+
     std::string get_name() override;
 
     void get_terms(std::vector<Node *> &terms) override;

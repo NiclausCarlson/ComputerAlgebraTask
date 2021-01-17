@@ -14,6 +14,8 @@ private:
     const std::string value;
 public:
 
+    Variable *clone() override;
+
     std::string to_str() override;
 
     std::string get_value() const;

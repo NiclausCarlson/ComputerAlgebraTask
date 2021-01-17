@@ -31,3 +31,7 @@ void Multiplication::get_terms(std::vector<Node *> &terms) {
     adder(this->left);
     adder(this->right);
 }
+
+Multiplication *Multiplication::clone() {
+    return new Multiplication(*this);
+}

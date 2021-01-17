@@ -12,6 +12,8 @@ class UnaryMinus : virtual public AbstractUnaryOperation {
 public:
     explicit UnaryMinus(Node *);
 
+    UnaryMinus *clone() override;
+
     std::string get_name() override;
 
     void get_terms(std::vector<Node *> &terms) override;

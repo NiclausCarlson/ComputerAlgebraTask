@@ -12,6 +12,8 @@ class Multiplication : virtual public AbstractBinaryOperation {
 public:
     Multiplication(Node *, Node *);
 
+    Multiplication *clone() override;
+
     std::string get_name() override;
 
     void get_terms(std::vector<Node *> &terms) override;

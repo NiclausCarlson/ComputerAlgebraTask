@@ -15,3 +15,7 @@ void UnaryMinus::get_terms(std::vector<Node *> &terms) {
     terms.push_back(this);
     this->operand->get_terms(terms);
 }
+
+UnaryMinus *UnaryMinus::clone() {
+    return new UnaryMinus(*this);
+}

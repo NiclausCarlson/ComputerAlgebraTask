@@ -23,3 +23,7 @@ void Constant::get_terms(std::vector<Node *> &terms) {
     this->get_monomials(terms);
 }
 
+Constant *Constant::clone() {
+    return new Constant(*this);
+}
+

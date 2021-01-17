@@ -16,3 +16,7 @@ void Exponentiation::get_terms(std::vector<Node *> &terms) {
     terms.push_back(this);
 }
 
+Exponentiation *Exponentiation::clone() {
+    return new Exponentiation(*this);
+}
+

@@ -12,5 +12,9 @@ std::string Sum::get_name() {
 }
 
 void Sum::get_terms(std::vector<Node *> &terms) {
-   throw nullptr; // TODO: create exception
+    throw nullptr; // TODO: create exception
+}
+
+Sum *Sum::clone() {
+    return new Sum(*this);
 }
