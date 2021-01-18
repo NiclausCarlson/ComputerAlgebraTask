@@ -10,6 +10,8 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 
 add_executable(Google_Tests_run
+        ParserTest.cpp
+        TreeOperationTest.cpp
         ../PolynomialTree/PolynomialPrimitives/Node/Node.h
         ../PolynomialTree/PolynomialPrimitives/Operands/Variable.cpp
         ../PolynomialTree/PolynomialPrimitives/Operands/Variable.h
@@ -61,5 +63,10 @@ add_executable(Google_Tests_run
         ../PolynomialOperations/Simplify/Equals.h
         ../PolynomialOperations/Simplify/Equals.cpp
         ../PolynomialOperations/Simplify/Simplify.cpp
-        ParserTest.cpp TreeOperationTest.cpp)
+        ../PolynomialOperations/ArithmeticOperations/ArithmeticOperations.h
+        ../PolynomialOperations/ArithmeticOperations/ArithmeticOperations.cpp
+        ../PolynomialOperations/MonomialslJoiner/Join.h
+        ../PolynomialOperations/MonomialslJoiner/Join.cpp
+        ../PolynomialTree/MonomialThings/MonomialThings.h
+        ../PolynomialTree/MonomialThings/MonomialThings.cpp PolynomialOperationsTest.cpp)
 target_link_libraries(Google_Tests_run gtest gtest_main)

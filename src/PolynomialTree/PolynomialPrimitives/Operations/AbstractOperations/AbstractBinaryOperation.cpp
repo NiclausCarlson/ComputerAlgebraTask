@@ -30,25 +30,15 @@ void AbstractBinaryOperation::get_monomials(std::vector<Node *> &monomials) {
     auto *sum_checker = dynamic_cast<Sum *>(this);
 
     if (sum_checker != nullptr) {
-        Sum *left_checker = dynamic_cast<Sum *>(this->left);
-        Sum *right_checker = dynamic_cast<Sum *>(this->right);
+        auto *left_checker = dynamic_cast<Sum *>(this->left);
+        auto *right_checker = dynamic_cast<Sum *>(this->right);
 
-        if (left_checker == nullptr && right_checker == nullptr) {
-            this->left->get_monomials(monomials);
-            this->right->get_monomials(monomials);
-        } else if (left_checker == nullptr) {
-            monomials.push_back(this->left);
-            this->right->get_monomials(monomials);
-        } else if (right_checker == nullptr) {
-            this->left->get_monomials(monomials);
-            monomials.push_back(this->right);
-        } else {
-            monomials.push_back(this);
-        }
+        if (left_checker != nullptr) this->left->get_monomials(monomials);
+        else monomials.push_back(this->left);
+        if (right_checker != nullptr) this->right->get_monomials(monomials);
+        else monomials.push_back(this->right);
 
-    } else {
-        monomials.push_back(this);
-    }
+    } else monomials.push_back(this);
 }
 
 void AbstractBinaryOperation::set_left_node(Node *node) {

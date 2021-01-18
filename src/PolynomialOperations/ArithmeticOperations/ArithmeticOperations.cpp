@@ -7,6 +7,7 @@
 
 PolynomialTree sum(PolynomialTree left, PolynomialTree right, MonomialOrder *order) {
     PolynomialTree result = new Sum(left, right);
+    std::string e = result->to_str();
     return get_simplified(result, order);
 }
 
@@ -15,7 +16,7 @@ PolynomialTree multiply_to_monomial(PolynomialTree polynomial, PolynomialTree mo
     polynomial->get_monomials(monomials);
     for (auto &it : monomials) it = new Multiplication(it, monomial);
     Node *result = join_monomials(monomials);
-    return get_simplified(result, order);
+    return  get_simplified(result, order);
 }
 
 PolynomialTree divide_monomials(Node *dividend, Node *divider, MonomialOrder *order) {
@@ -107,6 +108,7 @@ divide(PolynomialTree numerator, const std::vector<PolynomialTree> &denominators
         have_division = false;
         denominators_idx = 0;
         lt_1 = nullptr;
+        std::string q = numerator->to_str();
         while (!have_division && denominators_idx < denominators.size()) {
             std::vector<Node *> monomials;
             denominators[denominators_idx]->get_monomials(monomials);
@@ -116,10 +118,11 @@ divide(PolynomialTree numerator, const std::vector<PolynomialTree> &denominators
             if (div_res != nullptr) {
                 std::string a = div_res->to_str();
                 update_value(quotient[denominators_idx], div_res);
-                numerator = sum(multiply_to_monomial(
-                        new Multiplication(new Constant(-1.0), div_res),
-                        denominators[denominators_idx], order), numerator, order);
+                numerator = sum(multiply_to_monomial(denominators[denominators_idx],new Multiplication(new Constant(-1.0), div_res), order),
+                                numerator, order);
+                q = numerator->to_str();
                 numerator = get_simplified(numerator, order);
+                q = numerator->to_str();
                 have_division = true;
             } else ++denominators_idx;
         }

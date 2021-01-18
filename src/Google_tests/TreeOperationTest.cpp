@@ -68,7 +68,6 @@ protected:
     }
 };
 
-
 TEST_F(TreeOperationTest, GetMonomialsTest) {
 
     ASSERT_TRUE(is_vector_equals(
