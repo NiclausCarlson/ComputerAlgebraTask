@@ -19,6 +19,7 @@
 #include <utility>
 #include <map>
 #include <set>
+#include <algorithm>
 
 /*
  * using for order monomial list
