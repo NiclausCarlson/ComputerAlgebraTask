@@ -23,11 +23,6 @@ bool Plex::compare(PolynomialTree t1, PolynomialTree t2) {
     }
     //here can be only Variables or Exponentiation
     do {
-        if ((t1_pos >= t1_terms.size() && t2_pos >= t2_terms.size()) ||
-            (t1_pos >= t1_terms.size() && t2_pos < t2_terms.size()))
-            return false;
-        else if (t1_pos < t1_terms.size() && t2_pos >= t2_terms.size()) return true;
-
         auto *t1_var = dynamic_cast<Variable *>(t1_terms[t1_pos]);
         auto *t2_var = dynamic_cast<Variable *>(t2_terms[t2_pos]);
         auto *t1_exp = dynamic_cast<Exponentiation *>(t1_terms[t1_pos]);
@@ -49,7 +44,7 @@ bool Plex::compare(PolynomialTree t1, PolynomialTree t2) {
             auto *t12_var = dynamic_cast<Variable *>(t1_exp->getLeftNode());
             auto *t22_var = dynamic_cast<Variable *>(t2_exp->getLeftNode());
             if (variables_order[t12_var->get_value()] > variables_order[t22_var->get_value()]) return true;
-            else if (variables_order[t12_var->get_value()] < variables_order[t22_var->get_value()])return false;
+            else if (variables_order[t12_var->get_value()] < variables_order[t22_var->get_value()]) return false;
             else {
                 auto c1 = dynamic_cast<Constant *>(t1_exp->getRightNode());
                 auto c2 = dynamic_cast<Constant *>(t2_exp->getRightNode());
@@ -58,7 +53,7 @@ bool Plex::compare(PolynomialTree t1, PolynomialTree t2) {
         }
     } while (t1_pos < t1_terms.size() && t2_pos < t2_terms.size());
 
-    return false;
+    return t1_pos < t1_terms.size() && t2_pos >= t2_terms.size();
 }
 
 Plex::~Plex() = default;

@@ -182,18 +182,18 @@ TEST_F(PolynomialOperationsTest, DivideTest) {
     d = divide(t1, {t2}, lex_order);
     ASSERT_TRUE(is_equals(d.first, f) && d.second == nullptr);
 
-//    t1 = parser.parse("x+y");
-//    t2 = parser.parse("x");
-//    fill_vector({"1"}, f);
-//    d = divide(t1, {t2}, lex_order);
-//    t3 = parser.parse("y");
-//    ASSERT_TRUE(is_equals(d.first, f) && is_equals(d.second, t3));
-//
-//    t1 = parser.parse("x + y");
-//    t2 = parser.parse("x + y");
-//    fill_vector({"1"}, f);
-//    d = divide(t1, {t2}, lex_order);
-//    ASSERT_TRUE(is_equals(d.first, f) && d.second == nullptr);
+    t1 = parser.parse("x+y");
+    t2 = parser.parse("x");
+    fill_vector({"1"}, f);
+    d = divide(t1, {t2}, lex_order);
+    t3 = parser.parse("y");
+    ASSERT_TRUE(is_equals(d.first, f) && is_equals(d.second, t3));
+
+    t1 = parser.parse("x + y");
+    t2 = parser.parse("x + y");
+    fill_vector({"1"}, f);
+    d = divide(t1, {t2}, lex_order);
+    ASSERT_TRUE(is_equals(d.first, f) && d.second == nullptr);
 //
 //    t1 = parser.parse("x^3+3*x^2-7*x+10");
 //    t2 = parser.parse("x^2+6*x");
@@ -202,9 +202,4 @@ TEST_F(PolynomialOperationsTest, DivideTest) {
 //    t3 = parser.parse("43");
 //    ASSERT_TRUE(is_equals(d.first, f) && is_equals(d.second, t3));
 
-//    t1 = parser.parse("x");
-//    t2 = parser.parse("x");
-//    fill_vector({"1"}, f);
-//    d = divide(t1, {t2}, lex_order);
-//    ASSERT_TRUE(is_equals(d.first, f) && d.second == nullptr);
 }
