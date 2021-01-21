@@ -12,6 +12,10 @@
 #include "../../PolynomialOperations/Simplify/Simplify.h"
 #include "../Join/Join.h"
 #include "../../PolynomialTree/MonomialThings/MonomialThings.h"
+#include "../MonomialOrder/Orders/Lex.h"
+#include "../MonomialOrder/Orders/Plex.h"
+
+static MonomialOrder *global_plex_order = new Plex({"x", "y", "z"});
 
 PolynomialTree sum(PolynomialTree left, PolynomialTree right, MonomialOrder *order);
 
@@ -19,6 +23,7 @@ PolynomialTree multiply_to_monomial(PolynomialTree polynomial, PolynomialTree mo
 
 PolynomialTree divide_monomials(Node *divider, Node *dividend);
 
-std::pair<std::vector<PolynomialTree>, PolynomialTree> divide(PolynomialTree, const std::vector<PolynomialTree> &, MonomialOrder *);
+std::pair<std::vector<PolynomialTree>, PolynomialTree>
+divide(PolynomialTree, const std::vector<PolynomialTree> &, MonomialOrder *);
 
 #endif //COMPUTERALGEBRATASK_ARITHMETICOPERATIONS_H

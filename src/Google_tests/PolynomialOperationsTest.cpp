@@ -8,11 +8,13 @@
 #include "../PolynomialOperations/Simplify/Equals.h"
 #include "../PolynomialOperations/ArithmeticOperations/ArithmeticOperations.h"
 #include "../PolynomialOperations/MonomialOrder/Orders/Lex.h"
+#include "../PolynomialOperations/MonomialOrder/Orders/Plex.h"
 
 class PolynomialOperationsTest : public ::testing::Test {
 protected:
     Parser parser;
     MonomialOrder *lex_order = new Lex({"x", "y", "z"});
+    MonomialOrder *plex_order = new Plex({"x", "y", "z"});
     PolynomialTree t1{}, t2{}, t3{};
     std::vector<Node *> v1, v2;
 
@@ -33,6 +35,7 @@ protected:
         to_fill.clear();
         for (const auto &i: polynomials) {
             Node *a = parser.parse(i);
+            a = get_simplified(a, plex_order);
             to_fill.push_back(a);
         }
     }
@@ -194,12 +197,15 @@ TEST_F(PolynomialOperationsTest, DivideTest) {
     fill_vector({"1"}, f);
     d = divide(t1, {t2}, lex_order);
     ASSERT_TRUE(is_equals(d.first, f) && d.second == nullptr);
-//
-//    t1 = parser.parse("x^3+3*x^2-7*x+10");
-//    t2 = parser.parse("x^2+6*x");
-//    fill_vector({"1"}, f);
-//    d = divide(t1, {t2}, lex_order);
-//    t3 = parser.parse("43");
-//    ASSERT_TRUE(is_equals(d.first, f) && is_equals(d.second, t3));
+
+    t1 = parser.parse("x^3+3*x^2-7*x+10");
+    t2 = parser.parse("x^2+6*x");
+    fill_vector({"x-3"}, f);
+    std::string z = f[0]->to_str();
+    d = divide(t1, {t2}, plex_order);
+    std::string a = d.first[0]->to_str();
+    std::string b = d.second->to_str();
+    t3 = parser.parse("11*x + 10");
+    ASSERT_TRUE(is_equals(d.first, f) && is_equals(d.second, t3));
 
 }

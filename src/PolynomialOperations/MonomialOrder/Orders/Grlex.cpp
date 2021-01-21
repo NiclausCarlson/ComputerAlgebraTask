@@ -22,10 +22,12 @@ bool Grlex::compare(PolynomialTree t1, PolynomialTree t2) {
         if (t1_instance == "Constant") ++t1_pos;
         if (t2_instance == "Constant") ++t2_pos;
     }
+    if (t1_pos == t1_terms.size() && t2_pos <= t2_terms.size()) return false;
+    if (t1_pos < t1_terms.size() && t2_pos == t2_terms.size()) return true;
     //here can be only Variables or Exponentiation
     int grad_1 = 0, grad_2 = 0;
     bool is_lex_ordered = true;
-    do {
+    while (t1_pos < t1_terms.size() && t2_pos < t2_terms.size()) {
         auto *t1_var = dynamic_cast<Variable *>(t1_terms[t1_pos]);
         auto *t2_var = dynamic_cast<Variable *>(t2_terms[t2_pos]);
         auto *t1_exp = dynamic_cast<Exponentiation *>(t1_terms[t1_pos]);
@@ -62,7 +64,7 @@ bool Grlex::compare(PolynomialTree t1, PolynomialTree t2) {
             if (variables_order[t12_var->get_value()] < variables_order[t22_var->get_value()])
                 is_lex_ordered ^= false;
         }
-    } while (t1_pos < t1_terms.size() && t2_pos < t2_terms.size());
+    }
 
     if (grad_1 > grad_2) return true;
     else return t1_pos >= t1_terms.size() && t2_pos >= t2_terms.size() && is_lex_ordered;
