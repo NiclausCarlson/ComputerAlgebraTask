@@ -67,8 +67,8 @@ add_executable(ComputerAlgebraTask
         PolynomialOperations/Simplify/Simplify.cpp
         PolynomialOperations/ArithmeticOperations/ArithmeticOperations.h
         PolynomialOperations/ArithmeticOperations/ArithmeticOperations.cpp
-        PolynomialOperations/MonomialslJoiner/Join.h
-        PolynomialOperations/MonomialslJoiner/Join.cpp
+        PolynomialOperations/Join/Join.h
+        PolynomialOperations/Join/Join.cpp
         PolynomialTree/MonomialThings/MonomialThings.h
         PolynomialTree/MonomialThings/MonomialThings.cpp)
 

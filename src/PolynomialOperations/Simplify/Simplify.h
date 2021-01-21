@@ -6,7 +6,7 @@
 
 #include <algorithm>
 
-#include "../MonomialslJoiner/Join.h"
+#include "../Join/Join.h"
 #include "Equals.h"
 
 //This method returns simplified polynomial

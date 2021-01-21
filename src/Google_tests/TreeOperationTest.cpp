@@ -202,11 +202,11 @@ TEST_F(TreeOperationTest, LexOrderCompareTest) {
 
     monomial1 = "x";
     monomial2 = "x";
-    ASSERT_TRUE(compare(monomial1, monomial2, lex_order));
+    ASSERT_TRUE(!compare(monomial1, monomial2, lex_order));
 
     monomial1 = "x^2";
     monomial2 = "x^2";
-    ASSERT_TRUE(compare(monomial1, monomial2, lex_order));
+    ASSERT_TRUE(!compare(monomial1, monomial2, lex_order));
 
     monomial1 = "x^2*y";
     monomial2 = "z";
@@ -214,7 +214,7 @@ TEST_F(TreeOperationTest, LexOrderCompareTest) {
 
     monomial1 = "-x";
     monomial2 = "-x";
-    ASSERT_TRUE(compare(monomial1, monomial2, lex_order));
+    ASSERT_TRUE(!compare(monomial1, monomial2, lex_order));
 
     monomial1 = "-x*y";
     monomial2 = "x";
@@ -226,7 +226,7 @@ TEST_F(TreeOperationTest, LexOrderCompareTest) {
 
     monomial1 = "-y^25*z^25";
     monomial2 = "y*z";
-    ASSERT_TRUE(compare(monomial1, monomial2, lex_order));
+    ASSERT_TRUE(!compare(monomial1, monomial2, lex_order));
 
     monomial1 = "x";
     monomial2 = "-x*y";

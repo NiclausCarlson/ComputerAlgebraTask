@@ -8,10 +8,10 @@
 PolynomialTree get_simplified(PolynomialTree &t, MonomialOrder *order) {
     std::vector<Node *> monomials;
     t->get_monomials(monomials);
+    for (auto &i: monomials) order->sort_monomial(i);
     for (auto &i: monomials) {
         std::string q = i->to_str();
     }
-    for (auto &i: monomials) order->sort_monomial(i);
     auto comp = [&](PolynomialTree t1, PolynomialTree t2) { return order->compare(t1, t2); };
     std::sort(monomials.begin(), monomials.end(), comp);
 
@@ -35,5 +35,5 @@ PolynomialTree get_simplified(PolynomialTree &t, MonomialOrder *order) {
         c = dynamic_cast<Constant *>(node);
         if (c == nullptr || c->get_value() != 0) new_polynomial.push_back(node);
     }
-    return join_monomials(new_polynomial);
+    return join(new_polynomial, '+');
 }

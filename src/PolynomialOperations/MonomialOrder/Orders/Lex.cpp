@@ -16,7 +16,7 @@ bool Lex::compare(PolynomialTree t1, PolynomialTree t2) {
     t2->get_terms(t2_terms);
 
     size_t t1_pos = 0, t2_pos = 0;
-    for (size_t i = 0; i < __min(t1_terms.size(), t2_terms.size()); ++i) {
+    for (size_t i = 0; i < std::min(t1_terms.size(), t2_terms.size()); ++i) {
         std::string t1_instance = get_instance(t1_terms[i]);
         std::string t2_instance = get_instance(t2_terms[i]);
         if (t1_instance == "Constant") ++t1_pos;
@@ -24,11 +24,6 @@ bool Lex::compare(PolynomialTree t1, PolynomialTree t2) {
     }
     //here can be only Variables or Exponentiation
     do {
-        if ((t1_pos >= t1_terms.size() && t2_pos >= t2_terms.size())
-            || (t1_pos < t1_terms.size() && t2_pos >= t2_terms.size()))
-            return true;
-        else if (t1_pos >= t1_terms.size() && t2_pos < t2_terms.size()) return false;
-
         auto *t1_var = dynamic_cast<Variable *>(t1_terms[t1_pos]);
         auto *t2_var = dynamic_cast<Variable *>(t2_terms[t2_pos]);
         auto *t1_exp = dynamic_cast<Exponentiation *>(t1_terms[t1_pos]);
@@ -53,9 +48,9 @@ bool Lex::compare(PolynomialTree t1, PolynomialTree t2) {
             if (variables_order[t12_var->get_value()] > variables_order[t22_var->get_value()]) return true;
             else if (variables_order[t12_var->get_value()] < variables_order[t22_var->get_value()])return false;
         }
-    } while (t1_pos <= t1_terms.size() && t2_pos <= t2_terms.size());
+    } while (t1_pos < t1_terms.size() && t2_pos < t2_terms.size());
 
-    return false;
+    return t1_pos < t1_terms.size() && t2_pos >= t2_terms.size();
 }
 
 Lex::~Lex() = default;

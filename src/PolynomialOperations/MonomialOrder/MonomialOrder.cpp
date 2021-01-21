@@ -35,7 +35,7 @@ bool MonomialOrder::simplify_monomial(bool &minus,
     if (instance == "Constant" || instance == "Variable" || instance == "Exponentiation") {
         //already ordered
         return false;
-    } else if (instance == "Multiplication" ) {
+    } else if (instance == "Multiplication") {
         auto *monom = dynamic_cast<Multiplication *>(monomial);
         std::vector<Node *> terms;
         monom->get_terms(terms);
@@ -67,19 +67,15 @@ void MonomialOrder::sort_monomial(PolynomialTree &monomial) {
 }
 
 PolynomialTree MonomialOrder::generate_new_monomial(bool minus, ld number, std::map<std::string, int> &terms) {
-    std::vector<std::string> ordered_terms;
-    if (minus) ordered_terms.emplace_back("-");
-    if (number != 1.0) ordered_terms.push_back(std::to_string(number));
+    std::vector<Node *> ordered_terms;
+    ld n = number;
+    if (minus) n = -1.0L * n;
+    if (number != 1.0) ordered_terms.push_back(new Constant(n));
     for (const auto &v: variables) {
-        if (terms[v] > 1) ordered_terms.emplace_back(v + '^' + std::to_string(terms[v]));
-        else if (terms[v] == 1) ordered_terms.emplace_back(v);
+        if (terms[v] > 1) ordered_terms.push_back(new Exponentiation(new Variable(v), new Constant(terms[v])));
+        else if (terms[v] == 1) ordered_terms.push_back(new Variable(v));
     }
-    std::string str;
-    for (int i = 0; i < ordered_terms.size(); ++i) {
-        if (i < ordered_terms.size() - 1 && ordered_terms[i] != "-") str += ordered_terms[i] + '*';
-        else str += ordered_terms[i];
-    }
-    return parser.parse(str);
+    return join(ordered_terms, '*');
 }
 
 MonomialOrder::~MonomialOrder() = default;

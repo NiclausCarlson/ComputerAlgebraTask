@@ -65,8 +65,8 @@ add_executable(Google_Tests_run
         ../PolynomialOperations/Simplify/Simplify.cpp
         ../PolynomialOperations/ArithmeticOperations/ArithmeticOperations.h
         ../PolynomialOperations/ArithmeticOperations/ArithmeticOperations.cpp
-        ../PolynomialOperations/MonomialslJoiner/Join.h
-        ../PolynomialOperations/MonomialslJoiner/Join.cpp
+        ../PolynomialOperations/Join/Join.h
+        ../PolynomialOperations/Join/Join.cpp
         ../PolynomialTree/MonomialThings/MonomialThings.h
         ../PolynomialTree/MonomialThings/MonomialThings.cpp PolynomialOperationsTest.cpp)
 target_link_libraries(Google_Tests_run gtest gtest_main)

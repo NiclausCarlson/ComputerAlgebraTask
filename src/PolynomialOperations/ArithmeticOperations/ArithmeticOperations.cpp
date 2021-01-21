@@ -15,7 +15,7 @@ PolynomialTree multiply_to_monomial(PolynomialTree polynomial, PolynomialTree mo
     std::vector<Node *> monomials;
     polynomial->get_monomials(monomials);
     for (auto &it : monomials) it = new Multiplication(it, monomial);
-    Node *result = join_monomials(monomials);
+    Node *result = join(monomials, '+');
     return  get_simplified(result, order);
 }
 

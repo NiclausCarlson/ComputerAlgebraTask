@@ -9,8 +9,9 @@
 #include "../MonomialOrder/MonomialOrder.h"
 
 PolynomialTree recursive(std::vector<Node *>::iterator from,
-                         std::vector<Node *>::iterator to);
+                         std::vector<Node *>::iterator to,
+                         char delimiter);
 
-PolynomialTree join_monomials(std::vector<Node *> &monomials);
+PolynomialTree join(std::vector<Node *> &monomials, char delimiter);
 
 #endif //COMPUTERALGEBRATASK_JOIN_H

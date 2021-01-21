@@ -10,7 +10,7 @@
 #include "../MonomialOrder/MonomialOrder.h"
 #include "../../PolynomialTree/PolynomialPrimitives/Operations/Operations/Sum.h"
 #include "../../PolynomialOperations/Simplify/Simplify.h"
-#include "../MonomialslJoiner/Join.h"
+#include "../Join/Join.h"
 #include "../../PolynomialTree/MonomialThings/MonomialThings.h"
 
 PolynomialTree sum(PolynomialTree left, PolynomialTree right, MonomialOrder *order);
