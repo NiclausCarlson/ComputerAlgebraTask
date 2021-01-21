@@ -36,7 +36,13 @@ TEST_F(ParserTest, SIMPLE_PARSING_TEST) {
     ASSERT_STREQ("-1.000000 * x", parser.parse("-x")->to_str().c_str());
     ASSERT_STREQ("-1.000000 * x + y", parser.parse("-x+y")->to_str().c_str());
     ASSERT_STREQ("-1.000000 * x * y", parser.parse("-x*y")->to_str().c_str());
+    ASSERT_STREQ("-1.000000 * x^25.000000 + x", parser.parse("-x^25 + x")->to_str().c_str());
+    ASSERT_STREQ("-1.000000 * x^25.000000 + y", parser.parse("-x^25 + y")->to_str().c_str());
+    ASSERT_STREQ("-1.000000 * x^25.000000 + -1.000000 * y", parser.parse("-x^25 - y")->to_str().c_str());
     ASSERT_STREQ("-1.000000 * x * y * z", parser.parse("-x*y*z")->to_str().c_str());
+    ASSERT_STREQ("-1.000000 * x^25.000000", parser.parse("-x^25")->to_str().c_str());
+    ASSERT_STREQ("-1.000000 * x^25.000000 * y^5.000000 * z + -1.000000 * 43.000000 * x^32.000000 * z^2.000000 + 14.000000 * y",
+            parser.parse("-x^25*y^5*z-43*x^32*z^2+14*y")->to_str().c_str());
 }
 
 TEST_F(ParserTest, ADVANCED_PARSING_TEST) {

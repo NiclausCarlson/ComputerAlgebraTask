@@ -46,7 +46,6 @@ void Parser::skip_whitespaces() {
 PolynomialTree Parser::parseUnaryAndNullaryOperations() {
     set_next_token();
     Node *right;
-    Constant *constant;
     switch (cur_token.first) {
         case Token::CONST:
             set_next_token();
@@ -56,17 +55,11 @@ PolynomialTree Parser::parseUnaryAndNullaryOperations() {
             return new Variable(prev_token.second);
         case Token::MINUS:
             right = parseExponential();
-            if (prev_token.first == Token::CONST) {
-                constant = dynamic_cast<Constant *>(right);
-                return new Constant(-constant->get_value());
-            } else {
-                return new Multiplication(new Constant(-1.0), right);
-            }
-
+            return new Multiplication(new Constant(-1.0), right);
         case Token::END:
             return nullptr;
         default:
-            cur_token = std::make_pair(Token::ERROR, "can't parse token");
+            cur_token = std::make_pair(Token::ERROR, "can't parse token: " + cur_token.second);
             return nullptr;
     }
 }
@@ -126,9 +119,7 @@ PolynomialTree Parser::parseProductAndDivision() {
                 }
                 continue;
             default:
-                if (cur_token.first == Token::ERROR) {
-                    throw WrongToken(cur_token.second);
-                }
+                if (cur_token.first == Token::ERROR) throw WrongToken(cur_token.second);
                 return left;
         }
     }
@@ -151,9 +142,7 @@ PolynomialTree Parser::parseSum() {
                                          (Node *) (new Multiplication(new Constant(-1.0), right))));
                 break;
             default:
-                if (cur_token.first == Token::ERROR) {
-                    throw WrongToken(cur_token.second);
-                }
+                if (cur_token.first == Token::ERROR) throw WrongToken(cur_token.second);
                 return left;
         }
     }
@@ -178,9 +167,7 @@ Parser::Token Parser::getToken(char op) {
 }
 
 void Parser::rightOperandChecker(Node *operand) {
-    if (operand == nullptr) {
-        throw LostOperand(prev_token.second);
-    }
+    if (operand == nullptr) throw LostOperand(prev_token.second);
 }
 
 int Parser::isdigitOrIsDot(int ch) {

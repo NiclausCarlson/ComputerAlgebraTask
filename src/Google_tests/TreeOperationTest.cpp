@@ -50,13 +50,11 @@ protected:
         Node *tree = parser.parse(monomial);
         tree->get_monomials(monomials);
     }
-    // return true, if TODO
-    static bool compare(std::vector<Node *> &monomials1, std::vector<Node *> &monomials2, MonomialOrder *order) {
-        auto comparator = [&](Node *t1, Node *t2) { return order->compare(t1, t2); };
-        for (size_t i = 0; i < std::min(monomials1.size(), monomials2.size()); ++i) {
-            if (!order->compare(monomials1[i], monomials2[i])) return false;
-        }
-        return true;
+
+    bool compare(std::string const &p1, std::string const &p2, MonomialOrder *order) {
+        Node* t1 = parser.parse(p1);
+        Node* t2 = parser.parse(p2);
+        return order->compare(t1, t2);
     }
 
     std::vector<PolynomialTree> get_expected_polynomials(const std::vector<std::string> &monomials) {
@@ -197,128 +195,51 @@ TEST_F(TreeOperationTest, LexSortMonomialTest) {
 
 TEST_F(TreeOperationTest, LexOrderCompareTest) {
     MonomialOrder *lex_order = new Lex({"x", "y", "z"});
-    std::vector<Node *> monomials1;
-    std::vector<Node *> monomials2;
 
     std::string monomial1 = "x";
     std::string monomial2 = "y";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
+    ASSERT_TRUE(compare(monomial1, monomial2, lex_order));
 
     monomial1 = "x";
     monomial2 = "x";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
+    ASSERT_TRUE(compare(monomial1, monomial2, lex_order));
 
     monomial1 = "x^2";
     monomial2 = "x^2";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
+    ASSERT_TRUE(compare(monomial1, monomial2, lex_order));
 
-    monomial1 = "x^2+y";
+    monomial1 = "x^2*y";
     monomial2 = "z";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
+    ASSERT_TRUE(compare(monomial1, monomial2, lex_order));
 
     monomial1 = "-x";
     monomial2 = "-x";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
+    ASSERT_TRUE(compare(monomial1, monomial2, lex_order));
 
-    monomial1 = "x+y+z";
-    monomial2 = "x+y+z";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
+    monomial1 = "-x*y";
+    monomial2 = "x";
+    ASSERT_TRUE(compare(monomial1, monomial2, lex_order));
 
-    monomial1 = "x+y-z";
-    monomial2 = "x+y+z";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
+    monomial1 = "x*y*z^2";
+    monomial2 = "-x*z";
+    ASSERT_TRUE(compare(monomial1, monomial2, lex_order));
 
-    monomial1 = "x+y^2*z+z";
-    monomial2 = "x+y^2*z+z";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
+    monomial1 = "-y^25*z^25";
+    monomial2 = "y*z";
+    ASSERT_TRUE(compare(monomial1, monomial2, lex_order));
 
-    monomial1 = "x+y^2*z+z";
-    monomial2 = "-x+y^2*z+z";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
+    monomial1 = "x";
+    monomial2 = "-x*y";
+    ASSERT_TRUE(!compare(monomial1, monomial2, lex_order));
+
+    monomial1 = "-x*z";
+    monomial2 = "x*y*z^2";
+    ASSERT_TRUE(!compare(monomial1, monomial2, lex_order));
+
 }
 
 TEST_F(TreeOperationTest, PlexOrderCompareTest) {
     MonomialOrder *lex_order = new Plex({"x", "y", "z"});
-    std::vector<Node *> monomials1;
-    std::vector<Node *> monomials2;
-
-    std::string monomial1 = "x";
-    std::string monomial2 = "y";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
-
-    monomial1 = "x";
-    monomial2 = "x";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
-
-    monomial1 = "x^2";
-    monomial2 = "x^2";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
-
-    monomial1 = "x^2";
-    monomial2 = "x^3";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(!compare(monomials1, monomials2, lex_order));
-
-    monomial1 = "x^2+y";
-    monomial2 = "z";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
-
-    monomial1 = "-x";
-    monomial2 = "-x";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
-
-    monomial1 = "x+y+z";
-    monomial2 = "x+y+z";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
-
-    monomial1 = "x+y-z";
-    monomial2 = "x+y+z";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
-
-    monomial1 = "x+y^2*z+z";
-    monomial2 = "x+y^2*z+z";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
-
-    monomial1 = "x+y^2*z+z";
-    monomial2 = "-x+y^2*z+z";
-    set_monomials(monomial1, monomials1);
-    set_monomials(monomial1, monomials2);
-    ASSERT_TRUE(compare(monomials1, monomials2, lex_order));
 }
 
 TEST_F(TreeOperationTest, PlexSimplifyTest) {
