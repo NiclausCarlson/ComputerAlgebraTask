@@ -3,15 +3,15 @@ project(ComputerAlgebraTask)
 
 set(CMAKE_SXX_STANDARD 20)
 set(BOOST_ROOT "C:/Users/Nik Carlson/Documents/LIBS/boost_1_75_0")
-set(LAPACK_ROOT "C:/Users/Nik Carlson/Documents/LIBS/Lapackpp1.1a")
+set(MTL4_ROOT "C:/Users/Nik Carlson/Documents/LIBS/mtl4")
 find_package(Boost 1.75.0)
-find_package(Lapack 1.1)
+find_package(MTL4)
 
 if(NOT Boost_FOUND)
     message(FATAL_ERROR "Could not find boost!")
 endif()
 include_directories(${BOOST_ROOT})
-include_directories(${LAPACK_ROOT})
+include_directories(${MTL4_ROOT})
 
 add_executable(ComputerAlgebraTask
         main.cpp

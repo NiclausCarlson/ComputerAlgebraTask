@@ -7,9 +7,7 @@
 
 #include <set>
 
-#include <boost/numeric/ublas/matrix.hpp>
-#include <boost/numeric/ublas/vector.hpp>
-#include <boost/numeric/ublas/lu.hpp>
+#include <boost/numeric/mtl/mtl.hpp>
 
 #include "../PolynomialTree/PolynomialPrimitives/Node/Node.h"
 #include "../PolynomialOperations/MonomialOrder/MonomialOrder.h"

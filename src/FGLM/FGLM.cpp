@@ -84,6 +84,16 @@ PolynomialTree FGLM::get_normal_form(PolynomialTree polynomial) {
 }
 
 bool FGLM::has_linear_relation(Node *v, std::vector<std::pair<Node *, Node *>> const &MBasis, Node *&relation) {
+    mtl::dense2D<double> A(2, 2);
+    A[0][0] = 2;
+    A[0][1] = 1;
+    A[1][0] = 1;
+    A[1][1] = 2;
+    mtl::dense_vector<double> x(2), b(2);
+    b[0] = 0;
+    b[1] = 0;
+    x = lu_solve(A, b);
+    std::cout << x << std::endl;
     return false;
 }
 

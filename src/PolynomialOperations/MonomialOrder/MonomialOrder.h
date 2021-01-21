@@ -42,7 +42,7 @@ public:
 
     explicit MonomialOrder(const std::vector<std::string> &order);
 
-    //this method compare only ordered monomials
+    //return true, if t1 >= t2
     virtual bool compare(PolynomialTree t1, PolynomialTree t2) = 0;
 
     void sort_monomial(PolynomialTree &monomial);
