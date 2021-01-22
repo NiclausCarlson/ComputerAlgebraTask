@@ -6,17 +6,15 @@
 #define COMPUTERALGEBRATASK_FGLM_H
 
 #include <set>
-
 #include <boost/numeric/mtl/mtl.hpp>
 
-#include "../PolynomialTree/PolynomialPrimitives/Node/Node.h"
-#include "../PolynomialOperations/MonomialOrder/MonomialOrder.h"
-#include "../PolynomialOperations/Simplify/Simplify.h"
 #include "../PolynomialOperations/ArithmeticOperations/ArithmeticOperations.h"
+
 
 class FGLM {
 private:
-
+    const ld EPS = 1e-12;
+    const size_t FREE_VARIABLES_QUANTITY = 1000;
     std::vector<Variable *> free_variables;// Variables looks like @_idx
     std::vector<PolynomialTree> old_basis;
     std::vector<PolynomialTree> new_basis;
@@ -32,13 +30,11 @@ private:
 
     bool is_product(Node *monom, std::vector<Node *> const &staircase);
 
-    void insert_nexts(Node *v, std::set<Node *> &set_of_nexts);
-
 public:
     FGLM(std::vector<PolynomialTree> &old_basis,
          MonomialOrder *old_order,
          MonomialOrder *new_order,
-         std::vector<Variable *> &variables_list);
+         std::vector<Variable *> const &variables_list);
 
     std::vector<PolynomialTree> transform();
 

@@ -59,8 +59,6 @@ add_executable(ComputerAlgebraTask
         PolynomialOperations/MonomialOrder/Orders/Grlex.h
         PolynomialOperations/MonomialOrder/Orders/Plex.cpp
         PolynomialOperations/MonomialOrder/Orders/Plex.h
-        FGLM/FGLM.cpp
-        FGLM/FGLM.h
         PolynomialOperations/MonomialOrder/MonomialOrder.cpp
         PolynomialOperations/Simplify/Equals.h
         PolynomialOperations/Simplify/Equals.cpp
@@ -70,6 +68,9 @@ add_executable(ComputerAlgebraTask
         PolynomialOperations/Join/Join.h
         PolynomialOperations/Join/Join.cpp
         PolynomialTree/MonomialThings/MonomialThings.h
-        PolynomialTree/MonomialThings/MonomialThings.cpp)
+        PolynomialTree/MonomialThings/MonomialThings.cpp
+        FGLM/FGLM.h
+        FGLM/FGLM.cpp
+        )
 
 add_subdirectory(Google_tests)
