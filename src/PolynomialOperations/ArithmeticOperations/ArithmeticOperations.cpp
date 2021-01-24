@@ -88,10 +88,12 @@ divide_monomials(Node *dividend, Node *divider, MonomialOrder *order, MonomialOr
         }
         if (!is_divides) return nullptr;
     }
+    new_terms.push_back(new Constant(constant_1 / constant_2));
     for (size_t i = 0; i < terms1.size(); ++i) {
         if (used_indexes.count(i) == 0) new_terms.push_back(terms1[i]);
     }
-    Node *tree = generate_new_monomial(constant_1 / constant_2, new_terms);
+//    Node *tree = generate_new_monomial(constant_1 / constant_2, new_terms);
+    Node *tree = join(new_terms, '*');
     Node *t = get_simplified(tree, service_plex_order);
     return get_simplified(t, order);
 }

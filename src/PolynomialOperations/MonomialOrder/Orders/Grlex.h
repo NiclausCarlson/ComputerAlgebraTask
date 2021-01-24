@@ -7,10 +7,11 @@
 
 
 #include "../MonomialOrder.h"
+#include "Plex.h"
 
-class Grlex: virtual public MonomialOrder {
+class Grlex : virtual public MonomialOrder {
 public:
-    explicit Grlex(const std::vector <std::string> &order);
+    explicit Grlex(const std::vector<std::string> &order);
 
     bool compare(PolynomialTree t1, PolynomialTree t2) override;
 

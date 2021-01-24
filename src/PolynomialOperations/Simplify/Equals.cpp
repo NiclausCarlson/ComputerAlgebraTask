@@ -59,12 +59,14 @@ PolynomialTree sumIfEquals(PolynomialTree t1, PolynomialTree t2) {
         if (new_const == 0.0) return new Constant(0.0);
         else {
             std::vector<Node *> new_monomial_vector;
+            new_monomial_vector.push_back(new Constant(new_const));
             size_t iter = std::min(t1_pos, t2_pos);
             while (iter < t2_terms.size()) {
                 new_monomial_vector.push_back(t2_terms[iter]);
                 ++iter;
             }
-            return generate_new_monomial(new_const, new_monomial_vector);
+//            return generate_new_monomial(new_const, new_monomial_vector);
+            return join(new_monomial_vector, '*');
         }
     } else return nullptr;
 }

@@ -61,8 +61,11 @@ std::vector<PolynomialTree> FGLM::transform() {
                 staircase.push_back(monom);
             } else {
                 MBasis.emplace_back(monom, v);
-                for (auto var : variables_list)// with respect to new order
-                    set_of_nexts.insert(multiply_to_monomial(monom, var, new_order));
+                for (auto var : variables_list){
+                    Node* tmp = multiply_to_monomial(monom, var, new_order);
+                    std::string q = tmp->to_str();
+                    set_of_nexts.insert(tmp);
+                }
             }
         }
 
