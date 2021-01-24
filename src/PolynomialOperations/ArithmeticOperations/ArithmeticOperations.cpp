@@ -99,6 +99,7 @@ divide_monomials(Node *dividend, Node *divider, MonomialOrder *order, MonomialOr
 std::pair<std::vector<PolynomialTree>, PolynomialTree>
 divide(PolynomialTree numerator, const std::vector<PolynomialTree> &denominators, MonomialOrder *order,
        MonomialOrder *service_plex_order) {
+    Node* numerator_copy = numerator->clone();
     std::vector<Node *> quotient;
     quotient.reserve(denominators.size());
     for (int i = 0; i < denominators.size(); ++i) quotient.emplace_back(nullptr);
@@ -115,17 +116,17 @@ divide(PolynomialTree numerator, const std::vector<PolynomialTree> &denominators
 
     size_t denominators_idx = 0;
     bool have_division;
-    auto *is_zero = dynamic_cast<Constant *>(numerator);
+    auto *is_zero = dynamic_cast<Constant *>(numerator_copy);
     Node *lt_1, *lt_2;
     while (is_zero == nullptr || is_zero->get_value() != 0.0) {
         have_division = false;
         denominators_idx = 0;
         lt_1 = nullptr;
-        std::string q = numerator->to_str();
+        std::string q = numerator_copy->to_str();
         while (!have_division && denominators_idx < denominators.size()) {
             std::vector<Node *> monomials;
             denominators[denominators_idx]->get_monomials(monomials);
-            lt_1 = get_LT(numerator);
+            lt_1 = get_LT(numerator_copy);
             lt_2 = get_LT(denominators[denominators_idx]);
             Node *div_res = divide_monomials(lt_1,
                                              lt_2,
@@ -134,24 +135,24 @@ divide(PolynomialTree numerator, const std::vector<PolynomialTree> &denominators
             if (div_res != nullptr) {
                 std::string a = div_res->to_str();
                 update_value(quotient[denominators_idx], div_res);
-                numerator = sum(multiply_to_monomial(denominators[denominators_idx],
+                numerator_copy = sum(multiply_to_monomial(denominators[denominators_idx],
                                                      new Multiplication(new Constant(-1.0), div_res),
                                                      order,
                                                      service_plex_order),
-                                numerator, order, service_plex_order);
-                q = numerator->to_str();
+                                numerator_copy, order, service_plex_order);
+                q = numerator_copy->to_str();
                 have_division = true;
             } else ++denominators_idx;
         }
         if (!have_division) {
             Node *copyed = lt_1->clone();
             update_value(modulo, copyed);
-            numerator = sum(new Multiplication(new Constant(-1.0), lt_1),
-                            numerator,
+            numerator_copy = sum(new Multiplication(new Constant(-1.0), lt_1),
+                            numerator_copy,
                             order,
                             service_plex_order);
         }
-        is_zero = dynamic_cast<Constant *>(numerator);
+        is_zero = dynamic_cast<Constant *>(numerator_copy);
     }
     return {quotient, modulo};
 }

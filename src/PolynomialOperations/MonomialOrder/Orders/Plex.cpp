@@ -13,7 +13,8 @@ bool Plex::compare(PolynomialTree t1, PolynomialTree t2) {
     std::vector<Node *> t2_terms;
     t1->get_terms(t1_terms);
     t2->get_terms(t2_terms);
-
+    std::string e1 = t1->to_str();
+    std::string e2 = t2->to_str();
     size_t t1_pos = 0, t2_pos = 0;
     for (size_t i = 0; i < std::min(t1_terms.size(), t2_terms.size()); ++i) {
         std::string t1_instance = get_instance(t1_terms[i]);
@@ -37,7 +38,7 @@ bool Plex::compare(PolynomialTree t1, PolynomialTree t2) {
         } else if (t1_var != nullptr && t2_exp != nullptr) {
             auto *t22_var = dynamic_cast<Variable *>(t2_exp->getLeftNode());
             if (variables_order[t1_var->get_value()] > variables_order[t22_var->get_value()]) return true;
-            else if (variables_order[t1_var->get_value()]< variables_order[t22_var->get_value()]) return false;
+            else if (variables_order[t1_var->get_value()] <= variables_order[t22_var->get_value()]) return false;
         } else if (t1_exp != nullptr && t2_var != nullptr) {
             auto *t12_var = dynamic_cast<Variable *>(t1_exp->getLeftNode());
             if (variables_order[t12_var->get_value()] >= variables_order[t2_var->get_value()]) return true;

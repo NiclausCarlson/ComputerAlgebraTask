@@ -42,7 +42,7 @@ std::string FGLM::get_in_maple_dsl() {
 }
 
 std::vector<PolynomialTree> FGLM::transform() {
-    auto comparator = [&](Node *t1, Node *t2) { return !old_order->compare(t1, t2); };
+    auto comparator = [&](Node *t1, Node *t2) { return !new_order->compare(t1, t2); };
     std::vector<std::pair<Node *, Node *>> MBasis;
     std::vector<Node *> staircase;
     std::set<Node *, decltype(comparator)> set_of_nexts(comparator);
@@ -51,6 +51,8 @@ std::vector<PolynomialTree> FGLM::transform() {
     while (monom != nullptr) {
         if (!is_product(monom, staircase)) {
             Node *v = get_normal_form(monom); // with respect to old_basis
+            std::string ms = monom->to_str();
+            std::string vs = v->to_str();
             Node *relation = nullptr;
             if (has_linear_relation(v, MBasis, relation)) {
                 Node *pol = new Sum(monom, relation);
