@@ -63,14 +63,14 @@ add_executable(ComputerAlgebraTask
         PolynomialOperations/Simplify/Equals.h
         PolynomialOperations/Simplify/Equals.cpp
         PolynomialOperations/Simplify/Simplify.cpp
-        PolynomialOperations/ArithmeticOperations/ArithmeticOperations.h
         PolynomialOperations/ArithmeticOperations/ArithmeticOperations.cpp
+        PolynomialOperations/ArithmeticOperations/ArithmeticOperations.h
         PolynomialOperations/Join/Join.h
         PolynomialOperations/Join/Join.cpp
         PolynomialTree/MonomialThings/MonomialThings.h
         PolynomialTree/MonomialThings/MonomialThings.cpp
-        FGLM/FGLM.h
         FGLM/FGLM.cpp
+        FGLM/FGLM.h
         )
 
 add_subdirectory(Google_tests)

@@ -6,26 +6,33 @@
 #include "ArithmeticOperations.h"
 
 
-PolynomialTree sum(PolynomialTree left, PolynomialTree right, MonomialOrder *order) {
+PolynomialTree sum(PolynomialTree left, PolynomialTree right, MonomialOrder *order, MonomialOrder *service_plex_order) {
     PolynomialTree result = new Sum(left, right);
     std::string e = result->to_str();
-    Node *t = get_simplified(result, global_plex_order);
+    Node *t = get_simplified(result, service_plex_order);
     return get_simplified(t, order);
 }
 
-PolynomialTree multiply_to_monomial(PolynomialTree polynomial, PolynomialTree monomial, MonomialOrder *order) {
+PolynomialTree multiply_to_monomial(PolynomialTree polynomial, PolynomialTree monomial, MonomialOrder *order,
+                                    MonomialOrder *service_plex_order) {
     std::vector<Node *> monomials;
     polynomial->get_monomials(monomials);
     for (auto &it : monomials) it = new Multiplication(it, monomial);
     Node *result = join(monomials, '+');
-    Node *t = get_simplified(result, global_plex_order);
+    std::string q = result->to_str();
+    Node *t = get_simplified(result, service_plex_order);
+    q = t->to_str();
     return get_simplified(t, order);
 }
 
-PolynomialTree divide_monomials(Node *dividend, Node *divider, MonomialOrder *order) {
+PolynomialTree
+divide_monomials(Node *dividend, Node *divider, MonomialOrder *order, MonomialOrder *service_plex_order) {
     auto *is_constant = dynamic_cast<Constant *>(divider);
     if (is_constant != nullptr)
-        return multiply_to_monomial(dividend, new Constant(1.0 / is_constant->get_value()), order);
+        return multiply_to_monomial(dividend,
+                                    new Constant(1.0 / is_constant->get_value()),
+                                    order,
+                                    service_plex_order);
     std::vector<Node *> terms1;
     std::vector<Node *> terms2;
     dividend->get_terms(terms1);
@@ -85,12 +92,13 @@ PolynomialTree divide_monomials(Node *dividend, Node *divider, MonomialOrder *or
         if (used_indexes.count(i) == 0) new_terms.push_back(terms1[i]);
     }
     Node *tree = generate_new_monomial(constant_1 / constant_2, new_terms);
-    Node* t = get_simplified(tree, global_plex_order);
+    Node *t = get_simplified(tree, service_plex_order);
     return get_simplified(t, order);
 }
 
 std::pair<std::vector<PolynomialTree>, PolynomialTree>
-divide(PolynomialTree numerator, const std::vector<PolynomialTree> &denominators, MonomialOrder *order) {
+divide(PolynomialTree numerator, const std::vector<PolynomialTree> &denominators, MonomialOrder *order,
+       MonomialOrder *service_plex_order) {
     std::vector<Node *> quotient;
     quotient.reserve(denominators.size());
     for (int i = 0; i < denominators.size(); ++i) quotient.emplace_back(nullptr);
@@ -98,7 +106,11 @@ divide(PolynomialTree numerator, const std::vector<PolynomialTree> &denominators
 
     auto update_value = [&](PolynomialTree &to_update, Node *val) {
         if (to_update == nullptr) to_update = val;
-        else to_update = sum(to_update, val, order);
+        else
+            to_update = sum(to_update,
+                            val,
+                            order,
+                            service_plex_order);
     };
 
     size_t denominators_idx = 0;
@@ -115,13 +127,18 @@ divide(PolynomialTree numerator, const std::vector<PolynomialTree> &denominators
             denominators[denominators_idx]->get_monomials(monomials);
             lt_1 = get_LT(numerator);
             lt_2 = get_LT(denominators[denominators_idx]);
-            Node *div_res = divide_monomials(lt_1, lt_2, order);
+            Node *div_res = divide_monomials(lt_1,
+                                             lt_2,
+                                             order,
+                                             service_plex_order);
             if (div_res != nullptr) {
                 std::string a = div_res->to_str();
                 update_value(quotient[denominators_idx], div_res);
                 numerator = sum(multiply_to_monomial(denominators[denominators_idx],
-                                                     new Multiplication(new Constant(-1.0), div_res), order),
-                                numerator, order);
+                                                     new Multiplication(new Constant(-1.0), div_res),
+                                                     order,
+                                                     service_plex_order),
+                                numerator, order, service_plex_order);
                 q = numerator->to_str();
                 have_division = true;
             } else ++denominators_idx;
@@ -129,7 +146,10 @@ divide(PolynomialTree numerator, const std::vector<PolynomialTree> &denominators
         if (!have_division) {
             Node *copyed = lt_1->clone();
             update_value(modulo, copyed);
-            numerator = sum(new Multiplication(new Constant(-1.0), lt_1), numerator, order);
+            numerator = sum(new Multiplication(new Constant(-1.0), lt_1),
+                            numerator,
+                            order,
+                            service_plex_order);
         }
         is_zero = dynamic_cast<Constant *>(numerator);
     }

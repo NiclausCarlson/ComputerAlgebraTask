@@ -4,12 +4,13 @@
 
 #include "MonomialOrder.h"
 
-MonomialOrder::MonomialOrder(const std::vector<std::string> &order) {
-    size_t len = order.size() + 1;
+#include <utility>
+
+MonomialOrder::MonomialOrder(const std::vector<std::string> &order) : variable_quantity(order.size() + 1) {
     for (const auto &i : order) {
         variables.push_back(i);
-        variables_order[i] = len;
-        --len;
+        variables_order[i] = variable_quantity;
+        --variable_quantity;
     }
 }
 
@@ -75,7 +76,19 @@ PolynomialTree MonomialOrder::generate_new_monomial(bool minus, ld number, std::
         if (terms[v] > 1) ordered_terms.push_back(new Exponentiation(new Variable(v), new Constant(terms[v])));
         else if (terms[v] == 1) ordered_terms.push_back(new Variable(v));
     }
+    for (const auto &v: other_variables) {
+        if (terms[v] > 1) ordered_terms.push_back(new Exponentiation(new Variable(v), new Constant(terms[v])));
+        else if (terms[v] == 1) ordered_terms.push_back(new Variable(v));
+    }
+    if (n == 1.0 && ordered_terms.empty()) ordered_terms.push_back(new Constant(n));
     return join(ordered_terms, '*');
+}
+
+
+void MonomialOrder::add_other_variable(const std::string &v) {
+    other_variables.push_back(v);
+    variables_order[v] = variable_quantity;
+    --variable_quantity;
 }
 
 MonomialOrder::~MonomialOrder() = default;

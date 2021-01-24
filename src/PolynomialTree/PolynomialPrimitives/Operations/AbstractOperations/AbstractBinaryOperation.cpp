@@ -38,7 +38,9 @@ void AbstractBinaryOperation::get_monomials(std::vector<Node *> &monomials) {
         if (right_checker != nullptr) this->right->get_monomials(monomials);
         else monomials.push_back(this->right);
 
-    } else monomials.push_back(this);
+    } else {
+        monomials.push_back(this);
+    }
 }
 
 void AbstractBinaryOperation::set_left_node(Node *node) {

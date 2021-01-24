@@ -37,8 +37,9 @@ protected:
                            PolynomialTree monomial);
 
     std::vector<std::string> variables;
+    std::vector<std::string> other_variables;
     std::map<std::string, size_t> variables_order;
-
+    size_t variable_quantity;
 public:
 
     explicit MonomialOrder(const std::vector<std::string> &order);
@@ -47,6 +48,8 @@ public:
     virtual bool compare(PolynomialTree t1, PolynomialTree t2) = 0;
 
     void sort_monomial(PolynomialTree &monomial);
+
+    void add_other_variable(const std::string &v);
 
     virtual ~MonomialOrder();
 };

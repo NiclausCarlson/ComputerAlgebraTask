@@ -15,15 +15,18 @@
 #include "../MonomialOrder/Orders/Lex.h"
 #include "../MonomialOrder/Orders/Plex.h"
 
-static MonomialOrder *global_plex_order = new Plex({"x", "y", "z"});
 
-PolynomialTree sum(PolynomialTree left, PolynomialTree right, MonomialOrder *order);
+PolynomialTree sum(PolynomialTree left, PolynomialTree right, MonomialOrder *order,
+                   MonomialOrder *service_plex_order = new Plex({"x", "y", "z"}));
 
-PolynomialTree multiply_to_monomial(PolynomialTree polynomial, PolynomialTree monomial, MonomialOrder *order);
+PolynomialTree multiply_to_monomial(PolynomialTree polynomial, PolynomialTree monomial, MonomialOrder *order,
+                                    MonomialOrder *service_plex_order = new Plex({"x", "y", "z"}));
 
-PolynomialTree divide_monomials(Node *divider, Node *dividend);
+PolynomialTree divide_monomials(Node *divider, Node *dividend, MonomialOrder *order,
+                                MonomialOrder *service_plex_order = new Plex({"x", "y", "z"}));
 
 std::pair<std::vector<PolynomialTree>, PolynomialTree>
-divide(PolynomialTree, const std::vector<PolynomialTree> &, MonomialOrder *);
+divide(PolynomialTree, const std::vector<PolynomialTree> &, MonomialOrder *,
+       MonomialOrder *service_plex_order = new Plex({"x", "y", "z"}));
 
 #endif //COMPUTERALGEBRATASK_ARITHMETICOPERATIONS_H

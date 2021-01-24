@@ -4,16 +4,23 @@
 
 #include "FGLM.h"
 
+#include <utility>
+
 
 FGLM::FGLM(std::vector<PolynomialTree> &old_basis,
            MonomialOrder *old_order,
            MonomialOrder *new_order,
-           std::vector<Variable *> const &variables_list) :
+           std::vector<Variable *> variables_list) :
         old_basis(old_basis), old_order(old_order),
-        new_order(new_order), variables_list(variables_list) {
-    for (size_t i = 0; i < FREE_VARIABLES_QUANTITY; ++i)
-        free_variables.push_back(new Variable("@_" + std::to_string(i + 1)));
-
+        new_order(new_order), variables_list(std::move(variables_list)),
+        service_plex_order(new Plex({"x", "y", "z", "q"})) {
+    for (size_t i = 0; i < FREE_VARIABLES_QUANTITY; ++i) {
+        std::string var = "@_" + std::to_string(i + 1);
+        free_variables.push_back(new Variable(var));
+        old_order->add_other_variable(var);
+        new_order->add_other_variable(var);
+        service_plex_order->add_other_variable(var);
+    }
 }
 
 
@@ -38,7 +45,7 @@ std::vector<PolynomialTree> FGLM::transform() {
     auto comparator = [&](Node *t1, Node *t2) { return !old_order->compare(t1, t2); };
     std::vector<std::pair<Node *, Node *>> MBasis;
     std::vector<Node *> staircase;
-    std::set<Node *, decltype(comparator)> set_of_nexts;
+    std::set<Node *, decltype(comparator)> set_of_nexts(comparator);
     Node *monom = new Constant(1.0);
 
     while (monom != nullptr) {
@@ -60,7 +67,7 @@ std::vector<PolynomialTree> FGLM::transform() {
         monom = nullptr;
         if (!set_of_nexts.empty()) {
             monom = *set_of_nexts.begin();
-            set_of_nexts.erase(monom);
+            set_of_nexts.erase(set_of_nexts.begin());
         }
     }
 
@@ -72,7 +79,7 @@ bool FGLM::is_product(Node *monom, std::vector<Node *> const &staircase) {
     if (!staircase.empty()) {
         Node *tmp = monom->clone();
         for (auto p = staircase.rbegin(); p != staircase.rend(); ++p) {
-            Node *div_res = divide_monomials(tmp, *p);
+            Node *div_res = divide_monomials(tmp, *p, service_plex_order);
             if (div_res != nullptr) tmp = div_res;
         }
         auto result = dynamic_cast<Constant *>(tmp);
@@ -83,7 +90,7 @@ bool FGLM::is_product(Node *monom, std::vector<Node *> const &staircase) {
 
 PolynomialTree FGLM::get_normal_form(PolynomialTree polynomial) {
     // normal_form - о сути, остаток от деления
-    Node *normal_form = divide(polynomial, old_basis, old_order).second;
+    Node *normal_form = divide(polynomial, old_basis, old_order, service_plex_order).second;
     return normal_form;
 }
 
@@ -92,12 +99,27 @@ bool FGLM::has_linear_relation(Node *v, std::vector<std::pair<Node *, Node *>> c
     Node *to_system = new Constant(0.0);
     std::vector<Node *> used_variables;
     for (auto p = MBasis.rbegin(); p != MBasis.rend(); ++p) {
-        to_system = sum(to_system, multiply_to_monomial(p->second, to_system, global_plex_order), global_plex_order);
+        to_system = sum(to_system,
+                        multiply_to_monomial(p->second,
+                                             free_variables[idx],
+                                             service_plex_order,
+                                             service_plex_order),
+                        service_plex_order,
+                        service_plex_order);
+        std::string l = to_system->to_str();
         used_variables.push_back(free_variables[idx]);
         ++idx;
     }
+    if (used_variables.empty()) return false;
 
-    to_system = sum(v, multiply_to_monomial(new Constant(-1.0), to_system, global_plex_order), global_plex_order);
+    to_system = sum(v, multiply_to_monomial(to_system,
+                                            new Constant(-1.0),
+                                            service_plex_order,
+                                            service_plex_order),
+                    service_plex_order,
+                    service_plex_order);
+
+    std::string e = to_system->to_str();
     std::vector<Node *> monomials;
     to_system->get_monomials(monomials);
     std::vector<std::vector<Node *>> system_maker;
@@ -112,15 +134,26 @@ bool FGLM::has_linear_relation(Node *v, std::vector<std::pair<Node *, Node *>> c
             if (const_checker == nullptr &&
                 (variable_checker == nullptr || variable_checker->get_value()[0] != '@')) {
                 if (to_divide == nullptr) to_divide = j->clone();
-                else to_divide = multiply_to_monomial(to_divide, j, global_plex_order);
+                else to_divide = multiply_to_monomial(to_divide, j, service_plex_order, service_plex_order);
             }
         }
-        Node *div_res = divide_monomials(monomials[i], to_divide);
-        while (div_res != nullptr && i < monomials.size()) {
-            equation.push_back(div_res);
-            ++i;
-            div_res = divide_monomials(monomials[i], to_divide);
+        if (to_divide == nullptr) equation.push_back(monomials[i]);
+        else {
+            while (i < monomials.size()) {
+                Node *div_res = divide_monomials(monomials[i], to_divide, service_plex_order, service_plex_order);
+                if (div_res == nullptr) {
+                    --i;
+                    break;
+                } else equation.push_back(div_res);
+                ++i;
+            }
         }
+        bool is_good_equation = false;
+        for (auto j: equation) {
+            std::string instance = get_instance(j);
+            if (instance != "Constant") is_good_equation = true;
+        }
+        if (!is_good_equation) return false;
         system_maker.push_back(equation);
     }
 
@@ -133,19 +166,29 @@ bool FGLM::has_linear_relation(Node *v, std::vector<std::pair<Node *, Node *>> c
     for (auto &i: system_maker) {
         max_equations_length = std::max(max_equations_length, i.size());
         std::sort(i.begin(), i.end(), comp);
+        for (auto j: i) {
+            std::string e = j->to_str();
+        }
     }
-
     mtl::dense2D<ld> system(system_maker.size(), max_equations_length);
+    //надо константы направо перенести
+    mtl::dense_vector<ld> x(free_variables.size()), b(free_variables.size());
+    for (size_t i = 0; i < free_variables.size(); ++i) b[i] = 0;
+
     size_t row = 0, column = 0;
     for (auto const &eq: system_maker) {
         column = 0;
         for (size_t i = 0; i < eq.size(); ++i) {
+            std::string q = eq[i]->to_str();
             auto *var = dynamic_cast<Variable *>(eq[i]);
             auto *mul = dynamic_cast<Multiplication *>(eq[i]);
-            if (var != nullptr)system[row][i] = 1.0L;
-            else {
+            if (var != nullptr) system[row][i] = 1.0L;
+            else if (mul != nullptr) {
                 auto *c = dynamic_cast<Constant *>(mul->getLeftNode());
                 system[row][i] = c->get_value();
+            } else {
+                auto *c = dynamic_cast<Constant *>(eq[i]);
+                b[row] += c->get_value();
             }
             ++column;
         }
@@ -154,8 +197,7 @@ bool FGLM::has_linear_relation(Node *v, std::vector<std::pair<Node *, Node *>> c
         }
         ++row;
     }
-    mtl::dense_vector<ld> x(free_variables.size()), b(free_variables.size());
-    for (size_t i = 0; i < free_variables.size(); ++i) b[i] = 0;
+
     x = lu_solve(system, b);
     bool has_linear_relation = false;
     for (auto i: x) {
@@ -166,8 +208,8 @@ bool FGLM::has_linear_relation(Node *v, std::vector<std::pair<Node *, Node *>> c
     }
     if (!has_linear_relation) return false;
     for (size_t i = 0; i < free_variables.size(); ++i) {
-        Node *tmp = multiply_to_monomial(MBasis[i].first, new Constant(x[i]), global_plex_order);
-        relation = sum(relation, tmp, global_plex_order);
+        Node *tmp = multiply_to_monomial(MBasis[i].first, new Constant(x[i]), service_plex_order);
+        relation = sum(relation, tmp, service_plex_order);
     }
     return true;
 
