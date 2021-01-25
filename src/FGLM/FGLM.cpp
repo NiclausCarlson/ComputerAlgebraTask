@@ -7,7 +7,6 @@
 
 #include <utility>
 
-
 FGLM::FGLM(std::vector<PolynomialTree> &old_basis,
            MonomialOrder *old_order,
            MonomialOrder *new_order,
@@ -65,9 +64,9 @@ std::vector<PolynomialTree> FGLM::transform() {
 
     while (monom != nullptr) {
         if (!is_product(monom, staircase)) {
-            //  std::string ms = monom->to_str();
+              std::string ms = monom->to_str();
             Node *v = get_normal_form(monom); // with respect to old_basis
-            //   std::string vs = v->to_str();
+               std::string vs = v->to_str();
             Node *relation = new Constant(0.0);
             if (get_linear_relation(v->clone(), MBasis, relation)) {
                 std::string r = relation->to_str();

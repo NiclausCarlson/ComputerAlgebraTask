@@ -5,7 +5,6 @@
 #include "Parser.h"
 #include "../Exceptions/ParserExceptions/UnsupportedOperation.h"
 #include "../Exceptions/ParserExceptions/LostOperand.h"
-#include "../Exceptions/ParserExceptions/InvalidArgument.h"
 
 void Parser::tokenizer_helper(int (*func)(int)) {
     while (func(str[cur_pos]) && cur_pos < length) {
@@ -59,8 +58,7 @@ PolynomialTree Parser::parseUnaryAndNullaryOperations() {
         case Token::END:
             return nullptr;
         default:
-            cur_token = std::make_pair(Token::ERROR, "can't parse token: " + cur_token.second);
-            return nullptr;
+            throw WrongToken("can't parse token: " + cur_token.second);
     }
 }
 
