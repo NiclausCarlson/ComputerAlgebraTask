@@ -91,6 +91,10 @@ void MonomialOrder::add_other_variable(const std::string &v) {
     --variable_quantity;
 }
 
+std::vector<std::string> MonomialOrder::get_variables() const {
+    return variables;
+}
+
 MonomialOrder::~MonomialOrder() = default;
 
 

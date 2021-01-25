@@ -3,6 +3,7 @@
 //
 
 #include "FGLM.h"
+#include "../PolynomialOperations/MonomialOrder/Orders/Grlex.h"
 
 #include <utility>
 
@@ -28,20 +29,31 @@ FGLM::FGLM(std::vector<PolynomialTree> &old_basis,
 
 
 std::string FGLM::get_in_maple_dsl() {
-    std::string variable_set = "variablesSet := {x,y,z};\n";
+    std::string order;
+    auto is_plex = dynamic_cast<Plex *>(new_order);
+    auto is_grlex = dynamic_cast<Grlex *>(new_order);
+    if (is_plex != nullptr) order = "plex(";
+    else if (is_grlex != nullptr) order = "grlex(";
+    std::vector<std::string> v = new_order->get_variables();
+    for (auto i = v.begin(); i != v.end() - 1; ++i)order += *i + ",";
+    order += *(v.end() - 1);
+    order += ")";
+
+    std::string variable_set = "variablesSet := {x,y,z};\n\n";
     std::string old_basis_str = "oldBasis := [";
     std::string new_basis_str = "newBasis := [";
-    for (auto i = old_basis.begin(); i != old_basis.end(); ++i)
+    for (auto i = old_basis.begin(); i != old_basis.end() - 1; ++i)
         old_basis_str += (*i)->to_str() + ", ";
-    old_basis_str += (*(old_basis.end() - 1))->to_str() + "];\n\n";
+    old_basis_str += (*(old_basis.end() - 1))->to_str() + "];\n";
 
-    for (auto i = new_basis.begin(); i != new_basis.end(); ++i)
+    for (auto i = new_basis.begin(); i != new_basis.end() - 1; ++i)
         new_basis_str += (*i)->to_str() + ", ";
     new_basis_str += (*(new_basis.end() - 1))->to_str() + "];\n\n";
     std::string first_set = "firstSet := {solve(oldBasis, variablesSet)};\n";
     std::string second_set = "secondSet := {solve(newBasis, variablesSet)};\n";
+    std::string is_right_order = "print(\"Is Groebner basis with current order: \", IsBasis(newBasis, " + order + "));";
     std::string checker = "print(\"Is same Ideals: \",((firstSet subset secondSet) and (secondSet subset firstSet)));\n\n";
-    return variable_set + old_basis_str + new_basis_str + first_set + second_set + checker;
+    return variable_set + old_basis_str + new_basis_str + is_right_order + first_set + second_set + checker;
 }
 
 std::vector<PolynomialTree> FGLM::transform() {
@@ -53,16 +65,16 @@ std::vector<PolynomialTree> FGLM::transform() {
 
     while (monom != nullptr) {
         if (!is_product(monom, staircase)) {
-            std::string ms = monom->to_str();
+            //  std::string ms = monom->to_str();
             Node *v = get_normal_form(monom); // with respect to old_basis
-            std::string vs = v->to_str();
+            //   std::string vs = v->to_str();
             Node *relation = new Constant(0.0);
             if (get_linear_relation(v->clone(), MBasis, relation)) {
                 std::string r = relation->to_str();
-                Node *pol = sum(monom, relation, new_order);
+                Node *pol = sum(monom->clone(), relation, new_order);
                 pol = get_simplified(pol, new_order);
                 new_basis.push_back(pol);
-                staircase.push_back(monom);
+                staircase.push_back(monom->clone());
             } else {
                 delete relation;
                 MBasis.emplace_back(monom, v);

@@ -51,6 +51,8 @@ public:
 
     void add_other_variable(const std::string &v);
 
+    std::vector<std::string> get_variables() const ;
+
     virtual ~MonomialOrder();
 };
 
