@@ -14,7 +14,7 @@ class FGLM {
 private:
     const ld EPS = 1e-12;
     const size_t FREE_VARIABLES_QUANTITY = 300;
-    std::vector<Variable *> free_variables;// Variables looks like @_idx
+    std::vector<Variable *> free_variables; //@_idx
     std::vector<PolynomialTree> old_basis;
     std::vector<PolynomialTree> new_basis;
     MonomialOrder *old_order;

@@ -42,7 +42,7 @@ std::string FGLM::get_in_maple_dsl() {
 }
 
 std::vector<PolynomialTree> FGLM::transform() {
-    auto comparator = [&](Node *t1, Node *t2) { return !new_order->compare(t1, t2); };
+    auto comparator = [&](Node *t1, Node *t2) { return new_order->compare(t1, t2); };
     std::vector<std::pair<Node *, Node *>> MBasis;
     std::vector<Node *> staircase;
     std::set<Node *, decltype(comparator)> set_of_nexts(comparator);
@@ -50,19 +50,21 @@ std::vector<PolynomialTree> FGLM::transform() {
 
     while (monom != nullptr) {
         if (!is_product(monom, staircase)) {
-            Node *v = get_normal_form(monom); // with respect to old_basis
             std::string ms = monom->to_str();
+            Node *v = get_normal_form(monom); // with respect to old_basis
             std::string vs = v->to_str();
             Node *relation = nullptr;
-            if (has_linear_relation(v, MBasis, relation)) {
+            if (has_linear_relation(v->clone(), MBasis, relation)) {
                 Node *pol = new Sum(monom, relation);
                 pol = get_simplified(pol, new_order);
                 new_basis.push_back(pol);
                 staircase.push_back(monom);
             } else {
                 MBasis.emplace_back(monom, v);
-                for (auto var : variables_list){
-                    Node* tmp = multiply_to_monomial(monom, var, new_order);
+//                for (auto i: set_of_nexts) std::cout << i->to_str() << std::endl;
+//                std::cout << "---" << std::endl;
+                for (auto var : variables_list) {
+                    Node *tmp = multiply_to_monomial(monom, var, new_order);
                     std::string q = tmp->to_str();
                     set_of_nexts.insert(tmp);
                 }
@@ -71,8 +73,8 @@ std::vector<PolynomialTree> FGLM::transform() {
 
         monom = nullptr;
         if (!set_of_nexts.empty()) {
-            monom = *set_of_nexts.begin();
-            set_of_nexts.erase(set_of_nexts.begin());
+            monom = *set_of_nexts.rbegin();
+            set_of_nexts.erase(std::next(set_of_nexts.rbegin()).base());
         }
     }
 
@@ -94,7 +96,7 @@ bool FGLM::is_product(Node *monom, std::vector<Node *> const &staircase) {
 }
 
 PolynomialTree FGLM::get_normal_form(PolynomialTree polynomial) {
-    // normal_form - о сути, остаток от деления
+    // normal_form - по сути, остаток от деления
     Node *normal_form = divide(polynomial, old_basis, old_order, service_plex_order).second;
     return normal_form;
 }
@@ -146,6 +148,8 @@ bool FGLM::has_linear_relation(Node *v, std::vector<std::pair<Node *, Node *>> c
         else {
             while (i < monomials.size()) {
                 Node *div_res = divide_monomials(monomials[i], to_divide, service_plex_order, service_plex_order);
+                auto is_var = dynamic_cast<Variable *>(div_res);
+                auto is_mult = dynamic_cast<Multiplication *>(div_res);
                 if (div_res == nullptr) {
                     --i;
                     break;
@@ -171,12 +175,9 @@ bool FGLM::has_linear_relation(Node *v, std::vector<std::pair<Node *, Node *>> c
     for (auto &i: system_maker) {
         max_equations_length = std::max(max_equations_length, i.size());
         std::sort(i.begin(), i.end(), comp);
-        for (auto j: i) {
-            std::string e = j->to_str();
-        }
     }
     mtl::dense2D<ld> system(system_maker.size(), max_equations_length);
-    //надо константы направо перенести
+
     mtl::dense_vector<ld> x(free_variables.size()), b(free_variables.size());
     for (size_t i = 0; i < free_variables.size(); ++i) b[i] = 0;
 
@@ -217,16 +218,5 @@ bool FGLM::has_linear_relation(Node *v, std::vector<std::pair<Node *, Node *>> c
         relation = sum(relation, tmp, service_plex_order);
     }
     return true;
-
-//    mtl::dense2D<double> A(2, 2);
-//    A[0][0] = 2;
-//    A[0][1] = 1;
-//    A[1][0] = 1;
-//    A[1][1] = 2;
-//    mtl::dense_vector<double> x(2), b(2);
-//    b[0] = 0;
-//    b[1] = 0;
-//    x = lu_solve(A, b);
-//    std::cout << x << std::endl;
 }
 
