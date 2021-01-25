@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.15)
 project(ComputerAlgebraTask)
 
 set(CMAKE_SXX_STANDARD 20)
-set(BOOST_ROOT "C:/Users/Nik Carlson/Documents/LIBS/boost_1_75_0")
-set(MTL4_ROOT "C:/Users/Nik Carlson/Documents/LIBS/mtl4")
+set(BOOST_ROOT "boost_1_75_0")
+set(MTL4_ROOT "mtl4")
 find_package(Boost 1.75.0)
 find_package(MTL4)
 
