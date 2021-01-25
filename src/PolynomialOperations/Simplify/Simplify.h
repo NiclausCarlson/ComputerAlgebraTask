@@ -12,4 +12,6 @@
 //This method returns simplified polynomial
 PolynomialTree get_simplified(PolynomialTree &t, MonomialOrder *order);
 
+PolynomialTree normalize(std::vector<Node *>::const_iterator from, std::vector<Node *>::const_iterator to);
+
 #endif //COMPUTERALGEBRATASK_SIMPLIFY_H

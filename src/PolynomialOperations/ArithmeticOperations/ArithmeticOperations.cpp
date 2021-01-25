@@ -18,6 +18,9 @@ PolynomialTree multiply_to_monomial(PolynomialTree polynomial, PolynomialTree mo
     std::vector<Node *> monomials;
     std::string h = polynomial->to_str();
     polynomial->get_monomials(monomials);
+    auto c = dynamic_cast<Constant *>(monomial);
+    if (c != nullptr && c->get_value() == 0.0) return new Constant(0.0);
+
     for (auto &it : monomials) it = new Multiplication(it, monomial);
     Node *result = join(monomials, '+');
     std::string q = result->to_str();
@@ -111,10 +114,7 @@ divide(PolynomialTree numerator, const std::vector<PolynomialTree> &denominators
     auto update_value = [&](PolynomialTree &to_update, Node *val) {
         if (to_update == nullptr) to_update = val;
         else
-            to_update = sum(to_update,
-                            val,
-                            order,
-                            service_plex_order);
+            to_update = sum(to_update, val, order, service_plex_order);
     };
 
     size_t denominators_idx = 0;
@@ -131,18 +131,19 @@ divide(PolynomialTree numerator, const std::vector<PolynomialTree> &denominators
             denominators[denominators_idx]->get_monomials(monomials);
             lt_1 = get_LT(numerator_copy);
             lt_2 = get_LT(denominators[denominators_idx]);
-            Node *div_res = divide_monomials(lt_1,
-                                             lt_2,
-                                             order,
-                                             service_plex_order);
+            Node *div_res = divide_monomials(lt_1, lt_2, order, service_plex_order);
             if (div_res != nullptr) {
                 std::string a = div_res->to_str();
-                update_value(quotient[denominators_idx], div_res);
-                numerator_copy = sum(multiply_to_monomial(denominators[denominators_idx],
-                                                          new Multiplication(new Constant(-1.0), div_res),
-                                                          order,
+                std::string b = denominators[denominators_idx]->to_str();
+                update_value(quotient[denominators_idx], div_res->clone());
+                numerator_copy = sum(numerator_copy,
+                                     multiply_to_monomial(denominators[denominators_idx],
+                                                          multiply_to_monomial(div_res,
+                                                                               new Constant(-1.0),
+                                                                               service_plex_order),
+                                                          service_plex_order,
                                                           service_plex_order),
-                                     numerator_copy, order, service_plex_order);
+                                     order, service_plex_order);
                 q = numerator_copy->to_str();
                 have_division = true;
             } else ++denominators_idx;
@@ -151,9 +152,7 @@ divide(PolynomialTree numerator, const std::vector<PolynomialTree> &denominators
             Node *copyed = lt_1->clone();
             update_value(modulo, copyed);
             numerator_copy = sum(multiply_to_monomial(lt_1, new Constant(-1.0), service_plex_order),
-                                 numerator_copy,
-                                 order,
-                                 service_plex_order);
+                                 numerator_copy, order, service_plex_order);
             std::string p = numerator_copy->to_str();
             std::string r = modulo->to_str();
         }

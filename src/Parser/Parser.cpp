@@ -77,7 +77,7 @@ PolynomialTree Parser::parseExponential() {
             if (right_number == nullptr) {
                 throw UnsupportedOperation(cur_token.second, "Polynomial exponentiation is prohibit.");
             }
-            if (absolute(right_number->get_value() - 1) > eps) {
+            if (absolute(right_number->get_value() - 1) < eps) {
                 throw UnsupportedOperation(cur_token.second, "Invalid monomial power.");
             }
             left = (Node *) (new Exponentiation(left, right_number));

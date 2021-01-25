@@ -9,10 +9,10 @@
 #include <boost/numeric/mtl/mtl.hpp>
 
 #include "../PolynomialOperations/ArithmeticOperations/ArithmeticOperations.h"
+#include "../PolynomialOperations/Simplify/Equals.h"
 
 class FGLM {
 private:
-    const ld EPS = 1e-12;
     const size_t FREE_VARIABLES_QUANTITY = 300;
     std::vector<Variable *> free_variables; //@_idx
     std::vector<PolynomialTree> old_basis;
@@ -20,9 +20,11 @@ private:
     MonomialOrder *old_order;
     MonomialOrder *new_order;
     MonomialOrder *service_plex_order;
+    MonomialOrder *linear_order;
     std::vector<Variable *> variables_list;
 
-    bool has_linear_relation(Node *v, std::vector<std::pair<Node *, Node *>> const &MBasis, Node *&relation);
+    bool get_linear_relation(Node *v, std::vector<std::pair<Node *, Node *>> const &MBasis, Node *&relation);
+
     // returns normal form of polynomial with respect to old_basis and old order
     PolynomialTree get_normal_form(PolynomialTree polynomial);
 

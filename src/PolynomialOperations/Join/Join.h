@@ -8,10 +8,14 @@
 #include "../../PolynomialTree/PolynomialPrimitives/Node/Node.h"
 #include "../MonomialOrder/MonomialOrder.h"
 
-PolynomialTree recursive(std::vector<Node *>::iterator from,
-                         std::vector<Node *>::iterator to,
+PolynomialTree recursive(std::vector<Node *>::const_iterator from,
+                         std::vector<Node *>::const_iterator to,
                          char delimiter);
 
 PolynomialTree join(std::vector<Node *> &monomials, char delimiter);
+
+PolynomialTree join(std::vector<Node *>::const_iterator from,
+                        std::vector<Node *>::const_iterator to,
+                        char delimiter);
 
 #endif //COMPUTERALGEBRATASK_JOIN_H

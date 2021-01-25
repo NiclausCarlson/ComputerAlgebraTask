@@ -10,8 +10,6 @@ PolynomialTree get_simplified(PolynomialTree &t, MonomialOrder *order) {
     t->get_monomials(monomials);
 
     for (auto &i: monomials) order->sort_monomial(i);
-    Node* wtf = join(monomials, '+');
-    std::string fuck_you = wtf->to_str();
     auto comp = [&order](PolynomialTree t1, PolynomialTree t2) { return order->compare(t1, t2); };
     std::sort(monomials.begin(), monomials.end(), comp);
 
@@ -36,4 +34,14 @@ PolynomialTree get_simplified(PolynomialTree &t, MonomialOrder *order) {
         if (c == nullptr || c->get_value() != 0) new_polynomial.push_back(node);
     }
     return join(new_polynomial, '+');
+}
+
+PolynomialTree normalize(std::vector<Node *>::const_iterator from, std::vector<Node *>::const_iterator to) {
+    if (from == to) return nullptr;
+    std::string instance = get_instance(*from);
+    while (instance == "Constant") {
+        ++from;
+        instance = get_instance(*from);
+    }
+    return join(from, to, '*');
 }

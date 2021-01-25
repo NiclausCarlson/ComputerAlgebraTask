@@ -11,7 +11,7 @@
 
 typedef long double ld;
 
-const ld eps = 1e10;
+const ld eps = 1e-15;
 
 inline ld absolute(ld number) {
     return number <= 0 ? -number : number;
